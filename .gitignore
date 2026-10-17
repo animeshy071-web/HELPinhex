@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Build output
+dist/
+build/
+.astro/
+.next/
+.vercel/
+.netlify/
+
+# Environment & secrets
+.env
+.env.*
+*.local
+*.key
+
+# Caches & logs
+.cache/
+.parcel-cache/
+.eslintcache
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor junk
+.vscode/
+.idea/
+*.swp
