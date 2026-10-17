@@ -1,0 +1,99 @@
+---
+import Base from '../layouts/Base.astro';
+import { getTools, getPaths } from '../lib/load';
+
+const tools = getTools();
+const paths = getPaths();
+const jsonSafe = (v: unknown) => JSON.stringify(v).replace(/</g, '\\u003c');
+const toolNames = Object.fromEntries(tools.map((t) => [t.id, t.name]));
+const pathTitles = Object.fromEntries(paths.map((p) => [p.slug, p.title]));
+---
+
+<Base title="Me — your progress, saved in your browser · HELPINhex" description="Progress, streaks, your kit and your unanswered questions — all stored locally, no account.">
+  <section class="section">
+    <div class="container">
+      <h1 style="font-size:2.2rem">Me</h1>
+      <p class="muted">
+        Everything on this page lives in <em>your browser</em> — no account, no server, no tracking.
+        It is yours; the day accounts arrive (Phase 3+), this data graduates with you.
+      </p>
+      <div id="me-root" class="mt-3"></div>
+    </div>
+  </section>
+
+  <script type="application/json" id="me-tools" set:html={jsonSafe(toolNames)} />
+  <script type="application/json" id="me-paths" set:html={jsonSafe(pathTitles)} />
+
+  <script>
+    const AMP = String.fromCharCode(38);
+    const ENT: Record<string, string> = { '&': AMP + 'amp;', '<': AMP + 'lt;', '>': AMP + 'gt;', '"': AMP + 'quot;', "'": AMP + '#39;' };
+    const esc = (s: unknown) => String(s ?? '').replace(/[&<>"']/g, (c) => ENT[c]);
+
+    const toolNames = JSON.parse(document.getElementById('me-tools')?.textContent || '{}');
+    const pathTitles = JSON.parse(document.getElementById('me-paths')?.textContent || '{}');
+    const root = document.getElementById('me-root');
+
+    function read<T>(key: string, fallback: T): T {
+      try { return JSON.parse(localStorage.getItem(key) || JSON.stringify(fallback)); } catch (e) { return fallback; }
+    }
+
+    const progress = read<Record<string, { done: number[] }>>('hx:progress', {});
+    const kit = read<string[]>('hx:kit', []);
+    const backlog = read<{ q: string; when: string }[]>('hx:backlog', []);
+    const days = read<string[]>('hx:days', []);
+
+    // streak = consecutive days ending today (or yesterday, so late-night visits don't punish)
+    let streak = 0;
+    if (days.length) {
+      const set = new Set(days);
+      const d = new Date();
+      const iso = (x: Date) => x.toISOString().slice(0, 10);
+      if (!set.has(iso(d))) d.setDate(d.getDate() - 1); // allow "yesterday" as the anchor
+      while (set.has(iso(d))) {
+        streak++;
+        d.setDate(d.getDate() - 1);
+      }
+    }
+
+    const pathRows = Object.entries(progress)
+      .filter(([slug]) => pathTitles[slug])
+      .map(([slug, p]) => {
+        const total = Object.keys(pathTitles).length ? undefined : undefined;
+        const done = (p.done || []).length;
+        const max = (p.done || []).length;
+        // we don't know step totals here; show done count
+        return `<div class="card mb-1"><strong>${esc(pathTitles[slug])}</strong> — ${done} step${done === 1 ? '' : 's'} checked <a class="small" href="/paths/${esc(slug)}/">continue →</a></div>`;
+      })
+      .join('');
+
+    const kitRows = kit.length
+      ? kit.map((id) => `<a class="badge accent" href="#">${esc(toolNames[id] || id)}</a>`).join(' ')
+      : '<span class="muted small">Nothing yet — open any tool card and press "Save to My Kit".</span>';
+
+    const backlogRows = backlog.length
+      ? backlog.slice().reverse().map((b) => `<li>${esc(b.q)} <span class="muted small">(${new Date(b.when).toLocaleDateString()})</span></li>`).join('')
+      : '<span class="muted small">Empty — a good sign. When the Answer Engine can\'t answer you, it files the question here.</span>';
+
+    root!.innerHTML = `
+      <div class="grid wide">
+        <div class="card">
+          <h3 style="margin-top:0">🔥 Streak</h3>
+          <p style="font-size:2rem;margin:0.2rem 0"><strong>${streak}</strong> <span class="muted">day${streak === 1 ? '' : 's'}</span></p>
+          <p class="muted small" style="margin:0">${days.length} active days total. Checking any path step or saving to your kit counts.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">🧭 Path progress</h3>
+          ${pathRows || '<p class="muted small" style="margin:0">No steps checked yet. <a href="/paths/">Pick a path →</a></p>'}
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">🧰 My Kit</h3>
+          <div class="chips">${kitRows}</div>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">📮 Backlog (things you asked that we couldn\'t answer yet)</h3>
+          <ul class="small" style="padding-left:1.2rem">${backlogRows}</ul>
+        </div>
+      </div>
+    `;
+  </script>
+</Base>

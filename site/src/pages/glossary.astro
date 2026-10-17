@@ -1,0 +1,35 @@
+---
+import Base from '../layouts/Base.astro';
+import { getTerms } from '../lib/load';
+
+const terms = getTerms().slice().sort((a, b) => a.word.toLowerCase().localeCompare(b.word.toLowerCase()));
+---
+
+<Base title="Glossary — every word, decoded · HELPINhex" description="Every piece of tech jargon in one place, explained in plain English with an example.">
+  <section class="section">
+    <div class="container">
+      <h1 style="font-size:2.2rem">Glossary</h1>
+      <p class="muted">
+        Every term on this site is hover-decodable — this page is the full dictionary.
+        {terms.length} terms and counting.
+      </p>
+      <div class="mt-3">
+        {
+          terms.map((t) => (
+            <div class="card mb-1" id={t.id}>
+              <h3 style="margin:0 0 0.25rem">{t.word}</h3>
+              <p style="margin:0">{t.plain}</p>
+              <p class="muted small" style="margin:0.5rem 0 0"><em>Example: {t.example}</em></p>
+              {t.related.length > 0 && (
+                <div class="chips mt-1">
+                  <span class="muted small" style="align-self:center">related:</span>
+                  {t.related.map((r) => <a class="badge" href={`#${r}`}>{r}</a>)}
+                </div>
+              )}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>

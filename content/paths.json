@@ -1,0 +1,51 @@
+[
+  {
+    "id": "ai-zero-builder",
+    "slug": "ai-zero-builder",
+    "title": "AI Zero → Builder",
+    "goal": "Total beginner → shipped your first AI-assisted thing, understanding what you're actually doing.",
+    "duration": "1 weekend",
+    "prereqs": [],
+    "steps": [
+      { "title": "Understand what AI actually is", "description": "Read the plain-English mental model — text prediction, not a database. It fixes your expectations for everything after.", "guide": "what-even-is-an-llm", "minutes": 15 },
+      { "title": "Pick your first chat assistant", "description": "Try one free chat app (ChatGPT, claude.ai, Gemini, or Z.ai). They're all LLMs with different accents — pick whichever loads fastest for you.", "minutes": 10 },
+      { "title": "Prompt practice: 5 prompts that teach more than a course", "description": "Ask it to: explain today's news in simple words, quiz you on a topic you're studying, rewrite your last email politely, plan a weekend trip, and argue the other side of an opinion you hold. Notice what makes answers better or worse.", "minutes": 30 },
+      { "title": "Make one tiny real thing", "description": "Use the chat to help you create something you'll actually use — a study helper, a weekly meal plan, a birthday plan. Real usage teaches you AI faster than any tutorial.", "minutes": 45 },
+      { "title": "Learn the words", "description": "Skim the glossary. Token, context, prompt — the vocabulary makes every future article readable.", "minutes": 15 },
+      { "title": "Ready for the next level", "description": "You now know what AI feels like. Path 3 (Connect Any API) turns 'I use it' into 'I build with it'.", "minutes": 5 }
+    ]
+  },
+  {
+    "id": "developer-basics",
+    "slug": "developer-basics",
+    "title": "Developer Basics — the 'weird internet tools'",
+    "goal": "Terminal, git, GitHub, and files stop being scary — the survival kit every tutorial assumes you already have.",
+    "duration": "1 week, casual",
+    "prereqs": [],
+    "steps": [
+      { "title": "Terminal 101", "description": "Open it, learn five commands (dir/ls, cd, mkdir, echo, cls/clear), and win the 'black window' fear forever.", "minutes": 20 },
+      { "title": "Install VS Code", "description": "The editor everyone uses. Learn Ctrl-P, Ctrl-Shift-P, and the built-in terminal — those three keys run your life after.", "tool": "vs-code", "minutes": 15 },
+      { "title": "Git basics: save-points for code", "description": "git init, git add, git commit — a time machine in three commands. You only need save-points today; branches can wait.", "minutes": 30 },
+      { "title": "GitHub account + first repo", "description": "Push your first repo (this is literally how HELPINhex itself started). Star three tools you find interesting.", "tool": "github", "minutes": 20 },
+      { "title": "JSON and .env", "description": "The two file formats that run everything: data travels as JSON, secrets live in .env. Read both guides.", "guide": "keep-your-keys-safe", "minutes": 25 },
+      { "title": "Where to ask for help", "description": "How to read a README, search GitHub issues, and ask a good question — the most underrated skill in tech.", "minutes": 25 }
+    ]
+  },
+  {
+    "id": "connect-any-api",
+    "slug": "connect-any-api",
+    "title": "Connect Any API",
+    "goal": "From 'I have no idea what an API is' to a working chatbot you wrote — the single most useful beginner skill in AI.",
+    "duration": "2–3 days",
+    "prereqs": ["developer-basics (or: you can open a terminal)"],
+    "steps": [
+      { "title": "Understand APIs", "description": "The restaurant analogy, JSON, endpoints — the mental model that makes every tutorial make sense.", "guide": "what-is-an-api", "minutes": 15 },
+      { "title": "Get a free key", "description": "Create an OpenRouter account and key — your universal ticket to hundreds of models.", "tool": "openrouter", "minutes": 10 },
+      { "title": "Make your first API call", "description": "One terminal command, a real reply from a real model, and the complete error hall of fame explained.", "guide": "your-first-api-call", "minutes": 45 },
+      { "title": "Build a tiny chatbot", "description": "Wrap that call in a 20-line script that keeps conversation history. Congratulations — that's the skeleton of every AI app.", "minutes": 60 },
+      { "title": "Keep your keys safe", "description": "The five habits that keep your bills boring — read before you build anything bigger.", "guide": "keep-your-keys-safe", "minutes": 15 },
+      { "title": "The local alternative", "description": "Run models on your own machine with Ollama — free, private, offline. It even speaks the same API format.", "guide": "run-ai-on-your-laptop", "minutes": 30 },
+      { "title": "What's next: making AI accurate", "description": "Preview of RAG — how to make AI answer from YOUR facts instead of guessing. That's where real projects live.", "minutes": 10 }
+    ]
+  }
+]

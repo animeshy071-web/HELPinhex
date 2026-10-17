@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import Badge from '../components/Badge.astro';
+import { getPaths } from '../lib/load';
+
+const paths = getPaths();
+---
+
+<Base title="Learning paths — from zero to builder · HELPINhex" description="Structured learning tracks. Start anywhere, progress saved in your browser, no account needed.">
+  <section class="section">
+    <div class="container">
+      <h1 style="font-size:2.2rem">Paths</h1>
+      <p class="muted">
+        Not a pile of tutorials — a sequence. Each path tells you what to do in what order,
+        and your progress is saved right here in your browser. No account, no email, no tracking.
+      </p>
+      <div class="grid wide mt-3">
+        {
+          paths.map((p) => (
+            <a class="card hover" href={`/paths/${p.slug}/`}>
+              <h3 style="margin-top:0">{p.title}</h3>
+              <p class="muted small">{p.goal}</p>
+              <div class="chips">
+                <Badge tone="accent">{p.steps.length} steps</Badge>
+                <Badge>{p.duration}</Badge>
+                {p.prereqs.length === 0 ? <Badge tone="ok">no prerequisites</Badge> : <Badge tone="warn">prereqs: {p.prereqs.length}</Badge>}
+              </div>
+            </a>
+          ))
+        }
+      </div>
+      <blockquote class="mt-3">
+        More paths arrive as they're written: AI Image, AI Video, Automate Everything, Earn With AI, Hackathons 101, Hardware.
+        The Answer Engine's backlog decides what we write next — <a href="/ask/">ask something unanswerable</a> and find out.
+      </blockquote>
+    </div>
+  </section>
+</Base>

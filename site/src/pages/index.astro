@@ -1,0 +1,105 @@
+---
+import Base from '../layouts/Base.astro';
+import AskBox from '../components/AskBox.astro';
+import Badge from '../components/Badge.astro';
+import ToolCard from '../components/ToolCard.astro';
+import { getTools, getModels, getPaths, getGuides, getTerms } from '../lib/load';
+import { linkTerms } from '../lib/format';
+
+const tools = getTools();
+const models = getModels();
+const paths = getPaths();
+const guides = getGuides();
+const terms = getTerms();
+---
+
+<Base>
+  <section class="hero">
+    <div class="container">
+      <h1>Everything tech, <span class="grad">decoded for beginners.</span></h1>
+      <p class="hero-sub">
+        Ask what you want to make — get the tools, the steps in order, and the costs.
+        Every AI model, tool and platform explained in plain English, plus a learning path that starts wherever you are.
+      </p>
+      <div class="mt-2">
+        <AskBox />
+      </div>
+      <p class="muted small mt-2">
+        Press <kbd>/</kbd> or <kbd>Ctrl K</kbd> to search everything · hover any dotted-underlined word for a plain-English explanation
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid wide">
+        <div class="card">
+          <h3>🎯 Ask → get a plan</h3>
+          <p class="muted small" set:html={linkTerms('No links to dig through. You describe the goal, we return a sequenced workflow: tools, steps, costs, time — plus the mistakes beginners make.', terms)} />
+        </div>
+        <div class="card">
+          <h3>📡 Always fresh</h3>
+          <p class="muted small" set:html={linkTerms('A daily freshness engine catches new models, tools and repos the moment they drop — then explains why they matter (and when they do not).', terms)} />
+        </div>
+        <div class="card">
+          <h3>🧭 Paths, not piles</h3>
+          <p class="muted small" set:html={linkTerms('Structured learning tracks take you from "what even is a token" to shipping your first API-powered project.', terms)} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Start a path</h2>
+        <span class="muted small">progress saved in your browser — no account needed</span>
+      </div>
+      <div class="grid">
+        {
+          paths.map((p) => (
+            <a class="card hover" href={`/paths/${p.slug}/`}>
+              <h3 style="margin-top:0">{p.title}</h3>
+              <p class="muted small">{p.goal}</p>
+              <div class="chips">
+                <Badge tone="accent">{p.steps.length} steps</Badge>
+                <Badge>{p.duration}</Badge>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>The catalog</h2>
+        <a class="small" href="/catalog/">browse everything →</a>
+      </div>
+      <div class="grid">
+        {tools.slice(0, 6).map((t) => <ToolCard tool={t} />)}
+      </div>
+      <p class="muted small mt-2">
+        {tools.length} tools · {models.length} model families · {guides.length} guides · {terms.length} decoded terms — every card carries its last-verified date.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Fresh today</h2>
+        <a class="small" href="/today/">the Today page →</a>
+      </div>
+      <div class="card">
+        <p style="margin:0" class="muted">
+          <strong>The freshness engine ships in Phase 2.</strong>
+          The scrapers are specced (Hugging Face, GitHub, Hacker News, hackathon feeds) — from then on, new models and tools appear here
+          daily, auto-classified and auto-explained, with honesty badges. Until then, everything above is human-verified.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>

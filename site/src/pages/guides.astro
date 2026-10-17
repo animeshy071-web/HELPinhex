@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import Badge from '../components/Badge.astro';
+import { getGuides } from '../lib/load';
+
+const guides = getGuides();
+---
+
+<Base title="Guides — evergreen explainers · HELPINhex" description="Plain-English guides that never age: APIs, keys, Hugging Face, local AI — the fundamentals every tutorial assumes you know.">
+  <section class="section">
+    <div class="container">
+      <h1 style="font-size:2.2rem">Guides</h1>
+      <p class="muted">Evergreen explainers, written to stay true. Hover any dotted word for instant decoding.</p>
+      <div class="grid wide mt-3">
+        {
+          guides.map((g) => (
+            <a class="card hover" href={`/guides/${g.slug}/`}>
+              <h3 style="margin-top:0">{g.title}</h3>
+              <p class="muted small">{g.summary}</p>
+              <Badge>{g.minutes} min read</Badge>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>

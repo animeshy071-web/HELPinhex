@@ -1,0 +1,47 @@
+---
+import Base from '../../layouts/Base.astro';
+import Badge from '../../components/Badge.astro';
+import { getGuides, getTerms } from '../../lib/load';
+import { linkTerms } from '../../lib/format';
+
+export function getStaticPaths() {
+  return getGuides().map((g) => ({ params: { slug: g.slug }, props: { guide: g } }));
+}
+
+const { guide } = Astro.props;
+const terms = getTerms();
+const related = terms.filter((t) => guide.relatedTerms.includes(t.id));
+---
+
+<Base title={`${guide.title} · HELPINhex`} description={guide.summary}>
+  <article class="section">
+    <div class="container">
+      <a class="small muted" href="/guides/">← all guides</a>
+      <h1 style="font-size:2rem">{guide.title}</h1>
+      <div class="chips">
+        <Badge>{guide.minutes} min read</Badge>
+        <Badge tone="accent">human-verified</Badge>
+      </div>
+      <p class="muted mt-1">{guide.summary}</p>
+
+      <div class="card mt-2">
+        {guide.body.map((p) => <p set:html={linkTerms(p, terms)} />)}
+      </div>
+
+      {
+        related.length > 0 && (
+          <div class="mt-2">
+            <h3>Words worth knowing</h3>
+            <div class="chips">
+              {related.map((t) => <a class="badge" href={`/glossary/#${t.id}`}>{t.word}</a>)}
+            </div>
+          </div>
+        )
+      }
+
+      <p class="muted small mt-2">
+        Spotted something wrong or outdated? <a href="https://github.com/animeshy071-web/HELPinhex/issues" target="_blank" rel="noopener">Tell us on GitHub</a> — corrections are how the trust system works.
+      </p>
+    </div>
+  </article>
+</Base>

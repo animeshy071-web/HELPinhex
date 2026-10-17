@@ -1,0 +1,51 @@
+---
+import Base from '../../layouts/Base.astro';
+import Badge from '../../components/Badge.astro';
+import KitButton from '../../components/KitButton.astro';
+import { getModels, getTerms } from '../../lib/load';
+import { linkTerms } from '../../lib/format';
+
+export function getStaticPaths() {
+  return getModels().map((model) => ({ params: { slug: model.slug }, props: { model } }));
+}
+
+const { model } = Astro.props;
+const terms = getTerms();
+---
+
+<Base title={`${model.name} (${model.by}) · HELPINhex`} description={`${model.name} explained for beginners: strengths, weaknesses, access and best use.`}>
+  <section class="section">
+    <div class="container">
+      <a class="small muted" href="/catalog/">← back to catalog</a>
+      <div class="flex-between mt-1">
+        <h1 style="font-size:2.2rem">{model.name}</h1>
+        <KitButton id={model.id} />
+      </div>
+      <p class="muted">by {model.by}</p>
+      <div class="chips">
+        {model.freeTier && <Badge tone="ok">free tier</Badge>}
+        {model.modalities.map((m) => <Badge tone="violet">{m}</Badge>)}
+        <Badge tone="violet">✓ verified {model.lastVerified}</Badge>
+      </div>
+
+      <div class="card mt-3">
+        <h3>Best for</h3>
+        <p set:html={linkTerms(model.bestFor, terms)} />
+        <h3>Context</h3>
+        <p class="muted" set:html={linkTerms(model.context, terms)} />
+        <h3>Strengths</h3>
+        <ul>{model.strengths.map((s) => <li set:html={linkTerms(s, terms)} />)}</ul>
+        <h3>Weaknesses</h3>
+        <ul class="muted">{model.weaknesses.map((s) => <li set:html={linkTerms(s, terms)} />)}</ul>
+        <h3>Pricing</h3>
+        <p class="muted small" set:html={linkTerms(model.pricingNote, terms)} />
+        <h3>Where to use it</h3>
+        <p class="muted small">{model.access.join(' · ')}</p>
+      </div>
+
+      <blockquote class="mt-2">
+        Head-to-head comparison tables arrive in Phase 3 — until then the honest move is: try the free tier, keep what clicks.
+      </blockquote>
+    </div>
+  </section>
+</Base>

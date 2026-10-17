@@ -1,0 +1,205 @@
+[
+  {
+    "id": "api",
+    "word": "API",
+    "plain": "A way for programs to talk to each other. When an app 'uses AI', it's usually sending text to a model's API and getting an answer back — like texting a very smart friend who always replies in a fixed format.",
+    "example": "You send 'translate this to Spanish' plus your text to a translation API; it sends the translation back.",
+    "related": ["endpoint", "json", "api-key"]
+  },
+  {
+    "id": "api-key",
+    "word": "API key",
+    "plain": "A long random password that proves it's you using a service. Keys can be free to get but billed per use — and must never be shared, posted, or committed to GitHub.",
+    "example": "sk-or-v1-abc123... — paste this into your code's header so OpenRouter knows the request is yours.",
+    "related": ["api", "env-file", "rate-limit"]
+  },
+  {
+    "id": "token",
+    "word": "token",
+    "plain": "The word-piece AI actually reads and writes. Models don't see letters, they see tokens — roughly 4 characters of English each. Limits and bills are counted in tokens, not words.",
+    "example": "' unbelievable' might be 3 tokens. A 1,000-word essay is roughly 1,300 tokens.",
+    "related": ["context-window", "prompt"]
+  },
+  {
+    "id": "context-window",
+    "word": "context window",
+    "plain": "The model's short-term memory size, measured in tokens. Everything you and the model have said must fit inside it — past that, the earliest parts get forgotten.",
+    "example": "A 100k-token window holds roughly a 75,000-word conversation before it starts forgetting the beginning.",
+    "related": ["token"]
+  },
+  {
+    "id": "prompt",
+    "word": "prompt",
+    "plain": "Everything you say to an AI. Good prompts are specific, give context, and say what format you want back — the same model gives wildly different answers to vague vs precise prompts.",
+    "example": "Not 'write about dogs' but 'write 5 fun facts about huskies for a 10-year-old, one line each'.",
+    "related": ["token", "llm"]
+  },
+  {
+    "id": "llm",
+    "word": "LLM",
+    "plain": "Large Language Model — the AI 'brain' trained on huge amounts of text to predict the next token. ChatGPT, Claude, GLM and Gemini are different LLMs wearing different apps.",
+    "example": "When you chat with any AI assistant, an LLM is the thing generating each reply.",
+    "related": ["token", "inference", "prompt"]
+  },
+  {
+    "id": "open-source",
+    "word": "open source",
+    "plain": "Code you can read, change, and run yourself. Free like a recipe is free — you still need a kitchen (compute) to cook it.",
+    "example": "Ollama is open source: anyone can read exactly how it runs models.",
+    "related": ["open-weights", "repo"]
+  },
+  {
+    "id": "open-weights",
+    "word": "open weights",
+    "plain": "The model's learned brain (its 'weights') is downloadable, so you can run it on your own machine. You can't change what it knows without retraining it, but you control where it runs.",
+    "example": "Llama and GLM release open-weight versions you can run locally with Ollama.",
+    "related": ["open-source", "gguf", "quantization"]
+  },
+  {
+    "id": "fine-tuning",
+    "word": "fine-tuning",
+    "plain": "Extra training on top of an existing model to change its behavior — its 'accent' and specialty, not its core knowledge. You don't rebuild the brain, you adjust it.",
+    "example": "Fine-tune a writing model on your own notes so it replies in your tone.",
+    "related": ["lora", "inference"]
+  },
+  {
+    "id": "rag",
+    "word": "RAG",
+    "plain": "Retrieval-Augmented Generation: grab the relevant documents first, hand them to the model with the question, so it answers from YOUR facts instead of guessing. The cheapest way to make AI accurate about your stuff.",
+    "example": "Ask 'what's my refund policy?' — the system finds your policy doc, gives it to the model, and the model quotes it instead of inventing one.",
+    "related": ["embedding", "context-window"]
+  },
+  {
+    "id": "embedding",
+    "word": "embedding",
+    "plain": "Turning text into a list of numbers that captures its meaning, so 'similar' becomes measurable math. How search systems find things by concept, not just keywords.",
+    "example": "The embedding of 'car' lands close to 'automobile' and far from 'banana', so concept search finds both.",
+    "related": ["rag"]
+  },
+  {
+    "id": "inference",
+    "word": "inference",
+    "plain": "Running a trained model to get an answer — the 'using' phase, as opposed to the 'training' phase. Inference is what costs a little per question; training is what cost millions.",
+    "example": "Every chat message you send is one inference call.",
+    "related": ["llm", "gpu"]
+  },
+  {
+    "id": "gpu",
+    "word": "GPU",
+    "plain": "The chip that makes AI math fast. Training big models wants thousands of them; using (running) a model can happen on one gaming GPU, a rented one, or even your laptop's CPU — just slower.",
+    "example": "Google Colab gives you a free shared GPU in your browser to experiment with.",
+    "related": ["inference", "quantization"]
+  },
+  {
+    "id": "quantization",
+    "word": "quantization",
+    "plain": "Shrinking a model's numbers so it fits in less memory — slightly dumber, dramatically smaller. This is how big models run on normal laptops and phones.",
+    "example": "A 14GB model quantized to 4-bit becomes ~4GB and runs on 8GB of RAM.",
+    "related": ["gguf", "gpu"]
+  },
+  {
+    "id": "gguf",
+    "word": "GGUF",
+    "plain": "The single-file format for local models used by tools like Ollama and LM Studio. Download one file, run one command — that's the whole local-AI experience.",
+    "example": "model-Q4_K_M.gguf is a model crushed to 4-bit quality so it fits on your machine.",
+    "related": ["quantization", "open-weights"]
+  },
+  {
+    "id": "lora",
+    "word": "LoRA",
+    "plain": "A cheap way to fine-tune: train a small 'patch' instead of the whole model. Makes customizing a model possible on a single GPU for a few dollars.",
+    "example": "Most 'custom models' you see on Hugging Face are LoRA patches on top of a base model.",
+    "related": ["fine-tuning"]
+  },
+  {
+    "id": "endpoint",
+    "word": "endpoint",
+    "plain": "The URL you send API requests to — an address for one specific skill of a service. Different endpoints do different jobs (chat, images, transcription...).",
+    "example": "https://openrouter.ai/api/v1/chat/completions is OpenRouter's chat endpoint.",
+    "related": ["api", "json"]
+  },
+  {
+    "id": "json",
+    "word": "JSON",
+    "plain": "A text format that's easy for programs to read: labels and values in curly braces. The language APIs speak — requests and answers travel as JSON.",
+    "example": "{ \"name\": \"HELPINhex\", \"free\": true }",
+    "related": ["api", "env-file"]
+  },
+  {
+    "id": "rate-limit",
+    "word": "rate limit",
+    "plain": "A cap on how many requests you can send per minute or day, so one user can't hog the service. Hit the limit and you get a '429' error, not a bill.",
+    "example": "A free API might allow 60 requests/minute — the 61st gets a polite 'slow down'.",
+    "related": ["api", "api-key"]
+  },
+  {
+    "id": "terminal",
+    "word": "terminal",
+    "plain": "Type commands, computer obeys. It looks scary in movies, but it's just launching apps by typing instead of clicking — and the fastest way to run dev tools.",
+    "example": "npm install typed into a terminal downloads a project's dependencies.",
+    "related": ["git", "localhost"]
+  },
+  {
+    "id": "git",
+    "word": "git",
+    "plain": "A time machine plus save-points for code. Every 'commit' is a snapshot you can return to. Nearly every real project on Earth uses it.",
+    "example": "git commit -m 'add search' saves a labeled snapshot of your whole project.",
+    "related": ["repo", "commit", "terminal"]
+  },
+  {
+    "id": "repo",
+    "word": "repository",
+    "plain": "A project folder tracked by git. On GitHub, a repo is a project's home page — with code, history, and a README explaining it.",
+    "example": "github.com/animeshy071-web/HELPinhex is this project's repo.",
+    "related": ["git", "commit"]
+  },
+  {
+    "id": "commit",
+    "word": "commit",
+    "plain": "A save-point in git with a short message describing what changed. Break something? Roll back to any commit and move on with your life.",
+    "example": "'fix: search crashes on empty input' — a commit message your future self will thank you for.",
+    "related": ["git", "repo"]
+  },
+  {
+    "id": "localhost",
+    "word": "localhost",
+    "plain": "Your own computer pretending to be a server. http://localhost:4321 is a website only you can see — the safe playground before anything goes online.",
+    "example": "npm run dev shows your site at localhost:4321 before you deploy it.",
+    "related": ["terminal"]
+  },
+  {
+    "id": "env-file",
+    "word": ".env file",
+    "plain": "A file that holds secret keys separately from your code, so secrets exist in your project folder but never inside your code — and never on GitHub.",
+    "example": ".env contains API_KEY=abc123; your code reads it; git never uploads it.",
+    "related": ["api-key", "json"]
+  },
+  {
+    "id": "pwa",
+    "word": "PWA",
+    "plain": "Progressive Web App — a website that can install like a phone app and work offline. Same code as the site, zero app-store hassle.",
+    "example": "Install HELPINhex from your browser menu and it opens like an app, even with bad Wi-Fi.",
+    "related": ["localhost"]
+  },
+  {
+    "id": "scraper",
+    "word": "scraper",
+    "plain": "A small program that collects data from websites or APIs automatically — our 'freshness engine' is a set of polite scrapers that run daily.",
+    "example": "A scraper asks Hugging Face 'what models were uploaded today?' and saves the list.",
+    "related": ["cron", "api"]
+  },
+  {
+    "id": "cron",
+    "word": "cron",
+    "plain": "A scheduler for computers: 'run this every day at 9am'. How the freshness engine updates while we sleep.",
+    "example": "GitHub Actions runs our scrapers on a daily cron schedule, for free.",
+    "related": ["scraper"]
+  },
+  {
+    "id": "cors",
+    "word": "CORS",
+    "plain": "Browser security rules about which websites may call which APIs. It's why some APIs work fine from an app but block a raw browser page — the site asks permission first.",
+    "example": "Calling an API from a browser without CORS support gets a red console error, not a result.",
+    "related": ["api", "endpoint"]
+  }
+]

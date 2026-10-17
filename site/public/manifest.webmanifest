@@ -1,0 +1,12 @@
+{
+  "name": "HELPINhex",
+  "short_name": "HELPinhex",
+  "description": "A living map of tech — everything new caught daily, everything old explained, a path for every beginner.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0e16",
+  "theme_color": "#0a0e16",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

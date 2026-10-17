@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro';
+import ToolCard from '../components/ToolCard.astro';
+import ModelCard from '../components/ModelCard.astro';
+import { getTools, getModels } from '../lib/load';
+
+const tools = getTools();
+const models = getModels();
+const byCategory = [...new Set(tools.map((t) => t.category))];
+---
+
+<Base title="Catalog — tools, platforms and models · HELPINhex" description="Every tool and model as a playbook card: what it is, why it matters, how to use it, what it costs, when NOT to use it.">
+  <section class="section">
+    <div class="container">
+      <h1 style="font-size:2.2rem">Catalog</h1>
+      <p class="muted">
+        Playbook cards, not listings. What it is → why it matters → how to use it → when NOT to use it.
+        Every card shows its last-verified date — freshness never lies here.
+      </p>
+
+      <div class="section-head mt-3">
+        <h2>Tools & platforms</h2>
+        <span class="muted small">{tools.length} cards · categories: {byCategory.join(', ')}</span>
+      </div>
+      <div class="grid">
+        {tools.map((t) => <ToolCard tool={t} />)}
+      </div>
+
+      <div class="section-head mt-3">
+        <h2>Model families</h2>
+        <span class="muted small">{models.length} families · live prices arrive with the Phase 2 feed</span>
+      </div>
+      <div class="grid">
+        {models.map((m) => <ModelCard model={m} />)}
+      </div>
+
+      <blockquote class="mt-3">
+        Comparison tables (head-to-head with prices, context, speed) are a Phase 3 feature — the data model already supports them.
+      </blockquote>
+    </div>
+  </section>
+</Base>

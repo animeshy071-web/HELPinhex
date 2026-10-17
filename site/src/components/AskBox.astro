@@ -1,0 +1,143 @@
+---
+import { getWorkflows, getSearchDocs } from '../lib/load';
+
+const workflows = getWorkflows();
+const docs = getSearchDocs();
+const jsonSafe = (v: unknown) => JSON.stringify(v).replace(/</g, '\\u003c');
+
+const chips = [
+  'make cartoon videos for youtube',
+  'run ai on my laptop',
+  'build my first chatbot',
+  'summarize my notes with ai',
+  'make a thumbnail',
+];
+---
+
+<div class="ask-wrap" id="ask-engine">
+  <form id="ask-form" autocomplete="off">
+    <div class="ask-row">
+      <input class="input" id="ask-input" placeholder="What do you want to make? Ask in plain English…" aria-label="Your question" />
+      <button class="btn" type="submit">Ask →</button>
+    </div>
+  </form>
+  <div class="ask-chips">
+    {chips.map((c) => <button type="button" data-chip={c}>{c}</button>)}
+  </div>
+  <div class="ask-results" id="ask-results" aria-live="polite"></div>
+</div>
+
+<script type="application/json" id="ask-workflows" set:html={jsonSafe(workflows)} />
+<script type="application/json" id="ask-docs" set:html={jsonSafe(docs)} />
+
+<script>
+  import { matchWorkflows, searchDocs } from '../lib/score';
+
+  const AMP = String.fromCharCode(38);
+  const ENT: Record<string, string> = { '&': AMP + 'amp;', '<': AMP + 'lt;', '>': AMP + 'gt;', '"': AMP + 'quot;', "'": AMP + '#39;' };
+  const esc = (s: unknown) => String(s ?? '').replace(/[&<>"']/g, (c) => ENT[c]);
+
+  const workflows = JSON.parse(document.getElementById('ask-workflows')?.textContent || '[]');
+  const docs = JSON.parse(document.getElementById('ask-docs')?.textContent || '[]');
+  const form = document.getElementById('ask-form') as HTMLFormElement | null;
+  const input = document.getElementById('ask-input') as HTMLInputElement | null;
+  const results = document.getElementById('ask-results');
+
+  function badge(text: string, tone = ''): string {
+    return `<span class="badge ${tone}">${esc(text)}</span>`;
+  }
+
+  function renderWorkflow(w: any): string {
+    const rows = w.steps
+      .map((s: any, i: number) => {
+        const guide = s.guide ? ` <a class="small" href="/guides/${esc(s.guide)}/">full guide →</a>` : '';
+        return `<tr>
+          <td class="step-n">${i + 1}</td>
+          <td><strong>${esc(s.title)}</strong><br><span class="muted small">${esc(s.how)}${guide}</span></td>
+          <td class="small">${esc(s.tool)}</td>
+          <td class="small mono">${esc(s.cost)}</td>
+          <td class="small">${esc(s.time)}</td>
+        </tr>`;
+      })
+      .join('');
+    const mistakes = w.mistakes.map((m: string) => `<li>${esc(m)}</li>`).join('');
+    return `
+      <div class="result-head">
+        <h3 style="margin:0">${esc(w.title)}</h3>
+        ${badge(w.level)}
+        ${badge(w.totalCost, 'ok')}
+        ${badge(w.totalTime, 'violet')}
+      </div>
+      <table class="steps-table">
+        <thead><tr><th>#</th><th>Step</th><th>Tool</th><th>Cost</th><th>Time</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+      <details class="mt-1">
+        <summary class="muted" style="cursor:pointer">Common beginner mistakes (read this)</summary>
+        <ul class="muted small">${mistakes}</ul>
+      </details>
+      <p class="muted small">— sequenced by HELPINhex · verified ${new Date().getFullYear()} · <a href="/ask/#${esc(w.id)}">perma-link</a></p>
+    `;
+  }
+
+  function renderFallback(found: any[], q: string): string {
+    const items = found
+      .map((d) => `<li><a href="${esc(d.url)}">${esc(d.title)}</a> <span class="badge">${esc(d.kind)}</span><br><span class="muted small">${esc(d.extra || '')}</span></li>`)
+      .join('');
+    return `
+      <p><strong>No exact playbook for that yet</strong> — but the site has related things:</p>
+      <ul>${items}</ul>
+      <button class="btn ghost small" data-backlog="${esc(q)}">😢 Not helpful — teach me this (files your question for us to answer next)</button>
+    `;
+  }
+
+  function ask(q: string): void {
+    if (!results || !q.trim()) return;
+    const hits = matchWorkflows(q, workflows);
+    if (hits.length && hits[0].score >= 4) {
+      const w = workflows.find((x: any) => x.id === hits[0].workflow.id);
+      let html = `<div class="card">${renderWorkflow(w)}</div>`;
+      if (hits.length > 1) {
+        const others = hits.slice(1, 4).map((h) => `<a class="small" href="/ask/#${esc(h.workflow.id)}">${esc(h.workflow.title)}</a>`).join(' · ');
+        html += `<p class="muted small" style="margin-top:0.75rem">Also possibly: ${others}</p>`;
+      }
+      results.innerHTML = html;
+    } else {
+      const found = searchDocs(q, docs, 6);
+      results.innerHTML = found.length ? renderFallback(found, q) : renderFallback([], q);
+    }
+    results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (input) ask(input.value);
+  });
+  document.querySelectorAll('[data-chip]').forEach((b) => {
+    b.addEventListener('click', () => {
+      const q = b.getAttribute('data-chip') || '';
+      if (input) input.value = q;
+      ask(q);
+    });
+  });
+
+  // Backlog: "teach me this" — the product's content compass.
+  document.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement).closest('[data-backlog]');
+    if (!btn) return;
+    const q = btn.getAttribute('data-backlog') || '';
+    try {
+      const backlog = JSON.parse(localStorage.getItem('hx:backlog') || '[]');
+      backlog.push({ q, when: new Date().toISOString() });
+      localStorage.setItem('hx:backlog', JSON.stringify(backlog.slice(-50)));
+    } catch (err) {}
+    btn.textContent = '✓ Filed — this becomes our next guide. Check the Me page.';
+    btn.setAttribute('disabled', 'true');
+  });
+
+  // Deep-link support: /ask/#workflowId highlights the workflow
+  if (location.pathname.startsWith('/ask') && location.hash) {
+    const el = document.querySelector(location.hash);
+    el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+</script>

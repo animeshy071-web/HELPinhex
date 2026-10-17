@@ -1,0 +1,94 @@
+---
+import { getTerms } from '../lib/load';
+import { linkTerms } from '../lib/format';
+import type { Path } from '../lib/types';
+
+interface Props {
+  path: Path;
+}
+const { path } = Astro.props;
+const terms = getTerms();
+---
+
+<div class="path-progress" data-path={path.slug}>
+  {
+    path.steps.map((s, i) => (
+      <label class="step-row">
+        <input type="checkbox" data-step={i} aria-label={`Mark "${s.title}" as done`} />
+        <div>
+          <div class="step-title">{s.title}</div>
+          <div class="muted small" set:html={linkTerms(s.description, terms)} />
+          <div class="step-meta">
+            ~{s.minutes} min
+            {s.guide && <> · <a href={`/guides/${s.guide}/`}>read the guide</a></>}
+            {s.tool && <> · <a href={`/tools/${s.tool}/`}>tool: {s.tool}</a></>}
+          </div>
+        </div>
+      </label>
+    ))
+  }
+  <div class="flex-between mt-2">
+    <div class="bar" style="flex:1"><i></i></div>
+    <span class="small muted" data-progress-text>0% done</span>
+  </div>
+</div>
+
+<script>
+  const container = document.querySelector<HTMLElement>('.path-progress');
+  if (container) {
+    const slug = container.getAttribute('data-path') || '';
+    const boxes = Array.from(container.querySelectorAll<HTMLInputElement>('input[data-step]'));
+    const bar = container.querySelector<HTMLElement>('.bar > i');
+    const text = container.querySelector<HTMLElement>('[data-progress-text]');
+
+    function load(): number[] {
+      try {
+        const all = JSON.parse(localStorage.getItem('hx:progress') || '{}');
+        return (all[slug] && all[slug].done) || [];
+      } catch (e) {
+        return [];
+      }
+    }
+    function save(done: number[]): void {
+      try {
+        const all = JSON.parse(localStorage.getItem('hx:progress') || '{}');
+        all[slug] = { done };
+        localStorage.setItem('hx:progress', JSON.stringify(all));
+      } catch (e) {}
+    }
+    function paint(): void {
+      const done = load();
+      boxes.forEach((b) => {
+        const idx = Number(b.getAttribute('data-step'));
+        b.checked = done.includes(idx);
+        b.closest('.step-row')?.classList.toggle('done', b.checked);
+      });
+      const pct = boxes.length ? Math.round((done.length / boxes.length) * 100) : 0;
+      if (bar) bar.style.width = pct + '%';
+      if (text) text.textContent = pct + '% done';
+    }
+
+    boxes.forEach((b) =>
+      b.addEventListener('change', () => {
+        const done = load();
+        const idx = Number(b.getAttribute('data-step'));
+        const i = done.indexOf(idx);
+        if (b.checked && i < 0) done.push(idx);
+        if (!b.checked && i >= 0) done.splice(i, 1);
+        save(done);
+        // count this day toward the streak:
+        try {
+          const days: string[] = JSON.parse(localStorage.getItem('hx:days') || '[]');
+          const d = new Date().toISOString().slice(0, 10);
+          if (!days.includes(d)) {
+            days.push(d);
+            localStorage.setItem('hx:days', JSON.stringify(days.slice(-120)));
+          }
+        } catch (e) {}
+        paint();
+      })
+    );
+
+    paint();
+  }
+</script>

@@ -1,0 +1,95 @@
+[
+  {
+    "id": "what-even-is-an-llm",
+    "slug": "what-even-is-an-llm",
+    "title": "What even is an LLM?",
+    "minutes": 15,
+    "summary": "The plain-English model of the model: what it actually does, why it's impressive, and the one thing people get wrong.",
+    "body": [
+      "Strip away the hype and a large language model is a text prediction engine. It has read a colossal amount of text, and it learned one skill extremely well: given some text, guess what comes next, one token at a time.",
+      "That sounds too simple to be useful — until you notice that predicting the next word of a math solution, a translation, or a poem requires actually modeling those things. The prediction task forced the model to compress patterns of reasoning, facts, and style into itself.",
+      "The key consequence: an LLM is a conversation partner, not a database. It doesn't look up an answer in a table — it generates a likely answer. Usually brilliantly, sometimes with total, confident nonsense (the famous 'hallucination').",
+      "So the honest mental model is: a very widely-read assistant with an excellent vocabulary, a decent grasp of most topics, no live internet, and no shame. You are the fact-checker. It is the accelerant.",
+      "Two practical takeaways. First: quality depends heavily on your prompt — vague questions get vague answers, specific ones get specific ones. Second: context window is its memory — if a conversation grows too long, it forgets the beginning. Start a fresh chat instead of fighting the fog."
+    ],
+    "relatedTerms": ["llm", "token", "context-window", "prompt"]
+  },
+  {
+    "id": "what-is-an-api",
+    "slug": "what-is-an-api",
+    "title": "What is an API (really)?",
+    "minutes": 15,
+    "summary": "The restaurant analogy, why JSON is the language, and what 'calling an API' looks like in practice.",
+    "body": [
+      "An API is a contract for programs to talk. You don't get to see inside the other program — you send a structured request to a fixed address (the endpoint), and it sends back a structured reply.",
+      "The restaurant analogy holds up: you (your code) don't walk into the kitchen (their servers). You order from the menu (the API docs), the waiter (the API) carries your order in, and brings back your food (the result). You can't order anything not on the menu, and that's the point — a fixed menu is what makes it reliable.",
+      "The menu language is JSON: labeled values in curly braces. A request to a chat model looks roughly like: send the model's name and your messages, receive the model's new message as JSON.",
+      "'Calling an API' means three things and nothing more: knowing the endpoint URL, sending a request with the right format and your API key, and reading the JSON that comes back. Errors have meanings: 401 means your key is wrong, 402 means no credit, 429 means slow down (rate limit), 500 means their kitchen is on fire — try again later.",
+      "Where it clicks for beginners: the same chat app you use daily is just a pretty face over these calls. The moment you make your first raw call, the mystery of 'AI apps' collapses — you could build the face yourself."
+    ],
+    "relatedTerms": ["api", "endpoint", "json", "api-key", "rate-limit"]
+  },
+  {
+    "id": "your-first-api-call",
+    "slug": "your-first-api-call",
+    "title": "Your first API call — in 15 lines",
+    "minutes": 45,
+    "summary": "From an OpenRouter key to a real reply from a real model, with every error you might hit explained.",
+    "body": [
+      "Goal: send one message to a real AI model and see its reply, with nothing but a terminal. It works on Windows, Mac, and Linux, and takes about ten minutes including signup.",
+      "Step 1 — get a key. Create an account at openrouter.ai, generate a key (it starts with sk-or-v1-), and save it somewhere private. This key is money-adjacent: anyone holding it can spend your credits. Never paste it into a chat, a screenshot, or GitHub.",
+      "Step 2 — pick a free model. On openrouter.ai/models, filter to free models. Any model name works for this exercise; write one down, like 'meta-llama/llama-3.2-3b-instruct:free'.",
+      "Step 3 — run this in a terminal (macOS/Linux, or Windows with curl installed): curl https://openrouter.ai/api/v1/chat/completions -H 'Content-Type: application/json' -H 'Authorization: Bearer YOUR_KEY' -d '{ \"model\": \"MODEL_NAME\", \"messages\": [{ \"role\": \"user\", \"content\": \"Say hello like a pirate\" }] }'",
+      "Step 4 — read the JSON that comes back. Somewhere inside it is choices[0].message.content — your reply. No, it's not pretty. Yes, that's the same thing your chat app receives before making it pretty.",
+      "The error hall of fame: 401 = key missing/typo'd; 402 = no credits (use a free model); 429 = rate limited, wait a minute; a model name typo = 400. Every single one is a step, not a wall.",
+      "What you actually built: the skeleton of every AI app ever. Chat apps, coding helpers, automations — they all wrap this exact call in nicer clothes. From here, the 'Connect Any API' path turns this 15 lines into a tiny chatbot."
+    ],
+    "relatedTerms": ["api", "api-key", "endpoint", "json", "localhost"]
+  },
+  {
+    "id": "how-to-use-hugging-face",
+    "slug": "how-to-use-hugging-face",
+    "title": "Hugging Face without the fear",
+    "minutes": 20,
+    "summary": "How to browse 1M+ models without drowning, read a model card, and try models live — no account needed.",
+    "body": [
+      "Hugging Face at first glance looks like an infinite wall of model names and files — the closest thing AI has to a firehose. The trick is that 95% of it doesn't matter to you, and the filters are how you find the 5% that does.",
+      "Start at the Models page and immediately sort by 'Most downloads' or 'Trending'. Downloads mean real usage — a decent proxy for 'does this work'. Trending means 'people are excited this week', which is how you feel the pulse of the field safely.",
+      "When you open a model page, scroll to the model card — the README for the model. A good one tells you: what it's for, how big it is (parameters), what license it has (whether you can use it commercially), and how to run it. If a model card is empty and the name looks random, close the tab; that's someone's test upload, and there are thousands a day.",
+      "The no-install magic: Spaces. Many models have a small live app attached where you type and get output right in the browser. This is the fastest way to try image, audio, and text models with zero setup — bookmark the Spaces you like.",
+      "When you're ready to run models locally, Hugging Face becomes your parts catalog: you check which sizes exist (the number of billions of parameters) and which formats (GGUF files for tools like Ollama). See our Ollama guide for the 'from browser to your laptop' step."
+    ],
+    "relatedTerms": ["repo", "gguf", "open-weights", "quantization"]
+  },
+  {
+    "id": "run-ai-on-your-laptop",
+    "slug": "run-ai-on-your-laptop",
+    "title": "Run AI on your laptop (Ollama, zero dollars)",
+    "minutes": 30,
+    "summary": "Install Ollama, run your first local model, and understand the RAM-to-model-size rule of thumb.",
+    "body": [
+      "Local AI means the model runs on your machine. No account, no per-message cost, no data leaving your laptop, no internet needed once downloaded. For learning, experimenting, and private documents, it's unbeatable.",
+      "Install from ollama.com. Then open a terminal and run: ollama run llama3.2:3b. It downloads a few gigabytes, then drops you into a chat with the model. Type a question, get an answer, type /bye to leave. That's the entire experience — deliberately boring.",
+      "The one number that rules everything: RAM. The model file (often GGUF format, quantized) must fit in memory. Rough guide: 8GB RAM runs 1–3B models comfortably; 16GB runs 7–8B; 32GB runs 13–14B. The laptop checker on this site does this math for you.",
+      "Expect a quality drop vs the big hosted models — local models are impressive, not frontier. The win is what they make possible: private chats with your own documents, offline work, experimenting without an API key, and learning how size changes feel.",
+      "Level-ups when ready: install Open WebUI for a ChatGPT-style interface, or point a coding tool at your local model endpoint (Ollama speaks the same API format as OpenAI by default — which is why so many tools 'just work' with it)."
+    ],
+    "relatedTerms": ["gguf", "quantization", "open-weights", "endpoint", "localhost"]
+  },
+  {
+    "id": "keep-your-keys-safe",
+    "slug": "keep-your-keys-safe",
+    "title": "Keep your keys safe",
+    "minutes": 15,
+    "summary": "The 5 rules of API key hygiene — because one leaked key is one bad day.",
+    "body": [
+      "An API key is a password that can spend money. Everything below is just the habits that keep your bills boring.",
+      "Rule 1 — keys live in .env files, never in code. Your code reads the key from the environment; the .env file sits in the project folder and is excluded from git with one line in .gitignore. (This project has it — steal our pattern.)",
+      "Rule 2 — never paste a key into an AI chat, a screenshot, a 'funny bug post', or GitHub. Chat logs get saved; screenshots get shared; public repos get scraped by bots in minutes. Keys in any of those places should be treated as public immediately.",
+      "Rule 3 — rotate on suspicion. Every provider has a 'revoke' button. Using it takes ten seconds and makes the old key worthless. When in doubt, rotate. Some people even use a separate, capped key per project — one leaked hobby key can't hurt your main one.",
+      "Rule 4 — free tiers still need care. A free key can be rate-limit-abused or burn paid credits if a plan changes. 'It's just a free key' is how leaks start.",
+      "Rule 5 — set spending caps where providers offer them. Providers like OpenRouter let you set a hard credit limit. Do it the day you sign up, not after the surprise."
+    ],
+    "relatedTerms": ["api-key", "env-file", "repo", "rate-limit"]
+  }
+]

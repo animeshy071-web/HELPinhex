@@ -1,0 +1,21 @@
+---
+import Badge from './Badge.astro';
+import type { Tool } from '../lib/types';
+
+interface Props {
+  tool: Tool;
+}
+const { tool } = Astro.props;
+---
+
+<a class="card hover" href={`/tools/${tool.slug}/`}>
+  <div class="flex-between">
+    <h3 style="margin:0">{tool.name}</h3>
+    {tool.freeTier && <Badge tone="ok">free tier</Badge>}
+  </div>
+  <p class="muted small" style="margin:0.35rem 0 0">{tool.tagline}</p>
+  <div class="chips" style="margin-top:0.75rem">
+    <Badge>{tool.category}</Badge>
+    <Badge tone="accent">✓ {tool.lastVerified}</Badge>
+  </div>
+</a>

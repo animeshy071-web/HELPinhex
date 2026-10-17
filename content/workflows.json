@@ -1,0 +1,133 @@
+[
+  {
+    "id": "cartoon-youtube",
+    "title": "Make cartoon videos for YouTube (no editing skills)",
+    "level": "beginner",
+    "totalCost": "$0 possible to start",
+    "totalTime": "First video in ~1 day",
+    "questionPatterns": [
+      "make cartoon videos for youtube",
+      "cartoon video with ai",
+      "faceless youtube channel",
+      "youtube video without editing skills",
+      "make videos without showing my face",
+      "how do i make animated videos"
+    ],
+    "steps": [
+      { "title": "Write the script", "tool": "Any free chat assistant (GLM, ChatGPT, Claude)", "how": "Ask for a 60-second script in scenes with narration + visual descriptions. Then ask it to punch up the jokes twice.", "cost": "$0", "time": "30 min", "guide": "what-even-is-an-llm" },
+      { "title": "Generate the voice", "tool": "Any TTS tool (many free tiers)", "how": "Paste narration, generate voiceover, download the audio. Try 2–3 voices on one line before committing.", "cost": "$0–5/mo", "time": "15 min" },
+      { "title": "Generate consistent character images", "tool": "Any image generator with reference images", "how": "Design ONE character image, reuse it as the reference for every scene — consistency is what makes it feel like a show, not a slideshow.", "cost": "$0–10/mo", "time": "1 hr" },
+      { "title": "Assemble the video", "tool": "CapCut", "how": "Drop images + voiceover on the timeline, add auto-captions, one background music track at low volume, export 1080p.", "cost": "$0", "time": "1 hr" },
+      { "title": "Thumbnail + publish", "tool": "Image generator + YouTube", "how": "Generate 3 thumbnail options with big readable text, pick one, upload with your script's opening line as the description.", "cost": "$0", "time": "20 min" }
+    ],
+    "mistakes": [
+      "Regenerating the character for every scene — inconsistent characters scream 'AI slop'. Reuse the seed/reference image.",
+      "Planning 10 videos before publishing 1. Make video 1, publish, learn, then batch.",
+      "Signing up for 5 paid tools before you have 1 video. Every step above has a free option."
+    ]
+  },
+  {
+    "id": "first-chatbot",
+    "title": "Build your first chatbot",
+    "level": "beginner",
+    "totalCost": "$0 with free models",
+    "totalTime": "An afternoon",
+    "questionPatterns": [
+      "build my first chatbot",
+      "make an ai app",
+      "how to use an api as a beginner",
+      "build something with ai",
+      "first ai project",
+      "make a chatbot for my notes"
+    ],
+    "steps": [
+      { "title": "Understand what you're building", "tool": "This site", "how": "Read 'What is an API (really)?' — 15 minutes that make the rest obvious.", "cost": "$0", "time": "15 min", "guide": "what-is-an-api" },
+      { "title": "Get a free API key", "tool": "OpenRouter", "how": "Create an account, generate a key, save it in a .env file — never in your code.", "cost": "$0", "time": "10 min", "toolId": "openrouter" },
+      { "title": "Make your first raw API call", "tool": "Terminal", "how": "Follow the 'Your first API call' guide — one command, real reply, every error explained.", "cost": "$0", "time": "45 min", "guide": "your-first-api-call" },
+      { "title": "Wrap it in a loop", "tool": "VS Code", "how": "Add conversation history to the script so it remembers context — that's the whole difference between 'a call' and 'a chatbot'.", "cost": "$0", "time": "60 min", "toolId": "vs-code" }
+    ],
+    "mistakes": [
+      "Starting with a fancy UI instead of terminal text. Get it working ugly first; pretty later.",
+      "Pasting the API key into the script itself. Use .env from day one.",
+      "Building for 'everyone' instead of yourself. Your own use case is the best first user."
+    ]
+  },
+  {
+    "id": "local-ai",
+    "title": "Run AI on your own laptop (free + private)",
+    "level": "beginner",
+    "totalCost": "$0",
+    "totalTime": "30 minutes",
+    "questionPatterns": [
+      "run ai on my laptop",
+      "offline ai",
+      "chatgpt without internet",
+      "local llm",
+      "private ai for my documents",
+      "free ai without account"
+    ],
+    "steps": [
+      { "title": "Check what your machine can run", "tool": "HELPINhex laptop checker", "how": "Match your RAM to model sizes: 8GB → 1–3B models, 16GB → 7–8B, 32GB → 13–14B.", "cost": "$0", "time": "2 min" },
+      { "title": "Install Ollama", "tool": "Ollama", "how": "Download from ollama.com — it installs like any normal app, no terminal heroics needed for setup.", "cost": "$0", "time": "5 min", "guide": "run-ai-on-your-laptop", "toolId": "ollama" },
+      { "title": "Run your first local model", "tool": "Terminal", "how": "ollama run llama3.2:3b — wait for the download, then chat. No key, no account, no internet after download.", "cost": "$0", "time": "10 min" },
+      { "title": "Level up the interface", "tool": "Open WebUI (optional)", "how": "If you want a ChatGPT-style face over Ollama, install Open WebUI — or skip it; the terminal works.", "cost": "$0", "time": "15 min" }
+    ],
+    "mistakes": [
+      "Trying a model too big for your RAM — it crawls or crashes. Check the size first, always.",
+      "Expecting frontier quality locally. Local models are impressive for their size, not magic.",
+      "Downloading models from random sites. Use Ollama's library or Hugging Face with high downloads."
+    ]
+  },
+  {
+    "id": "summarize-everything",
+    "title": "Summarize your notes, PDFs and homework with AI",
+    "level": "beginner",
+    "totalCost": "$0 possible",
+    "totalTime": "20 minutes to set up",
+    "questionPatterns": [
+      "summarize my notes with ai",
+      "summarize pdfs",
+      "automate my homework",
+      "organize my study notes",
+      "ai for studying",
+      "make flashcards from notes"
+    ],
+    "steps": [
+      { "title": "Start manual: paste into a chat", "tool": "Any chat assistant", "how": "Paste your notes and ask: 'summarize in 5 bullets, then make 10 flashcards Q&A'. Learn what works before automating.", "cost": "$0", "time": "10 min" },
+      { "title": "Find the repeating pattern", "tool": "Your brain", "how": "Notice which prompt format works for YOUR material — the reusable prompt is the automation waiting to happen.", "cost": "$0", "time": "10 min" },
+      { "title": "Automate it when it repeats", "tool": "n8n", "how": "Build it as: upload/paste → AI step with your proven prompt → output to a doc. Trigger by hand first, schedule later.", "cost": "$0 self-hosted", "time": "60 min", "toolId": "n8n" },
+      { "title": "Level up: ask questions about YOUR documents", "tool": "This site (RAG preview)", "how": "When summaries aren't enough, you want RAG — AI that answers from your actual files. That's the next path.", "cost": "$0", "time": "10 min" }
+    ],
+    "mistakes": [
+      "Automating before knowing what prompt works — the AI step is easy; the prompt is the product.",
+      "Uploading private study material to random 'free PDF summarizer' sites. Use tools you trust.",
+      "Summarizing as a substitute for reading. Summaries are a map, not the territory."
+    ]
+  },
+  {
+    "id": "ai-thumbnails",
+    "title": "Make thumbnails and images for your content",
+    "level": "beginner",
+    "totalCost": "$0 possible",
+    "totalTime": "30 minutes",
+    "questionPatterns": [
+      "make a thumbnail",
+      "ai images for youtube",
+      "best ai image tool",
+      "how to make images with ai",
+      "create art with ai",
+      "generate pictures"
+    ],
+    "steps": [
+      { "title": "Pick one image tool and stick with it", "tool": "Any major image generator", "how": "Free tiers exist everywhere. Pick one, learn its quirks deeply — switching tools every day teaches you nothing.", "cost": "$0", "time": "10 min" },
+      { "title": "Learn the anatomy of a good prompt", "tool": "Prompt practice", "how": "Formula: subject + style + setting + mood + composition. 'A husky in a tiny lab coat, cartoon style, cluttered mad-science lab, excited mood, centered composition'.", "cost": "$0", "time": "15 min" },
+      { "title": "Design for the thumbnail's real job", "tool": "Any editor (even the generator)", "how": "Thumbnails must be readable at stamp size: 1 subject, max 3 words of text, high contrast. Generate, then shrink to 10% and check.", "cost": "$0", "time": "10 min" },
+      { "title": "Keep a prompt library", "tool": "Notes file", "how": "Save every prompt that worked, with the image. Your library becomes your style — consistency beats randomness.", "cost": "$0", "time": "5 min" }
+    ],
+    "mistakes": [
+      "Judge image quality on the first generation — generate 4–8 options, pick, and refine the winner.",
+      "Text in AI images is often mangled; add text in an editor (CapCut/Canva), not the generator.",
+      "Chasing 'the best tool' instead of mastering the one in front of you."
+    ]
+  }
+]

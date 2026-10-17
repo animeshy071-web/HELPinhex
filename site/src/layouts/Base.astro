@@ -1,0 +1,163 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import CommandK from '../components/CommandK.astro';
+import { getSearchDocs, getTermMap } from '../lib/load';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'HELPINhex — everything tech, decoded for beginners',
+  description = 'Ask what you want to make → get the tools, the steps and the path. Every AI model, tool and platform explained in plain English — always fresh, always beginner-first.',
+} = Astro.props;
+
+const docs = getSearchDocs();
+const terms = getTermMap();
+
+// Prevent "</script>" breakouts in JSON islands:
+const jsonSafe = (v: unknown) => JSON.stringify(v).replace(/</g, '\\u003c');
+---
+
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#0a0e16" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <script is:inline>
+      // Apply saved theme before first paint (no flash):
+      try {
+        document.documentElement.dataset.theme = localStorage.getItem('hx:theme') || 'dark';
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <Nav />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <CommandK />
+    <script type="application/json" id="hx-docs" set:html={jsonSafe(docs)} />
+    <script type="application/json" id="hx-terms" set:html={jsonSafe(terms)} />
+
+    <script>
+      // ===== HELPINhex base client layer (bundled once) =====
+      // 1. Theme toggle
+      const themeBtn = document.querySelector('[data-theme-toggle]');
+      const applyTheme = (t: string) => {
+        document.documentElement.dataset.theme = t;
+        if (themeBtn) themeBtn.textContent = t === 'light' ? '\u{1F313}' : '\u2600\uFE0F';
+      };
+      applyTheme(document.documentElement.dataset.theme || 'dark');
+      themeBtn?.addEventListener('click', () => {
+        const t = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+        try { localStorage.setItem('hx:theme', t); } catch (e) {}
+        applyTheme(t);
+      });
+
+      // 2. Active nav link
+      const path = location.pathname;
+      for (const a of document.querySelectorAll<HTMLAnchorElement>('.nav-links a')) {
+        const href = a.getAttribute('href') || '';
+        if ((href === '/' && path === '/') || (href !== '/' && path.startsWith(href))) a.classList.add('active');
+      }
+
+      // 3. Streak/activity log (any interaction counts)
+      function markDay() {
+        try {
+          const days: string[] = JSON.parse(localStorage.getItem('hx:days') || '[]');
+          const d = new Date().toISOString().slice(0, 10);
+          if (!days.includes(d)) {
+            days.push(d);
+            localStorage.setItem('hx:days', JSON.stringify(days.slice(-120)));
+          }
+        } catch (e) {}
+      }
+
+      // 4. Jargon decoder — hover tooltips built from #hx-terms
+      let tip: HTMLDivElement | null = null;
+      function ensureTip(): HTMLDivElement {
+        if (!tip) {
+          tip = document.createElement('div');
+          tip.className = 'hx-tip';
+          document.body.appendChild(tip);
+        }
+        return tip;
+      }
+      let termsMap: Record<string, { word: string; plain: string }> = {};
+      try {
+        termsMap = JSON.parse(document.getElementById('hx-terms')?.textContent || '{}');
+      } catch (e) {}
+      document.addEventListener('mouseover', (e) => {
+        const el = (e.target as HTMLElement).closest('.term');
+        if (!el) return;
+        const t = termsMap[el.getAttribute('data-term') || ''];
+        if (!t) return;
+        const tipEl = ensureTip();
+        const AMP = String.fromCharCode(38);
+        tipEl.innerHTML = '<strong>' + t.word + '</strong><br>' + t.plain;
+        const r = el.getBoundingClientRect();
+        tipEl.style.opacity = '1';
+        const tw = tipEl.offsetWidth || 280;
+        let left = Math.min(Math.max(8, r.left), window.innerWidth - tw - 8);
+        let top = r.bottom + 8;
+        if (top + 120 > window.innerHeight) top = Math.max(8, r.top - 130);
+        tipEl.style.left = left + 'px';
+        tipEl.style.top = top + 'px';
+      });
+      document.addEventListener('mouseout', (e) => {
+        if ((e.target as HTMLElement).closest('.term') && tip) tip.style.opacity = '0';
+      });
+
+      // 5. My Kit buttons (bookmarks) — one listener for the whole site
+      document.addEventListener('click', (e) => {
+        const btn = (e.target as HTMLElement).closest('[data-kit]');
+        if (!btn) return;
+        const id = btn.getAttribute('data-kit') || '';
+        let kit: string[] = [];
+        try { kit = JSON.parse(localStorage.getItem('hx:kit') || '[]'); } catch (err) {}
+        const i = kit.indexOf(id);
+        if (i >= 0) {
+          kit.splice(i, 1);
+          btn.textContent = '\uFF0B Save to My Kit';
+          btn.classList.remove('in-kit');
+        } else {
+          kit.push(id);
+          btn.textContent = '\u2713 In My Kit';
+          btn.classList.add('in-kit');
+          markDay();
+        }
+        try { localStorage.setItem('hx:kit', JSON.stringify(kit)); } catch (err) {}
+      });
+      // reflect saved kit state on load
+      try {
+        const kit: string[] = JSON.parse(localStorage.getItem('hx:kit') || '[]');
+        for (const b of document.querySelectorAll('[data-kit]')) {
+          if (kit.includes(b.getAttribute('data-kit') || '')) {
+            b.textContent = '\u2713 In My Kit';
+            b.classList.add('in-kit');
+          }
+        }
+      } catch (e) {}
+
+      // 6. Service worker (PWA + offline)
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch(() => {});
+        });
+      }
+    </script>
+  </body>
+</html>

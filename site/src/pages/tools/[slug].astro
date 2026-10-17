@@ -1,0 +1,54 @@
+---
+import Base from '../../layouts/Base.astro';
+import Badge from '../../components/Badge.astro';
+import KitButton from '../../components/KitButton.astro';
+import { getTools, getTerms } from '../../lib/load';
+import { linkTerms } from '../../lib/format';
+
+export function getStaticPaths() {
+  return getTools().map((tool) => ({ params: { slug: tool.slug }, props: { tool } }));
+}
+
+const { tool } = Astro.props;
+const terms = getTerms();
+---
+
+<Base title={`${tool.name} — ${tool.tagline} · HELPINhex`} description={tool.tagline}>
+  <section class="section">
+    <div class="container">
+      <a class="small muted" href="/catalog/">← back to catalog</a>
+      <div class="flex-between mt-1">
+        <h1 style="font-size:2.2rem">{tool.name}</h1>
+        <KitButton id={tool.id} />
+      </div>
+      <p class="muted">{tool.tagline}</p>
+      <div class="chips">
+        <Badge tone="accent">{tool.category}</Badge>
+        {tool.freeTier && <Badge tone="ok">free tier</Badge>}
+        <Badge>status: {tool.status}</Badge>
+        <Badge tone="violet">✓ verified {tool.lastVerified}</Badge>
+      </div>
+
+      <div class="card mt-3">
+        <h3>What it is</h3>
+        <p set:html={linkTerms(tool.whatItIs, terms)} />
+        <h3>Why it matters</h3>
+        <p set:html={linkTerms(tool.whyMatters, terms)} />
+        <h3>How to use it</h3>
+        <ol class="howto">
+          {tool.howToUse.map((s) => <li set:html={linkTerms(s, terms)} />)}
+        </ol>
+        <h3>When NOT to use it</h3>
+        <p class="muted" set:html={linkTerms(tool.whenNotToUse, terms)} />
+        <h3>What it costs</h3>
+        <p class="muted" set:html={linkTerms(tool.pricing, terms)} />
+        <h3>Alternatives</h3>
+        <p class="muted small">{tool.alternatives.join(' · ')}</p>
+      </div>
+
+      <p class="mt-2">
+        <a class="btn" href={tool.links.official} target="_blank" rel="noopener">Open {tool.name} ↗</a>
+      </p>
+    </div>
+  </section>
+</Base>

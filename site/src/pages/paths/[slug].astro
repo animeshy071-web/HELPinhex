@@ -1,0 +1,49 @@
+---
+import Base from '../../layouts/Base.astro';
+import Badge from '../../components/Badge.astro';
+import PathProgress from '../../components/PathProgress.astro';
+import { getPaths, getTerms } from '../../lib/load';
+import { linkTerms } from '../../lib/format';
+
+export function getStaticPaths() {
+  return getPaths().map((p) => ({ params: { slug: p.slug }, props: { path: p } }));
+}
+
+const { path } = Astro.props;
+const terms = getTerms();
+const allPaths = getPaths();
+const idx = allPaths.findIndex((p) => p.slug === path.slug);
+const next = allPaths[idx + 1];
+const totalMinutes = path.steps.reduce((sum, s) => sum + s.minutes, 0);
+---
+
+<Base title={`${path.title} — learning path · HELPINhex`} description={path.goal}>
+  <section class="section">
+    <div class="container">
+      <a class="small muted" href="/paths/">← all paths</a>
+      <h1 style="font-size:2.2rem">{path.title}</h1>
+      <p class="muted" set:html={linkTerms(path.goal, terms)} />
+      <div class="chips">
+        <Badge tone="accent">{path.steps.length} steps</Badge>
+        <Badge>{path.duration}</Badge>
+        <Badge>~{totalMinutes} min total</Badge>
+        {
+          path.prereqs.length > 0 && path.prereqs.map((p) => <Badge tone="warn">prereq: {p}</Badge>)
+        }
+      </div>
+      <p class="muted small mt-1">Check the boxes as you go — progress lives in this browser only.</p>
+
+      <div class="mt-2">
+        <PathProgress path={path} />
+      </div>
+
+      {
+        next && (
+          <p class="mt-3">
+            <strong>Next up:</strong> <a href={`/paths/${next.slug}/`}>{next.title}</a>
+          </p>
+        )
+      }
+    </div>
+  </section>
+</Base>

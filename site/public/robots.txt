@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# Sitemap arrives with the SEO pass (Phase 5)

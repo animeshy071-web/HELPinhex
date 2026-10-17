@@ -1,0 +1,99 @@
+<div class="cmdk-back" id="cmdk-back" aria-hidden="true">
+  <div class="cmdk-panel" role="dialog" aria-label="Search HELPINhex">
+    <input id="cmdk-input" placeholder="Search everything — tools, models, guides, paths, terms…" autocomplete="off" />
+    <div class="cmdk-list" id="cmdk-list"></div>
+  </div>
+</div>
+
+<script>
+  import { searchDocs } from '../lib/score';
+
+  const AMP = String.fromCharCode(38);
+  const ENT: Record<string, string> = { '&': AMP + 'amp;', '<': AMP + 'lt;', '>': AMP + 'gt;', '"': AMP + 'quot;', "'": AMP + '#39;' };
+  const esc = (s: unknown) => String(s ?? '').replace(/[&<>"']/g, (c) => ENT[c]);
+
+  const docs = JSON.parse(document.getElementById('hx-docs')?.textContent || '[]');
+  const back = document.getElementById('cmdk-back')!;
+  const input = document.getElementById('cmdk-input') as HTMLInputElement;
+  const list = document.getElementById('cmdk-list')!;
+
+  let sel = 0;
+  let current: any[] = [];
+
+  function render(q: string): void {
+    if (!q.trim()) {
+      list.innerHTML = '<div class="cmdk-empty">Type to search the whole site · <kbd>Esc</kbd> to close</div>';
+      current = [];
+      return;
+    }
+    current = searchDocs(q, docs, 9);
+    sel = 0;
+    if (!current.length) {
+      list.innerHTML = '<div class="cmdk-empty">Nothing found — try fewer words, or ask it on the <a href="/ask/">Ask page</a>.</div>';
+      return;
+    }
+    list.innerHTML = current
+      .map(
+        (d, i) => `
+        <button class="cmdk-item ${i === 0 ? 'sel' : ''}" data-url="${esc(d.url)}">
+          <span class="badge ${d.kind === 'term' ? 'violet' : d.kind === 'guide' ? 'accent' : ''}">${esc(d.kind)}</span>
+          <span class="t">${esc(d.title)}</span>
+          <span class="x">${esc(d.extra || '')}</span>
+        </button>`
+      )
+      .join('');
+  }
+
+  function open(): void {
+    back.classList.add('open');
+    back.setAttribute('aria-hidden', 'false');
+    input.value = '';
+    render('');
+    input.focus();
+  }
+  function close(): void {
+    back.classList.remove('open');
+    back.setAttribute('aria-hidden', 'true');
+  }
+
+  function go(doc: any): void {
+    if (!doc) return;
+    location.href = doc.url;
+  }
+
+  document.addEventListener('keydown', (e) => {
+    const typing = ['INPUT', 'TEXTAREA'].includes((e.target as HTMLElement).tagName);
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      back.classList.contains('open') ? close() : open();
+    } else if (e.key === 'Escape' && back.classList.contains('open')) {
+      close();
+    } else if (e.key === '/' && !typing) {
+      e.preventDefault();
+      open();
+    } else if (back.classList.contains('open')) {
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        sel = Math.min(sel + 1, current.length - 1);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        sel = Math.max(sel - 1, 0);
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        go(current[sel]);
+        return;
+      } else return;
+      list.querySelectorAll('.cmdk-item').forEach((el, i) => el.classList.toggle('sel', i === sel));
+      list.querySelector('.sel')?.scrollIntoView({ block: 'nearest' });
+    }
+  });
+
+  input.addEventListener('input', () => render(input.value));
+  list.addEventListener('click', (e) => {
+    const item = (e.target as HTMLElement).closest('.cmdk-item');
+    if (item) location.href = item.getAttribute('data-url') || '/';
+  });
+  back.addEventListener('click', (e) => {
+    if (e.target === back) close();
+  });
+</script>

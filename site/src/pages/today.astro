@@ -1,0 +1,55 @@
+---
+import Base from '../layouts/Base.astro';
+import Badge from '../components/Badge.astro';
+
+const today = new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+
+const tips = [
+  'Free tiers are for learning — build on them until something you made earns or saves real money. Then pay for exactly that tool.',
+  'When a new model drops, ask: "does this change what I can DO, or just benchmarks?" 90% of launches change nothing for beginners.',
+  'Hover any dotted-underlined word on this site — the jargon decoder explains it in one line. That is the whole point of HELPinhex.',
+  'Your API key is a password that can spend money. .env file, never in code, rotate on suspicion.',
+  'Prompting is a skill, not a gift: subject + style + format + constraints. Compare two prompts side by side and you will feel the difference.',
+  'Local models (Ollama) are free forever — use them for drafts and private stuff, hosted models for final quality.',
+  'The best first project is one you will use yourself. "Who is this even for?" — for you. That is a valid answer.',
+];
+const tip = tips[new Date().getDay() % tips.length];
+---
+
+<Base title={`Today — ${today} · HELPINhex`} description="Your daily briefing: what's new, one tip, one deadline.">
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h1 style="font-size:2.2rem">Today</h1>
+        <span class="muted">{today}</span>
+      </div>
+
+      <div class="card mb-2">
+        <div class="flex-between">
+          <h3>💡 Tip of the day</h3>
+        </div>
+        <p style="margin-bottom:0">{tip}</p>
+      </div>
+
+      <h2 class="mt-3">Fresh catches</h2>
+      <p class="muted small">The three things from overnight you might actually care about.</p>
+      <div class="grid">
+        <div class="card"><h3>🛰️ Hugging Face</h3><p class="muted small">New models feed — arrives with Phase 2.</p></div>
+        <div class="card"><h3>🐙 GitHub</h3><p class="muted small">Trending AI repos — arrives with Phase 2.</p></div>
+        <div class="card"><h3>⚡ Product launches</h3><p class="muted small">"X just added AI" — arrives with Phase 2.</p></div>
+      </div>
+
+      <h2 class="mt-3">Deadlines</h2>
+      <div class="card">
+        <p class="muted" style="margin-bottom:0">
+          Hackathon + grant countdowns land here with the Phase 2 events feed, with calendar export.
+          Until then — <a href="/paths/ai-zero-builder/">the beginner path</a> has no deadline. Start today.
+        </p>
+      </div>
+
+      <p class="muted small mt-3">
+        <Badge tone="warn">honesty badge</Badge> This page shows empty states instead of fake news. Real, sourced, dated items only — that is the trust system.
+      </p>
+    </div>
+  </section>
+</Base>
