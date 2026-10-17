@@ -9,10 +9,20 @@ Not a directory. Not a newsletter. A **guide that never sleeps**.
 - New stuff scraped daily; evergreen learning paths forever
 - Built for the person who doesn't know how to use Hugging Face, terminals, or API keys — yet
 
-**Status:** 📐 Phase 0 — planning complete, build starting.
+**Status:** 🚧 Phase 1 shipped — the site skeleton is live locally (33 pages). Run it:
+
+```bash
+cd site
+npm install
+npm run dev        # dev server at http://localhost:4321
+npm run build      # static build → site/dist (deploy anywhere free)
+```
 
 - 📋 [Master Plan (PLAN.md)](./PLAN.md) — the full product spec, architecture, and roadmap
-- 🗓️ MVP target: Phases 1–3 (~3–4 weeks part-time)
+- 🤖 [Model Guide (docs/MODEL-GUIDE.md)](./docs/MODEL-GUIDE.md) — which AI builds what (Flash vs 5.3)
+- 🗓️ Roadmap: Phase 1 ✅ skeleton · Phase 2 scrapers · Phase 3 Answer Engine expansion · Phase 4 AI layer
+
+**Phase 1 shipped:** home + Ask box (instant mode) · catalog (8 tool + 7 model playbooks) · 3 learning paths with saved progress · 6 guides · 29-term glossary with hover jargon decoder · ⌘K search · Today page · Me dashboard (streaks, My Kit, backlog) · PWA installable.
 
 ## Repository layout (target)
 
