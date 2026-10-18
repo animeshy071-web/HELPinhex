@@ -1,0 +1,116 @@
+---
+import Base from '../layouts/Base.astro';
+import Badge from '../components/Badge.astro';
+import { getTerms } from '../lib/load';
+import { linkTerms } from '../lib/format';
+import fs from 'node:fs';
+import path from 'node:path';
+
+interface LocalModel {
+  id: string;
+  label: string;
+  examples: string;
+  fileGb: number;
+  ramMin: number;
+  speed: string;
+  bestFor: string;
+}
+
+const contentDir = path.resolve(process.cwd(), '..', 'content');
+const models: LocalModel[] = JSON.parse(fs.readFileSync(path.join(contentDir, 'local-models.json'), 'utf8'));
+const terms = getTerms();
+const jsonSafe = (v: unknown) => JSON.stringify(v).replace(/</g, '\\u003c');
+---
+
+<Base title="Laptop checker — what AI can YOUR machine run? · HELPINhex" description="Pick your RAM and GPU — see exactly which local AI models your laptop or PC can run, free and private.">
+  <section class="section">
+    <div class="container">
+      <h1 style="font-size:2.2rem">What can <em>my machine</em> run?</h1>
+      <p class="muted" set:html={linkTerms('Local AI is the cheapest education in the field — but the #1 mistake is grabbing a model file (usually GGUF) bigger than your memory. Answer two questions, get your realistic options:', terms)} />
+
+      <div class="card mt-2">
+        <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">
+          <label>
+            <strong>RAM (memory)</strong>
+            <select id="ram" class="input mt-1">
+              <option value="4">4 GB — old/light laptop</option>
+              <option value="8">8 GB — standard laptop</option>
+              <option value="16">16 GB — good laptop / gaming</option>
+              <option value="32">32 GB — workstation</option>
+              <option value="64">64 GB+ — serious rig</option>
+            </select>
+          </label>
+          <label>
+            <strong>GPU (graphics)</strong>
+            <select id="gpu" class="input mt-1">
+              <option value="none">None / integrated</option>
+              <option value="low">Entry GPU (4–6 GB VRAM)</option>
+              <option value="mid">Gaming GPU (8–12 GB VRAM)</option>
+              <option value="high">Big GPU (16 GB+ VRAM)</option>
+            </select>
+          </label>
+        </div>
+        <p class="muted small mt-1" id="hint" style="margin-bottom:0"></p>
+      </div>
+
+      <div id="results" class="grid wide mt-2"></div>
+
+      <blockquote class="mt-2">
+        Rules of thumb the checker is built on: the quantized model file must fit in RAM with room for the OS (~3–4GB);
+        GPU VRAM ≥ file size makes it fast; CPU-only works fine up to the medium tier (patience required beyond that).
+        Run them all with <a href="/tools/ollama/">Ollama</a> — one command each.
+      </blockquote>
+    </div>
+  </section>
+
+  <script type="application/json" id="checker-models" set:html={jsonSafe(models)} />
+
+  <script>
+    const AMP = String.fromCharCode(38);
+    const ENT: Record<string, string> = { '&': AMP + 'amp;', '<': AMP + 'lt;', '>': AMP + 'gt;', '"': AMP + 'quot;', "'": AMP + '#39;' };
+    const esc = (s: unknown) => String(s ?? '').replace(/[&<>"']/g, (c) => ENT[c]);
+
+    const models = JSON.parse(document.getElementById('checker-models')?.textContent || '[]');
+    const ramSel = document.getElementById('ram') as HTMLSelectElement;
+    const gpuSel = document.getElementById('gpu') as HTMLSelectElement;
+    const results = document.getElementById('results')!;
+    const hint = document.getElementById('hint')!;
+
+    function render(): void {
+      const ram = Number(ramSel.value);
+      const gpu = gpuSel.value;
+      const fits = models.filter((m: any) => m.ramMin <= ram);
+      const tight = fits.filter((m: any) => m.ramMin === ram || (ram - m.ramMin) <= 2);
+      const comfy = fits.filter((m: any) => m.ramMin < ram - 2);
+
+      hint.textContent = comfy.length
+        ? `With ${ram}GB RAM${gpu !== 'none' ? ' + a GPU' : ''}, you can run ${comfy.length} tier${comfy.length === 1 ? '' : 's'} comfortably.`
+        : tight.length
+          ? 'Tight but workable — close other apps, use the smallest quant listed for that model.'
+          : 'This machine will struggle — start with the tiny tier or use free hosted tiers instead.';
+
+      results.innerHTML = fits
+        .map((m: any) => {
+          const level = m.ramMin < ram - 2 ? ('ok' as const) : 'warn' as const;
+          const label = m.ramMin < ram - 2 ? 'comfortable fit' : 'tight — smallest quant';
+          const fast = gpu !== 'none' && (gpu === 'high' || (gpu === 'mid' && m.fileGb <= 8) || (gpu === 'low' && m.fileGb <= 4));
+          return `
+        <div class="card">
+          <div class="flex-between"><h3 style="margin:0;font-size:1rem">${esc(m.label)}</h3><span class="badge">${esc(m.fileGb)}GB file</span></div>
+          <p class="muted small" style="margin:0.4rem 0">needs ~${esc(m.ramMin)}GB RAM · ${esc(m.speed)}</p>
+          <p class="small" style="margin:0.4rem 0">${esc(m.bestFor)}</p>
+          <p class="muted small" style="margin:0.4rem 0 0">${esc(m.examples)}</p>
+          <div class="chips mt-1">
+            <span class="badge ${level}">${label}</span>
+            ${fast ? '<span class="badge ok">fast with your GPU</span>' : ''}
+          </div>
+        </div>`;
+        })
+        .join('');
+    }
+
+    ramSel.addEventListener('change', render);
+    gpuSel.addEventListener('change', render);
+    render();
+  </script>
+</Base>

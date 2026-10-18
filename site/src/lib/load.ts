@@ -155,6 +155,10 @@ export function getSearchDocs(): SearchDoc[] {
   for (const t of getTerms()) docs.push({ id: t.id, title: t.word, kind: 'term', url: `/glossary/#${t.id}`, extra: t.plain });
   for (const w of getWorkflows()) docs.push({ id: w.id, title: w.title, kind: 'workflow', url: `/ask/#${w.id}`, extra: w.totalCost });
   docs.push({ id: 'repos', title: 'Repo Radar', kind: 'page', url: '/repos/', extra: 'Latest AI repos + find repos by topic — where AI launches first' });
+  docs.push({ id: 'compare', title: 'Compare models', kind: 'page', url: '/compare/', extra: 'Every model family with live prices, free tiers, context sizes' });
+  docs.push({ id: 'checker', title: 'Laptop checker', kind: 'page', url: '/checker/', extra: 'What AI can YOUR machine run? Answer two questions' });
+  docs.push({ id: 'events', title: 'Events & hackathons', kind: 'page', url: '/events/', extra: 'Where beginners find hackathons — and how to actually finish one' });
+  docs.push({ id: 'opportunities', title: 'Opportunities', kind: 'page', url: '/opportunities/', extra: 'Real ways to earn with AI — honest difficulty, honest warnings' });
   return docs;
 }
 

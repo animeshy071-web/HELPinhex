@@ -1,0 +1,62 @@
+[
+  {
+    "id": "hackathons",
+    "title": "Hackathons & competitions",
+    "what": "Weekend build events (online and in-person). Prizes exist, but the real haul is a finished project, new contacts, and a deadline that forces you to ship.",
+    "firstStep": "Pick one starting soon, go alone, aim to finish anything by demo time — not to win.",
+    "difficulty": 2,
+    "timeToFirst": "one weekend",
+    "honestNote": "You don't need to win to gain. Losers who shipped a project still have a project.",
+    "links": ["https://mlh.io", "https://devpost.com/hackathons", "https://unstop.com", "https://devfolio.co"]
+  },
+  {
+    "id": "ai-setup-services",
+    "title": "AI setup services for small businesses",
+    "what": "Local shops and small businesses keep hearing about AI and have no idea what to do. You (with Path 3 skills) can set up chatbots, automation flows, and document summaries for them.",
+    "firstStep": "Do one for free for a business you know — screenshots become your portfolio — then charge the next one.",
+    "difficulty": 3,
+    "timeToFirst": "2–6 weeks",
+    "honestNote": "This is a service, not a product: you trade time for money. Real, but not passive.",
+    "links": []
+  },
+  {
+    "id": "content-in-your-language",
+    "title": "Content in your language",
+    "what": "Most AI tutorials exist only in English. Explainers in your native language face near-zero competition and genuine demand.",
+    "firstStep": "Take any HELPinhex guide, record yourself explaining it in your language, publish.",
+    "difficulty": 2,
+    "timeToFirst": "1–3 months (slow build, compounds)",
+    "honestNote": "Ad/affiliate money starts tiny. The creators who win in small languages are the ones still posting in month 6.",
+    "links": []
+  },
+  {
+    "id": "open-source-contributions",
+    "title": "Open-source contributions",
+    "what": "Fix docs, reproduce bugs, add examples to AI repos. Zero money directly — but it's the strongest job/internship signal a beginner can build, and AI-assisted contribution is easier than ever.",
+    "firstStep": "Pick a repo from the Repo Radar, find issues labeled 'good first issue', read the code with an AI tutor.",
+    "difficulty": 3,
+    "timeToFirst": "weeks to first merged PR (the real paycheck)",
+    "honestNote": "Maintainers can smell AI-generated slop PRs. Use AI to understand, not to write blind.",
+    "links": []
+  },
+  {
+    "id": "micro-saas",
+    "title": "A tiny tool that solves one niche problem",
+    "what": "One specific group has one annoying problem; you build the small tool that fixes it (with AI doing half the coding). $5/mo × 100 users = $500/mo.",
+    "firstStep": "Find a problem you've personally complained about 3+ times, then find the community that complains with you.",
+    "difficulty": 4,
+    "timeToFirst": "2–6 months to meaningful revenue",
+    "honestNote": "The hardest option here. Most fail from building for nobody — the community comes first, code second.",
+    "links": []
+  },
+  {
+    "id": "teach-others",
+    "title": "Teach what you just learned",
+    "what": "The person 3 steps behind you needs a guide who just learned it — you remember exactly what was confusing. School clubs, libraries, Discord communities, paid workshops.",
+    "firstStep": "Offer one free 45-min 'AI for absolute beginners' session anywhere people gather. Charge for session two.",
+    "difficulty": 2,
+    "timeToFirst": "days to weeks — the fastest path here",
+    "honestNote": "Teaching is the fastest way to learn. Your beginner status is literally the qualification.",
+    "links": []
+  }
+]

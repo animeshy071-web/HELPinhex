@@ -1,0 +1,56 @@
+[
+  {
+    "id": "tiny-1b",
+    "label": "Tiny models (0.5–1.5B)",
+    "examples": "Llama 3.2 1B, Qwen 1B class",
+    "fileGb": 1,
+    "ramMin": 4,
+    "speed": "instant on almost anything",
+    "bestFor": "Very old laptops, trying local AI for the first time, simple tasks"
+  },
+  {
+    "id": "small-3b",
+    "label": "Small models (2–4B)",
+    "examples": "Llama 3.2 3B, Phi mini class, Qwen 4B class",
+    "fileGb": 2.5,
+    "ramMin": 6,
+    "speed": "snappy on most machines",
+    "bestFor": "8GB RAM laptops — the classic 'first real local model' tier"
+  },
+  {
+    "id": "medium-8b",
+    "label": "Medium models (7–9B)",
+    "examples": "Llama 3.1 8B, Qwen 8B class, Gemma mid class",
+    "fileGb": 5,
+    "ramMin": 10,
+    "speed": "fine on 16GB, usable on 8GB (slower, smaller quants)",
+    "bestFor": "The quality sweet spot for 16GB laptops — daily-driver local chat"
+  },
+  {
+    "id": "large-14b",
+    "label": "Large models (12–14B)",
+    "examples": "Llama 13B class, Qwen 14B class, GLM mid sizes",
+    "fileGb": 8.5,
+    "ramMin": 16,
+    "speed": "needs 16GB+ or a GPU; noticeable quality jump",
+    "bestFor": "Serious local work: coding help, long documents, better reasoning"
+  },
+  {
+    "id": "xlarge-32b",
+    "label": "Extra-large models (30–32B)",
+    "examples": "Qwen 32B class, Llama mid-large class",
+    "fileGb": 19,
+    "ramMin": 32,
+    "speed": "32GB RAM or a 24GB GPU; getting close to hosted quality",
+    "bestFor": "Enthusiast machines — near-frontier local quality, still $0 to run"
+  },
+  {
+    "id": "huge-70b",
+    "label": "Huge models (65–70B+)",
+    "examples": "Llama 70B class",
+    "fileGb": 40,
+    "ramMin": 64,
+    "speed": "64GB RAM or multi-GPU rigs",
+    "bestFor": "Hardware nerds and tinkerers — at this point compare cost with hosted APIs"
+  }
+]

@@ -1,0 +1,61 @@
+---
+import Base from '../layouts/Base.astro';
+import Badge from '../components/Badge.astro';
+import { getModels, getPrices, getPriceForFamily } from '../lib/load';
+
+const models = getModels();
+const feed = getPrices();
+const rows = models.map((m) => ({ m, price: getPriceForFamily(m.family) }));
+const fmt = (n: number | null) => (n === null ? '—' : `$${n}`);
+---
+
+<Base title="Compare — every model family, honestly · HELPINhex" description="Model comparison with live prices from the daily OpenRouter feed: free tier, price per million tokens, context, best use.">
+  <section class="section">
+    <div class="container">
+      <h1 style="font-size:2.2rem">Compare</h1>
+      <p class="muted">
+        One honest table instead of hype. Prices come live from the daily OpenRouter feed
+        {feed ? `(last catch: ${new Date(feed.fetchedAt).toLocaleDateString()})` : ''}
+        — if a number looks stale, it tells you so.
+      </p>
+
+      <div class="card mt-2" style="overflow-x:auto">
+        <table class="steps-table">
+          <thead>
+            <tr>
+              <th>Family</th>
+              <th>By</th>
+              <th>Free tier</th>
+              <th>$/1M in</th>
+              <th>$/1M out</th>
+              <th>Context</th>
+              <th>Best for</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              rows.map(({ m, price }) => (
+                <tr>
+                  <td><strong><a href={`/models/${m.slug}/`}>{m.name}</a></strong></td>
+                  <td class="small">{m.by}</td>
+                  <td>{m.freeTier ? <Badge tone="ok">yes</Badge> : <Badge tone="warn">no</Badge>}</td>
+                  <td class="mono small">{price && !price.free ? fmt(price.promptPerM) : price?.free ? <Badge tone="ok">free</Badge> : '—'}</td>
+                  <td class="mono small">{price && !price.free ? fmt(price.completionPerM) : '—'}</td>
+                  <td class="small">{price?.contextLength ? `${Math.round(price.contextLength / 1000)}k` : <span class="muted">{m.context}</span>}</td>
+                  <td class="small">{m.bestFor}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <p class="muted small mt-2">
+        <Badge tone="warn">honesty badge</Badge>
+        Prices are the OpenRouter router's price at last catch — providers' direct prices can differ, and free tiers change without warning.
+        "Best for" is a strong starting guess, not a verdict: the right test is trying the free tier on your actual problem.
+      </p>
+      <p class="mt-2"><a class="btn ghost" href="/calculator/">Estimate your actual monthly cost →</a></p>
+    </div>
+  </section>
+</Base>

@@ -1,11 +1,25 @@
+---
+import Badge from './Badge.astro';
+---
+
 <footer class="footer">
-  <div class="container footer-inner">
-    <div>
-      <strong>⬡ HELPINhex</strong> — "help in hex." Everything tech, decoded for beginners.
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <strong>⬡ HELPINhex</strong> — "help in hex." Everything tech, decoded for beginners.
+      </div>
+      <div class="small">
+        MIT licensed · <a href="https://github.com/animeshy071-web/HELPinhex" target="_blank" rel="noopener">GitHub</a>
+        · freshness engine: <Badge tone="accent">live</Badge>
+      </div>
     </div>
-    <div class="small">
-      MIT licensed · <a href="https://github.com/animeshy071-web/HELPinhex" target="_blank" rel="noopener">GitHub</a>
-      · freshness engine ships in Phase 2
+    <div class="small" style="margin-top:1rem; display:flex; flex-wrap:wrap; gap:0.4rem 1.1rem;">
+      <a href="/compare/">Compare</a>
+      <a href="/checker/">Laptop checker</a>
+      <a href="/repos/">Repo Radar</a>
+      <a href="/events/">Events</a>
+      <a href="/opportunities/">Opportunities</a>
+      <a href="/glossary/">Glossary</a>
     </div>
   </div>
 </footer>

@@ -17,7 +17,7 @@
       { "title": "Write the script", "tool": "Any free chat assistant (GLM, ChatGPT, Claude)", "how": "Ask for a 60-second script in scenes with narration + visual descriptions. Then ask it to punch up the jokes twice.", "cost": "$0", "time": "30 min", "guide": "what-even-is-an-llm" },
       { "title": "Generate the voice", "tool": "Any TTS tool (many free tiers)", "how": "Paste narration, generate voiceover, download the audio. Try 2–3 voices on one line before committing.", "cost": "$0–5/mo", "time": "15 min" },
       { "title": "Generate consistent character images", "tool": "Any image generator with reference images", "how": "Design ONE character image, reuse it as the reference for every scene — consistency is what makes it feel like a show, not a slideshow.", "cost": "$0–10/mo", "time": "1 hr" },
-      { "title": "Assemble the video", "tool": "CapCut", "how": "Drop images + voiceover on the timeline, add auto-captions, one background music track at low volume, export 1080p.", "cost": "$0", "time": "1 hr" },
+      { "title": "Assemble the video", "tool": "CapCut", "how": "Drop images + voiceover on the timeline, add auto-captions, one background music track at low volume, export 1080p.", "cost": "$0", "time": "1 hr", "toolId": "capcut" },
       { "title": "Thumbnail + publish", "tool": "Image generator + YouTube", "how": "Generate 3 thumbnail options with big readable text, pick one, upload with your script's opening line as the description.", "cost": "$0", "time": "20 min" }
     ],
     "mistakes": [
@@ -128,6 +128,405 @@
       "Judge image quality on the first generation — generate 4–8 options, pick, and refine the winner.",
       "Text in AI images is often mangled; add text in an editor (CapCut/Canva), not the generator.",
       "Chasing 'the best tool' instead of mastering the one in front of you."
+    ]
+  },
+  {
+    "id": "build-a-website",
+    "title": "Build your first website with AI (and deploy it free)",
+    "level": "beginner",
+    "totalCost": "$0 to start (~$12/yr for your own domain, optional)",
+    "totalTime": "A weekend",
+    "questionPatterns": [
+      "make a website",
+      "build a landing page",
+      "portfolio site",
+      "put my project online",
+      "create a website with ai",
+      "free website hosting"
+    ],
+    "steps": [
+      { "title": "Decide the one job of the site", "tool": "Any chat assistant", "how": "One sentence: 'this site exists so that ___ can ___'. A site with one job beats a cluttered one every time.", "cost": "$0", "time": "15 min" },
+      { "title": "Generate content + structure", "tool": "Any chat assistant", "how": "Ask for: 5 sections, headline + one-line pitch per section, plain HTML/CSS single file. Reject the first version; ask for 'shorter, more human, more specific'.", "cost": "$0", "time": "30 min" },
+      { "title": "Open it and edit for real", "tool": "VS Code", "how": "Open the HTML file, change real words, colors, and links yourself — reading real code is the fastest dev lesson there is.", "cost": "$0", "time": "60 min", "toolId": "vs-code" },
+      { "title": "Put it online, free", "tool": "Netlify Drop / GitHub Pages / Cloudflare Pages", "how": "Drag the folder onto Netlify Drop — live URL in 30 seconds, no account gymnastics. Or push to a GitHub repo and enable Pages.", "cost": "$0", "time": "15 min", "toolId": "github" },
+      { "title": "Optional: your own name", "tool": "Any registrar (~$12/yr)", "how": "Buy a domain only after the site exists. Point it at your host. Do this last, not first.", "cost": "~$12/yr", "time": "20 min" }
+    ],
+    "mistakes": [
+      "Spending a weekend on the logo and zero minutes on the words. Text does the convincing.",
+      "Buying a domain before a single page exists. Free hosting first, name later.",
+      "Trying to learn a framework before shipping a single HTML file. Ship ugly first."
+    ]
+  },
+  {
+    "id": "learn-to-code",
+    "title": "Learn to code with AI as your tutor",
+    "level": "beginner",
+    "totalCost": "$0",
+    "totalTime": "Ongoing — first tiny project in a week",
+    "questionPatterns": [
+      "learn to code",
+      "learn programming",
+      "learn python with ai",
+      "best way to learn coding",
+      "ai tutor",
+      "start coding"
+    ],
+    "steps": [
+      { "title": "Pick one language and one reason", "tool": "Your brain", "how": "Python for automating/analyzing, JavaScript for websites. 'Both eventually, one now.' Pick based on what you want to BUILD.", "cost": "$0", "time": "10 min" },
+      { "title": "Set the tutor loop", "tool": "Any chat assistant", "how": "Prompt: 'You are my coding tutor. Explain like I know nothing. After each concept, give me a tiny exercise and wait for my answer. Correct me, then continue.'", "cost": "$0", "time": "10 min" },
+      { "title": "Build the dumbest useful thing", "tool": "VS Code", "how": "A calculator, a grocery list, a coin flipper. Tiny and YOURS beats big and tutorial-shaped.", "cost": "$0", "time": "2 hrs", "toolId": "vs-code" },
+      { "title": "Make the AI read code TO you", "tool": "Any chat assistant", "how": "Paste working code from repos (Repo Radar) and ask 'explain every line like I'm new'. Reading real code is the secret curriculum.", "cost": "$0", "time": "30 min" },
+      { "title": "Start your track record", "tool": "GitHub", "how": "Push every tiny project to a public repo. In 3 months your GitHub IS your resume.", "cost": "$0", "time": "20 min", "toolId": "github" }
+    ],
+    "mistakes": [
+      "Letting the AI write everything while you nod. Type the code yourself — fingers are part of memory.",
+      "Course-hopping. One language, one project, two weeks — then reassess.",
+      "Building another to-do app when something in YOUR life annoys you daily. Personal problems are the best teachers."
+    ]
+  },
+  {
+    "id": "ai-voice-podcast",
+    "title": "Start a podcast or voiceover channel with AI",
+    "level": "beginner",
+    "totalCost": "$0 to start",
+    "totalTime": "First episode in ~3 hours",
+    "questionPatterns": [
+      "start a podcast",
+      "make a voiceover",
+      "text to speech for videos",
+      "ai voice for my channel",
+      "podcast without my voice",
+      "audio content with ai"
+    ],
+    "steps": [
+      { "title": "Pick a narrow topic you can talk about for 50 episodes", "tool": "Any chat assistant", "how": "Ask for '20 podcast episode ideas about X for beginners'. If fewer than 10 excite you, narrow X further.", "cost": "$0", "time": "20 min" },
+      { "title": "Write episode 1 as a conversation script", "tool": "Any chat assistant", "how": "Two hosts beat one monologue. Ask for a script with natural interruptions and one moment of genuine surprise.", "cost": "$0", "time": "40 min" },
+      { "title": "Generate the voices", "tool": "Any TTS tool with multiple voices", "how": "Two distinct voices, consistent across episodes. Generate 3 test lines per voice before committing to a cast.", "cost": "$0–10/mo", "time": "30 min" },
+      { "title": "Edit lightly and export", "tool": "Audacity (free) or CapCut", "how": "Cut long silences, add intro/outro music (free libraries: Pixabay, YouTube Audio Library). Export MP3.", "cost": "$0", "time": "45 min" },
+      { "title": "Publish free", "tool": "Spotify for Creators (or any free host)", "how": "Upload, get an RSS feed, submit to Spotify automatically. You now have a podcast. Tell people.", "cost": "$0", "time": "30 min" }
+    ],
+    "mistakes": [
+      "Perfecting the voice while the script is boring. Content first, voice second.",
+      "Buying a professional mic for an AI-voiced podcast. You don't need one — that's the point.",
+      "Publishing one episode and waiting for fame. Podcasts compound — plan 10 before judging."
+    ]
+  },
+  {
+    "id": "ai-short-video",
+    "title": "Make short videos (Reels, Shorts, TikTok) with AI",
+    "level": "beginner",
+    "totalCost": "$0 to start",
+    "totalTime": "First short in ~2 hours",
+    "questionPatterns": [
+      "make shorts",
+      "reels for instagram",
+      "tiktok with ai",
+      "short videos with ai",
+      "vertical video",
+      "make a faceless short"
+    ],
+    "steps": [
+      { "title": "Write a 30-second hook script", "tool": "Any chat assistant", "how": "Ask for: 3-second hook, 20 seconds of value, 7-second payoff/CTA. Reject anything that doesn't grab in line one.", "cost": "$0", "time": "15 min" },
+      { "title": "Generate or gather visuals", "tool": "Image/video tools + free stock", "how": "Mix: AI images for the unusual, free stock (Pexels) for the ordinary. B-roll exists to support words, not replace them.", "cost": "$0", "time": "40 min" },
+      { "title": "Assemble in CapCut", "tool": "CapCut", "how": "Vertical 9:16 project. Auto-captions ON (most shorts are watched muted). One cut every 2–4 seconds.", "cost": "$0", "time": "40 min", "toolId": "capcut" },
+      { "title": "Post at a repeatable cadence", "tool": "Any scheduler", "how": "1 short/day for 14 days minimum before judging anything. Algorithms reward presence, not perfection.", "cost": "$0", "time": "15 min/day" }
+    ],
+    "mistakes": [
+      "Making one 'perfect' short instead of 14 average ones. Volume teaches you what your audience wants.",
+      "Ignoring captions — a muted-watchable short doubles its audience.",
+      "AI-generating every frame. A mix of real/stock/AI reads as content; pure AI slideshows read as spam."
+    ]
+  },
+  {
+    "id": "ai-study-system",
+    "title": "Study for any exam with AI (the honest way)",
+    "level": "beginner",
+    "totalCost": "$0",
+    "totalTime": "Set up in 1 hour, then daily",
+    "questionPatterns": [
+      "study for an exam",
+      "learn faster with ai",
+      "exam prep ai",
+      "ai study system",
+      "memorize with ai",
+      "active recall"
+    ],
+    "steps": [
+      { "title": "Turn the syllabus into a battle plan", "tool": "Any chat assistant", "how": "Paste your syllabus: 'make a day-by-day study plan, hardest topics first, with a review day each week'.", "cost": "$0", "time": "20 min" },
+      { "title": "Make flashcards, not summaries", "tool": "Any chat assistant", "how": "Ask for 15 Q&A cards per topic. Question on one side, answer on the other. Testing beats re-reading — this is the single biggest study-science finding.", "cost": "$0", "time": "30 min" },
+      { "title": "Run the quiz loop", "tool": "Any chat assistant", "how": "'Quiz me on topic X, one question at a time. If I'm wrong, explain, wait, then ask again differently.'", "cost": "$0", "time": "20 min/day" },
+      { "title": "Teach it back (the Feynman move)", "tool": "Any chat assistant", "how": "'I'll explain the topic; you find the gaps and holes in my explanation.' Being wrong out loud is studying.", "cost": "$0", "time": "15 min/day" },
+      { "title": "Sleep, spacing, repeat", "tool": "Calendar", "how": "Same topic twice, days apart, beats cramming twice in one night. AI can schedule it; only you can sleep.", "cost": "$0", "time": "0 min" }
+    ],
+    "mistakes": [
+      "Letting AI summarize instead of quiz you. Recognition feels like knowing; recall IS knowing.",
+      "Trusting AI's facts blindly for exams — it can be confidently wrong. Verify against your actual course material.",
+      "Studying for 5 hours once instead of 1 hour × 5 days."
+    ]
+  },
+  {
+    "id": "ai-writing-better",
+    "title": "Write better with AI (without it sounding like AI)",
+    "level": "beginner",
+    "totalCost": "$0",
+    "totalTime": "Per piece: ~1 hour",
+    "questionPatterns": [
+      "write better with ai",
+      "blog with ai",
+      "write essays with ai",
+      "improve my writing",
+      "ai writing help",
+      "write a post"
+    ],
+    "steps": [
+      { "title": "Outline with AI, draft yourself", "tool": "Any chat assistant", "how": "Ask for 5 section headings and the one idea per section. Close the chat. Write the ugly first draft in your own words.", "cost": "$0", "time": "20 min" },
+      { "title": "Critique pass, not rewrite pass", "tool": "Any chat assistant", "how": "'Critique this draft: what's unclear, what's padding, what's missing? Do NOT rewrite it.' Then you fix it — voice stays yours.", "cost": "$0", "time": "15 min" },
+      { "title": "Line-edit the lazy phrases", "tool": "Any chat assistant", "how": "Ask: 'flag clichés, corporate words, and sentences longer than 25 words.' Shorter words, truer sentences.", "cost": "$0", "time": "10 min" },
+      { "title": "Read it out loud before publishing", "tool": "Your voice", "how": "The human edit AI can't do. If you stumble reading it, the reader stumbles too.", "cost": "$0", "time": "10 min" }
+    ],
+    "mistakes": [
+      "Copy-pasting AI drafts. Readers smell it, and you learn nothing — the skill is in the editing.",
+      "Asking AI to 'make it engaging'. That's how you get confetti words. Ask it to make it CLEAR.",
+      "Publishing without reading aloud. Your ear catches what your eye forgives."
+    ]
+  },
+  {
+    "id": "research-any-topic",
+    "title": "Research any topic with AI (verified, not hallucinated)",
+    "level": "beginner",
+    "totalCost": "$0",
+    "totalTime": "1–2 hours for a solid briefing",
+    "questionPatterns": [
+      "research a topic with ai",
+      "deep dive a subject",
+      "how to verify ai answers",
+      "learn about something new",
+      "avoid hallucinations",
+      "research method"
+    ],
+    "steps": [
+      { "title": "Break the topic into 5 questions", "tool": "Any chat assistant", "how": "'Break [topic] into the 5 questions a beginner must answer to understand it.' You now have a map instead of vibes.", "cost": "$0", "time": "10 min" },
+      { "title": "Ask with sources demanded", "tool": "Chat with search/browsing", "how": "Use a chat that can search the web, and demand: 'cite sources for every claim. If unsure, say unsure.' Treat every fact as a suspect until sourced.", "cost": "$0", "time": "30 min" },
+      { "title": "Verify the 3 claims that matter most", "tool": "The actual sources", "how": "Open the links. If a claim survives you reading the source, it's yours now. If not, you just avoided repeating a hallucination.", "cost": "$0", "time": "30 min" },
+      { "title": "Synthesize in your own words", "tool": "Any notes app", "how": "Write a half-page summary from memory, then check it against your notes. The gap list = what you didn't understand yet.", "cost": "$0", "time": "20 min" }
+    ],
+    "mistakes": [
+      "Trusting fluent prose. Confidence is a writing style, not evidence.",
+      "Skipping the verification step 'just this once'. This is the whole skill.",
+      "Reading only one source's framing. Ask a second model to argue the opposite side."
+    ]
+  },
+  {
+    "id": "build-first-game",
+    "title": "Build a tiny game with AI (and play it tonight)",
+    "level": "beginner",
+    "totalCost": "$0",
+    "totalTime": "2–4 hours to playable",
+    "questionPatterns": [
+      "make a game with ai",
+      "build a simple game",
+      "snake game code",
+      "html game with ai",
+      "my first game",
+      "make something playable"
+    ],
+    "steps": [
+      { "title": "Scope it to one mechanic", "tool": "Your brain", "how": "One verb: run/jump/catch/click. Snake, not Skyrim. 'Catch the falling squares' is a real game and is finishable tonight.", "cost": "$0", "time": "10 min" },
+      { "title": "Generate a single-file HTML game", "tool": "Any chat assistant", "how": "'Write a complete single-file HTML+JS game: [mechanic]. Canvas-based, arrow keys, score display, game over + restart.' Save as game.html.", "cost": "$0", "time": "15 min" },
+      { "title": "Play it, then change one thing", "tool": "Browser + VS Code", "how": "Open the file. Then iterate: 'make the player faster', 'add a 30-second timer'. Each change teaches you one real concept.", "cost": "$0", "time": "60 min", "toolId": "vs-code" },
+      { "title": "Make it yours", "tool": "VS Code", "how": "Change colors, add a title screen, rename things. A game with your jokes in it is 10× more satisfying to show people.", "cost": "$0", "time": "60 min" },
+      { "title": "Ship it to friends", "tool": "Netlify Drop / GitHub Pages", "how": "Drag-drop the file → URL → send it. 'I made this' is the sentence that starts everything.", "cost": "$0", "time": "10 min", "toolId": "github" }
+    ],
+    "mistakes": [
+      "Starting with your dream MMO. Finish 5 tiny games first — tiny games teach finishing.",
+      "Asking for big changes when stuck. Ask 'why is this broken?' and read the explanation.",
+      "Never showing anyone. Shipped-and-shared beats perfect-and-hidden."
+    ]
+  },
+  {
+    "id": "automate-socials",
+    "title": "Plan a month of social content in one sitting",
+    "level": "beginner",
+    "totalCost": "$0",
+    "totalTime": "2 hours, then 20 min/day",
+    "questionPatterns": [
+      "content calendar",
+      "plan social media posts",
+      "automate my posting",
+      "instagram content with ai",
+      "never run out of post ideas",
+      "batch content"
+    ],
+    "steps": [
+      { "title": "Pick one platform and one audience", "tool": "Your brain", "how": "'Beginners who want X' beats 'everyone'. One platform, 30 days. Expand later or die trying.", "cost": "$0", "time": "10 min" },
+      { "title": "Generate 30 ideas, keep 15", "tool": "Any chat assistant", "how": "'30 post ideas about X for [audience], mixed formats: tips, myths, mistakes, hot takes, mini-guides.' Kill the boring half yourself.", "cost": "$0", "time": "30 min" },
+      { "title": "Draft in batches by mood", "tool": "Any chat assistant", "how": "Draft all tips in one sitting, all myths in another. Same-mood batching beats task-switching.", "cost": "$0", "time": "45 min" },
+      { "title": "Schedule or post manually — but on time", "tool": "Any scheduler / phone reminder", "how": "Tools matter less than rhythm. Pick a posting time and defend it like a meeting.", "cost": "$0", "time": "15 min/day" },
+      { "title": "Review weekly, double down", "tool": "Platform analytics", "how": "Check which 3 posts moved. More of those, fewer of the others. AI helps create; data helps you decide.", "cost": "$0", "time": "20 min/week" }
+    ],
+    "mistakes": [
+      "Being on 4 platforms at once. One platform done well beats four abandoned.",
+      "Letting AI write captions with zero editing — audiences taste it instantly.",
+      "Quitting at day 9. Organic reach compounds around week 4–6, not day 3."
+    ]
+  },
+  {
+    "id": "build-portfolio-get-hired",
+    "title": "Build a portfolio that gets you replies",
+    "level": "beginner",
+    "totalCost": "$0",
+    "totalTime": "A weekend to build, ongoing to maintain",
+    "questionPatterns": [
+      "build a portfolio",
+      "get a job with ai",
+      "resume with ai",
+      "get hired",
+      "cv with ai",
+      "github profile for jobs"
+    ],
+    "steps": [
+      { "title": "Inventory what you've actually made", "tool": "Notes file", "how": "Every project, script, automation, video, site — including the dumb ones. Proof of shipping is the currency; polish is optional.", "cost": "$0", "time": "30 min" },
+      { "title": "Pick 3 projects, write them as stories", "tool": "Any chat assistant", "how": "For each: problem → what you built → what broke → what you learned. Employers hire the learning, not the demo.", "cost": "$0", "time": "45 min" },
+      { "title": "Tailor the resume per application", "tool": "Any chat assistant", "how": "Paste the job post + your resume: 'reorder and rephrase my experience to match THIS role. Never invent anything.' Honesty is a feature.", "cost": "$0", "time": "15 min/application" },
+      { "title": "Make your GitHub page say something", "tool": "GitHub README profile", "how": "Pin the 3 projects, write one honest sentence about each. A profile with 3 explained projects > 30 mystery repos.", "cost": "$0", "time": "40 min", "toolId": "github" },
+      { "title": "Apply in loops of 10", "tool": "Tracker (any)", "how": "10 applications, track replies, refine ONE thing, next 10. The portfolio compounds while you send.", "cost": "$0", "time": "ongoing" }
+    ],
+    "mistakes": [
+      "Listing skills, showing nothing. A 12-line script that runs beats a skills list of 20 words.",
+      "One generic resume for every job. Matching the job post (honestly) doubles callbacks.",
+      "Waiting for the portfolio to be 'ready'. Version 1 embarrassing, version 3 employed."
+    ]
+  },
+  {
+    "id": "ai-design-merch",
+    "title": "Design AI-made products (stickers, shirts, prints)",
+    "level": "beginner",
+    "totalCost": "$0 possible (print-on-demand)",
+    "totalTime": "First design in ~2 hours",
+    "questionPatterns": [
+      "sell ai designs",
+      "merch with ai",
+      "print on demand ai",
+      "sell stickers with ai",
+      "sell tshirt designs",
+      "redbubble ai"
+    ],
+    "steps": [
+      { "title": "Find one niche, not 'everyone'", "tool": "Marketplace search", "how": "Browse bestsellers in a niche you actually understand (a game, a hobby, a profession). Inside knowledge = designs outsiders can't see.", "cost": "$0", "time": "45 min" },
+      { "title": "Build a consistent style with prompts", "tool": "Any image generator", "how": "One style formula, many designs: same art style + same palette + different subject. Series sell; one-offs don't.", "cost": "$0–10/mo", "time": "60 min" },
+      { "title": "Check licenses and platform rules", "tool": "The platform's terms", "how": "Read your image tool's commercial terms AND the marketplace rules (some restrict AI). Selling banned stuff = deleted shop, wasted weeks.", "cost": "$0", "time": "20 min" },
+      { "title": "Clean up and upload", "tool": "Free editor (Canva/GIMP)", "how": "Upscale, remove backgrounds, exact sizes per product. Presentation quality is half the sale.", "cost": "$0", "time": "45 min" },
+      { "title": "Expect slow, then adjust", "tool": "Marketplace analytics", "how": "Print-on-demand pays slowly. 20 designs minimum before judging; then make more of what moves.", "cost": "$0", "time": "ongoing" }
+    ],
+    "mistakes": [
+      "Using trademarked characters. Instant takedowns, possible strikes. Original niches win anyway.",
+      "Uploading raw generations without cleaning — buyers zoom in. Present professionally.",
+      "10 designs then quitting. It's a shelf game: more (good) products = more surface area for buyers."
+    ]
+  },
+  {
+    "id": "translate-content-global",
+    "title": "Take your content global with AI translation",
+    "level": "beginner",
+    "totalCost": "$0",
+    "totalTime": "Per piece: ~1 hour",
+    "questionPatterns": [
+      "translate my content",
+      "reach global audience",
+      "make my site multilingual",
+      "translate my videos",
+      "subtitle translation",
+      "expand internationally"
+    ],
+    "steps": [
+      { "title": "Pick one language at a time", "tool": "Your audience data", "how": "Where do your current views/visitors come from? Pick the biggest non-native group. One language done well beats five done thin.", "cost": "$0", "time": "15 min" },
+      { "title": "Translate meaning, not words", "tool": "Any chat assistant", "how": "Prompt: 'Translate this into X. Keep the casual tone. Localize idioms and examples — if a joke doesn't translate, replace it with one that lands.'", "cost": "$0", "time": "30 min" },
+      { "title": "Have a native speaker sanity-check page 1", "tool": "A human you know / community", "how": "One 10-minute read by a native speaker catches the embarrassing stuff AI misses. Then reuse their corrections as prompt rules.", "cost": "$0 (favor)", "time": "10 min" },
+      { "title": "Publish separately, link both", "tool": "Your platform", "how": "Separate URL/video per language, cross-linked. SEO and algorithms both prefer dedicated pages.", "cost": "$0", "time": "20 min" }
+    ],
+    "mistakes": [
+      "Machine-translating idioms word by word. 'It's raining cats and dogs' becomes weather advice about animals.",
+      "Assuming English UI + translated body = done. Buttons and titles need love too.",
+      "Five languages on day 1. Do language #2 completely first, learn the cost, then expand."
+    ]
+  },
+  {
+    "id": "prompt-engineering-basics",
+    "title": "Get dramatically better AI answers (prompting that works)",
+    "level": "beginner",
+    "totalCost": "$0",
+    "totalTime": "Practice forever, good at it in a week",
+    "questionPatterns": [
+      "get better answers from ai",
+      "prompt engineering",
+      "how to prompt",
+      "best prompts",
+      "ai gives bad answers",
+      "improve ai output"
+    ],
+    "steps": [
+      { "title": "Give the AI a role and a reader", "tool": "Any chat assistant", "how": "'You are a [role]. Explain to a [specific reader] who knows [X] but not [Y].' Aimed answers beat generic ones instantly.", "cost": "$0", "time": "5 min" },
+      { "title": "Add context like a briefing", "tool": "Any chat assistant", "how": "What you tried, what happened, what 'good' looks like. 'It doesn't work' is not context; screenshots and error text are.", "cost": "$0", "time": "5 min" },
+      { "title": "Specify the output format", "tool": "Any chat assistant", "how": "'Answer as: 1) verdict in one line, 2) why in 3 bullets, 3) what I should do next.' Format is half the usefulness.", "cost": "$0", "time": "5 min" },
+      { "title": "Iterate instead of restarting", "tool": "Any chat assistant", "how": "'Closer, but shorter and skip the history.' Conversation beats regeneration — the model learns what you want.", "cost": "$0", "time": "ongoing" },
+      { "title": "Keep a personal prompt library", "tool": "Notes file", "how": "Save your proven patterns. Six months later, the library IS your skill — and it's personal, uncopyable by anyone else.", "cost": "$0", "time": "5 min/week" }
+    ],
+    "mistakes": [
+      "One vague prompt then giving up. Bad answers are usually briefing failures.",
+      "Asking for 'the best'. Compared to what, for whom, on what budget? Specificity is everything.",
+      "Never asking AI to critique your prompt: 'what info do you wish I had given you?'"
+    ]
+  },
+  {
+    "id": "ai-music",
+    "title": "Make music with AI (background tracks to full songs)",
+    "level": "beginner",
+    "totalCost": "$0 to try",
+    "totalTime": "First track in ~1 hour",
+    "questionPatterns": [
+      "make music with ai",
+      "background music for videos",
+      "ai song",
+      "royalty free music",
+      "make a beat with ai",
+      "music for my content"
+    ],
+    "steps": [
+      { "title": "Decide: instrumental or vocal", "tool": "Your project needs", "how": "Instrumental for background (easier, safer to license). Vocals for actual songs (harder, more fun).", "cost": "$0", "time": "5 min" },
+      { "title": "Prompt like a music producer", "tool": "Any AI music tool", "how": "Genre + mood + instruments + tempo + use: 'chill lo-fi beat, nostalgic, soft piano, 75 bpm, background for study videos'.", "cost": "$0–10/mo", "time": "30 min" },
+      { "title": "Check the license before using", "tool": "The tool's terms", "how": "AI music tools differ wildly: some allow commercial use, some don't. Read before your video with 1M views has to come down.", "cost": "$0", "time": "15 min" },
+      { "title": "Mix at the right volume", "tool": "CapCut / any editor", "how": "Music sits UNDER voice: roughly -20dB below speech. If you can't hear every word, the mix is wrong.", "cost": "$0", "time": "15 min", "toolId": "capcut" }
+    ],
+    "mistakes": [
+      "Full blast music under voiceover. Mute test: if you notice the music more than the words, it's too loud.",
+      "Skipping license checks because 'it's AI'. AI-generated can still be license-restricted.",
+      "One generation and done. Generate 4–6, pick the one with the least weird artifacts."
+    ]
+  },
+  {
+    "id": "chat-with-your-docs",
+    "title": "Chat with your own documents (notes, PDFs, textbooks)",
+    "level": "beginner",
+    "totalCost": "$0 to start",
+    "totalTime": "30 minutes to set up",
+    "questionPatterns": [
+      "chat with my documents",
+      "chat with pdf",
+      "ask my notes questions",
+      "search my files with ai",
+      "private document ai",
+      "second brain with ai"
+    ],
+    "steps": [
+      { "title": "Start embarrassingly simple: paste it", "tool": "Any chat assistant", "how": "One document, one question. If it fits in the context window, pasting IS the technique — no setup needed.", "cost": "$0", "time": "5 min" },
+      { "title": "For many docs: use a document-chat tool", "tool": "NotebookLM or a document-chat app", "how": "Upload files, ask questions, get answers citing YOUR pages. Cited answers are the feature to look for.", "cost": "$0", "time": "15 min" },
+      { "title": "For private docs: go local", "tool": "Ollama + a local RAG tool", "how": "Sensitive stuff (contracts, medical, work docs) shouldn't go to random services. Local models keep data on your machine.", "cost": "$0", "time": "30 min", "guide": "run-ai-on-your-laptop", "toolId": "ollama" },
+      { "title": "Build the habit, not the system", "tool": "Your daily questions", "how": "'What did I decide about X?' works only if the docs go in as they happen. Input beats tooling.", "cost": "$0", "time": "ongoing" }
+    ],
+    "mistakes": [
+      "Building the perfect 'second brain' before asking a single question. Tool later, questions now.",
+      "Uploading sensitive documents to unvetted 'free PDF chat' sites. Privacy policy first, upload second.",
+      "Expecting magic on messy notes. AI answers from your docs inherit your chaos — clean input, clean answers."
     ]
   }
 ]
