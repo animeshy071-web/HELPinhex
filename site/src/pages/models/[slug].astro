@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import Badge from '../../components/Badge.astro';
 import KitButton from '../../components/KitButton.astro';
-import { getModels, getTerms } from '../../lib/load';
+import { getModels, getTerms, getPriceForFamily } from '../../lib/load';
 import { linkTerms } from '../../lib/format';
 
 export function getStaticPaths() {
@@ -11,6 +11,12 @@ export function getStaticPaths() {
 
 const { model } = Astro.props;
 const terms = getTerms();
+const livePrice = getPriceForFamily(model.family);
+const priceLine = livePrice
+  ? livePrice.free
+    ? 'free via OpenRouter right now'
+    : `~$${livePrice.promptPerM} in / ~$${livePrice.completionPerM} out per 1M tokens (live from OpenRouter)`
+  : null;
 ---
 
 <Base title={`${model.name} (${model.by}) · HELPINhex`} description={`${model.name} explained for beginners: strengths, weaknesses, access and best use.`}>
@@ -38,6 +44,13 @@ const terms = getTerms();
         <h3>Weaknesses</h3>
         <ul class="muted">{model.weaknesses.map((s) => <li set:html={linkTerms(s, terms)} />)}</ul>
         <h3>Pricing</h3>
+        {
+          priceLine ? (
+            <p>
+              <Badge tone="ok">{priceLine}</Badge>
+            </p>
+          ) : null
+        }
         <p class="muted small" set:html={linkTerms(model.pricingNote, terms)} />
         <h3>Where to use it</h3>
         <p class="muted small">{model.access.join(' · ')}</p>

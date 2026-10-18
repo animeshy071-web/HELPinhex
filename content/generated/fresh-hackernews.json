@@ -1,0 +1,42 @@
+{
+  "source": "hackernews",
+  "fetchedAt": "2026-10-17T11:21:29.784Z",
+  "items": [
+    {
+      "kind": "launch",
+      "source": "hackernews",
+      "title": "Show HN: CiteLadder – open-source AI search visibility tracker",
+      "url": "https://news.ycombinator.com/item?id=50129168",
+      "detail": "https://github.com/abhij1306/CiteLadder",
+      "stats": "▲ 1 · 💬 0",
+      "when": "2026-10-17T08:49:44Z"
+    },
+    {
+      "kind": "launch",
+      "source": "hackernews",
+      "title": "Show HN: Sys2txt – transcribe system audio to text in the CLI with a local LLM",
+      "url": "https://news.ycombinator.com/item?id=50129017",
+      "detail": "https://Joe-Heffer.github.io/sys2txt/",
+      "stats": "▲ 3 · 💬 0",
+      "when": "2026-10-17T08:14:12Z"
+    },
+    {
+      "kind": "launch",
+      "source": "hackernews",
+      "title": "Show HN: Agentfork – Replay an LLM agent from any step and test fixes",
+      "url": "https://news.ycombinator.com/item?id=50128913",
+      "detail": "https://github.com/bimal1023/agentfork",
+      "stats": "▲ 1 · 💬 0",
+      "when": "2026-10-17T07:53:40Z"
+    },
+    {
+      "kind": "launch",
+      "source": "hackernews",
+      "title": "Show HN: Llmspeed – feel how fast a local LLM runs before you buy the hardware",
+      "url": "https://news.ycombinator.com/item?id=50127979",
+      "detail": "https://llmspeed.dev/",
+      "stats": "▲ 94 · 💬 38",
+      "when": "2026-10-17T04:36:53Z"
+    }
+  ]
+}

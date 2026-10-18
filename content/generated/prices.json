@@ -1,0 +1,3766 @@
+{
+  "source": "openrouter",
+  "fetchedAt": "2026-10-17T11:21:29.915Z",
+  "models": [
+    {
+      "id": "cohere/north-mini-code:free",
+      "name": "Cohere: North Mini Code (free)",
+      "contextLength": 256000,
+      "promptPerM": 0,
+      "completionPerM": 0,
+      "free": true
+    },
+    {
+      "id": "dots-studio/dots-3-note-preview:free",
+      "name": "Dots Studio: Dots3-Note Preview (free)",
+      "contextLength": 512000,
+      "promptPerM": 0,
+      "completionPerM": 0,
+      "free": true
+    },
+    {
+      "id": "google/gemma-4-26b-a4b-it:free",
+      "name": "Google: Gemma 4 26B A4B  (free)",
+      "contextLength": 262144,
+      "promptPerM": 0,
+      "completionPerM": 0,
+      "free": true
+    },
+    {
+      "id": "google/gemma-4-31b-it:free",
+      "name": "Google: Gemma 4 31B (free)",
+      "contextLength": 262144,
+      "promptPerM": 0,
+      "completionPerM": 0,
+      "free": true
+    },
+    {
+      "id": "google/lyria-3-clip-preview",
+      "name": "Google: Lyria 3 Clip Preview",
+      "contextLength": 1048576,
+      "promptPerM": 0,
+      "completionPerM": 0,
+      "free": true
+    },
+    {
+      "id": "google/lyria-3-pro-preview",
+      "name": "Google: Lyria 3 Pro Preview",
+      "contextLength": 1048576,
+      "promptPerM": 0,
+      "completionPerM": 0,
+      "free": true
+    },
+    {
+      "id": "liquid/lfm-2.5-2.6b:free",
+      "name": "LiquidAI: LFM2.5-2.6B (free)",
+      "contextLength": 65536,
+      "promptPerM": 0,
+      "completionPerM": 0,
+      "free": true
+    },
+    {
+      "id": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+      "name": "NVIDIA: Nemotron 3 Nano Omni (free)",
+      "contextLength": 256000,
+      "promptPerM": 0,
+      "completionPerM": 0,
+      "free": true
+    },
+    {
+      "id": "nvidia/nemotron-3-super-120b-a12b:free",
+      "name": "NVIDIA: Nemotron 3 Super (free)",
+      "contextLength": 262144,
+      "promptPerM": 0,
+      "completionPerM": 0,
+      "free": true
+    },
+    {
+      "id": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "name": "NVIDIA: Nemotron 3 Ultra (free)",
+      "contextLength": 1000000,
+      "promptPerM": 0,
+      "completionPerM": 0,
+      "free": true
+    },
+    {
+      "id": "nvidia/nemotron-3.5-content-safety:free",
+      "name": "NVIDIA: Nemotron 3.5 Content Safety (free)",
+      "contextLength": 128000,
+      "promptPerM": 0,
+      "completionPerM": 0,
+      "free": true
+    },
+    {
+      "id": "nvidia/nemotron-3.5-lightning:free",
+      "name": "NVIDIA: Nemotron 3.5 Lightning (free)",
+      "contextLength": 1000000,
+      "promptPerM": 0,
+      "completionPerM": 0,
+      "free": true
+    },
+    {
+      "id": "nvidia/nemotron-3.5-super-vl:free",
+      "name": "NVIDIA: Nemotron 3.5 Super VL (free)",
+      "contextLength": 1000000,
+      "promptPerM": 0,
+      "completionPerM": 0,
+      "free": true
+    },
+    {
+      "id": "openrouter/free",
+      "name": "Free Models Router",
+      "contextLength": 200000,
+      "promptPerM": 0,
+      "completionPerM": 0,
+      "free": true
+    },
+    {
+      "id": "poolside/laguna-s-2.1:free",
+      "name": "Poolside: Laguna S 2.1 (free)",
+      "contextLength": 262144,
+      "promptPerM": 0,
+      "completionPerM": 0,
+      "free": true
+    },
+    {
+      "id": "poolside/laguna-xs-2.1:free",
+      "name": "Poolside: Laguna XS 2.1 (free)",
+      "contextLength": 262144,
+      "promptPerM": 0,
+      "completionPerM": 0,
+      "free": true
+    },
+    {
+      "id": "thinkingmachines/inkling-small:free",
+      "name": "Thinking Machines: Inkling Small (free)",
+      "contextLength": 1048576,
+      "promptPerM": 0,
+      "completionPerM": 0,
+      "free": true
+    },
+    {
+      "id": "thinkingmachines/inkling:free",
+      "name": "Thinking Machines: Inkling (free)",
+      "contextLength": 1048576,
+      "promptPerM": 0,
+      "completionPerM": 0,
+      "free": true
+    },
+    {
+      "id": "xingchen-agi/xing4.0-29b-a4b:free",
+      "name": "XingChen: Xing4.0 29B A4B (free)",
+      "contextLength": 262144,
+      "promptPerM": 0,
+      "completionPerM": 0,
+      "free": true
+    },
+    {
+      "id": "~anthropic/claude-fable-latest",
+      "name": "Anthropic: Claude Fable Latest",
+      "contextLength": 1000000,
+      "promptPerM": 10,
+      "completionPerM": 50,
+      "free": false
+    },
+    {
+      "id": "~anthropic/claude-haiku-latest",
+      "name": "Anthropic: Claude Haiku Latest",
+      "contextLength": 1000000,
+      "promptPerM": 0.1,
+      "completionPerM": 0.5,
+      "free": false
+    },
+    {
+      "id": "~anthropic/claude-opus-latest",
+      "name": "Anthropic: Claude Opus Latest",
+      "contextLength": 1000000,
+      "promptPerM": 4,
+      "completionPerM": 20,
+      "free": false
+    },
+    {
+      "id": "~anthropic/claude-sonnet-latest",
+      "name": "Anthropic: Claude Sonnet Latest",
+      "contextLength": 1000000,
+      "promptPerM": 2,
+      "completionPerM": 10,
+      "free": false
+    },
+    {
+      "id": "~deepseek/deepseek-flash-latest",
+      "name": "DeepSeek: DeepSeek Flash Latest",
+      "contextLength": 1048576,
+      "promptPerM": 0.1,
+      "completionPerM": 0.5,
+      "free": false
+    },
+    {
+      "id": "~deepseek/deepseek-pro-latest",
+      "name": "DeepSeek: DeepSeek Pro Latest",
+      "contextLength": 1048576,
+      "promptPerM": 0.1233,
+      "completionPerM": 0.3831,
+      "free": false
+    },
+    {
+      "id": "~deepseek/deepseek-v4-flash-latest",
+      "name": "DeepSeek: DeepSeek V4 Flash Latest",
+      "contextLength": 1048576,
+      "promptPerM": 0.0071,
+      "completionPerM": 0.2829,
+      "free": false
+    },
+    {
+      "id": "~google/gemini-flash-latest",
+      "name": "Google: Gemini Flash Latest",
+      "contextLength": 1048576,
+      "promptPerM": 0.75,
+      "completionPerM": 3.75,
+      "free": false
+    },
+    {
+      "id": "~google/gemini-pro-latest",
+      "name": "Google: Gemini Pro Latest",
+      "contextLength": 1048576,
+      "promptPerM": 2,
+      "completionPerM": 10,
+      "free": false
+    },
+    {
+      "id": "~moonshotai/kimi-latest",
+      "name": "MoonshotAI: Kimi Latest",
+      "contextLength": 1048576,
+      "promptPerM": 0.27,
+      "completionPerM": 14,
+      "free": false
+    },
+    {
+      "id": "~openai/gpt-astra-latest",
+      "name": "OpenAI: GPT Astra Latest",
+      "contextLength": 1050000,
+      "promptPerM": 10,
+      "completionPerM": 50,
+      "free": false
+    },
+    {
+      "id": "~openai/gpt-luna-latest",
+      "name": "OpenAI: GPT Luna Latest",
+      "contextLength": 1050000,
+      "promptPerM": 0.1,
+      "completionPerM": 0.5,
+      "free": false
+    },
+    {
+      "id": "~openai/gpt-mini-latest",
+      "name": "OpenAI: GPT Mini Latest",
+      "contextLength": 400000,
+      "promptPerM": 0.75,
+      "completionPerM": 4.5,
+      "free": false
+    },
+    {
+      "id": "~openai/gpt-sol-latest",
+      "name": "OpenAI: GPT Sol Latest",
+      "contextLength": 1050000,
+      "promptPerM": 2,
+      "completionPerM": 10,
+      "free": false
+    },
+    {
+      "id": "~openai/gpt-terra-latest",
+      "name": "OpenAI: GPT Terra Latest",
+      "contextLength": 1050000,
+      "promptPerM": 2,
+      "completionPerM": 12,
+      "free": false
+    },
+    {
+      "id": "~unbiased/pareto-latest",
+      "name": "Pareto Latest",
+      "contextLength": 262144,
+      "promptPerM": 2.5,
+      "completionPerM": 7.5,
+      "free": false
+    },
+    {
+      "id": "~x-ai/grok-latest",
+      "name": "xAI: Grok Latest",
+      "contextLength": 500000,
+      "promptPerM": 2,
+      "completionPerM": 6,
+      "free": false
+    },
+    {
+      "id": "~z-ai/glm-flash-latest",
+      "name": "Z.ai: GLM Flash Latest",
+      "contextLength": 1048576,
+      "promptPerM": 0.0215,
+      "completionPerM": 0.3966,
+      "free": false
+    },
+    {
+      "id": "~z-ai/glm-latest",
+      "name": "Z.ai: GLM Latest",
+      "contextLength": 1048576,
+      "promptPerM": 0.069,
+      "completionPerM": 19.8996,
+      "free": false
+    },
+    {
+      "id": "aion-labs/aion-2.0",
+      "name": "AionLabs: Aion-2.0",
+      "contextLength": 131072,
+      "promptPerM": 0.8,
+      "completionPerM": 1.6,
+      "free": false
+    },
+    {
+      "id": "aion-labs/aion-3.0",
+      "name": "AionLabs: Aion-3.0",
+      "contextLength": 131072,
+      "promptPerM": 3,
+      "completionPerM": 6,
+      "free": false
+    },
+    {
+      "id": "aion-labs/aion-3.0-mini",
+      "name": "AionLabs: Aion-3.0-Mini",
+      "contextLength": 131072,
+      "promptPerM": 0.7,
+      "completionPerM": 1.4,
+      "free": false
+    },
+    {
+      "id": "aion-labs/aion-3.5",
+      "name": "AionLabs: Aion 3.5",
+      "contextLength": 262144,
+      "promptPerM": 3,
+      "completionPerM": 6,
+      "free": false
+    },
+    {
+      "id": "aion-labs/aion-3.5-mini",
+      "name": "AionLabs: Aion 3.5 Mini",
+      "contextLength": 262144,
+      "promptPerM": 0.7,
+      "completionPerM": 1.4,
+      "free": false
+    },
+    {
+      "id": "aion-labs/aion-rp-llama-3.1-8b",
+      "name": "AionLabs: Aion-RP 1.0 (8B)",
+      "contextLength": 32768,
+      "promptPerM": 0.8,
+      "completionPerM": 1.6,
+      "free": false
+    },
+    {
+      "id": "amazon/nova-2-lite-v1",
+      "name": "Amazon: Nova 2 Lite",
+      "contextLength": 1000000,
+      "promptPerM": 0.3,
+      "completionPerM": 2.5,
+      "free": false
+    },
+    {
+      "id": "amazon/nova-lite-v1",
+      "name": "Amazon: Nova Lite 1.0",
+      "contextLength": 300000,
+      "promptPerM": 0.06,
+      "completionPerM": 0.24,
+      "free": false
+    },
+    {
+      "id": "amazon/nova-micro-v1",
+      "name": "Amazon: Nova Micro 1.0",
+      "contextLength": 128000,
+      "promptPerM": 0.035,
+      "completionPerM": 0.14,
+      "free": false
+    },
+    {
+      "id": "amazon/nova-premier-v1",
+      "name": "Amazon: Nova Premier 1.0",
+      "contextLength": 1000000,
+      "promptPerM": 2.5,
+      "completionPerM": 12.5,
+      "free": false
+    },
+    {
+      "id": "amazon/nova-pro-v1",
+      "name": "Amazon: Nova Pro 1.0",
+      "contextLength": 300000,
+      "promptPerM": 0.8,
+      "completionPerM": 3.2,
+      "free": false
+    },
+    {
+      "id": "anthracite-org/magnum-v4-72b",
+      "name": "Magnum v4 72B",
+      "contextLength": 32768,
+      "promptPerM": 2.5,
+      "completionPerM": 5,
+      "free": false
+    },
+    {
+      "id": "anthropic/claude-fable-5",
+      "name": "Anthropic: Claude Fable 5",
+      "contextLength": 1000000,
+      "promptPerM": 10,
+      "completionPerM": 50,
+      "free": false
+    },
+    {
+      "id": "anthropic/claude-fable-5:batch",
+      "name": "Anthropic: Claude Fable 5 (batch)",
+      "contextLength": 1000000,
+      "promptPerM": 5,
+      "completionPerM": 25,
+      "free": false
+    },
+    {
+      "id": "anthropic/claude-fable-5.1",
+      "name": "Anthropic: Claude Fable 5.1",
+      "contextLength": 1000000,
+      "promptPerM": 10,
+      "completionPerM": 50,
+      "free": false
+    },
+    {
+      "id": "anthropic/claude-fable-5.1:batch",
+      "name": "Anthropic: Claude Fable 5.1 (batch)",
+      "contextLength": 1000000,
+      "promptPerM": 5,
+      "completionPerM": 25,
+      "free": false
+    },
+    {
+      "id": "anthropic/claude-haiku-4.5",
+      "name": "Anthropic: Claude Haiku 4.5",
+      "contextLength": 200000,
+      "promptPerM": 1,
+      "completionPerM": 5,
+      "free": false
+    },
+    {
+      "id": "anthropic/claude-haiku-4.5:batch",
+      "name": "Anthropic: Claude Haiku 4.5 (batch)",
+      "contextLength": 200000,
+      "promptPerM": 0.5,
+      "completionPerM": 2.5,
+      "free": false
+    },
+    {
+      "id": "anthropic/claude-haiku-5.5",
+      "name": "Anthropic: Claude Haiku 5.5",
+      "contextLength": 1000000,
+      "promptPerM": 0.1,
+      "completionPerM": 0.5,
+      "free": false
+    },
+    {
+      "id": "anthropic/claude-haiku-5.5:batch",
+      "name": "Anthropic: Claude Haiku 5.5 (batch)",
+      "contextLength": 1000000,
+      "promptPerM": 0.05,
+      "completionPerM": 0.25,
+      "free": false
+    },
+    {
+      "id": "anthropic/claude-opus-4.1",
+      "name": "Anthropic: Claude Opus 4.1",
+      "contextLength": 200000,
+      "promptPerM": 15,
+      "completionPerM": 75,
+      "free": false
+    },
+    {
+      "id": "anthropic/claude-opus-4.1:batch",
+      "name": "Anthropic: Claude Opus 4.1 (batch)",
+      "contextLength": 200000,
+      "promptPerM": 7.5,
+      "completionPerM": 37.5,
+      "free": false
+    },
+    {
+      "id": "anthropic/claude-opus-4.5",
+      "name": "Anthropic: Claude Opus 4.5",
+      "contextLength": 200000,
+      "promptPerM": 5,
+      "completionPerM": 25,
+      "free": false
+    },
+    {
+      "id": "anthropic/claude-opus-4.5:batch",
+      "name": "Anthropic: Claude Opus 4.5 (batch)",
+      "contextLength": 200000,
+      "promptPerM": 2.5,
+      "completionPerM": 12.5,
+      "free": false
+    },
+    {
+      "id": "anthropic/claude-opus-4.6",
+      "name": "Anthropic: Claude Opus 4.6",
+      "contextLength": 1000000,
+      "promptPerM": 5,
+      "completionPerM": 25,
+      "free": false
+    },
+    {
+      "id": "anthropic/claude-opus-4.6:batch",
+      "name": "Anthropic: Claude Opus 4.6 (batch)",
+      "contextLength": 1000000,
+      "promptPerM": 2.5,
+      "completionPerM": 12.5,
+      "free": false
+    },
+    {
+      "id": "anthropic/claude-opus-4.7",
+      "name": "Anthropic: Claude Opus 4.7",
+      "contextLength": 1000000,
+      "promptPerM": 5,
+      "completionPerM": 25,
+      "free": false
+    },
+    {
+      "id": "anthropic/claude-opus-4.7:batch",
+      "name": "Anthropic: Claude Opus 4.7 (batch)",
+      "contextLength": 1000000,
+      "promptPerM": 2.5,
+      "completionPerM": 12.5,
+      "free": false
+    },
+    {
+      "id": "anthropic/claude-opus-4.8",
+      "name": "Anthropic: Claude Opus 4.8",
+      "contextLength": 1000000,
+      "promptPerM": 5,
+      "completionPerM": 25,
+      "free": false
+    },
+    {
+      "id": "anthropic/claude-opus-4.8:batch",
+      "name": "Anthropic: Claude Opus 4.8 (batch)",
+      "contextLength": 1000000,
+      "promptPerM": 2.5,
+      "completionPerM": 12.5,
+      "free": false
+    },
+    {
+      "id": "anthropic/claude-opus-5",
+      "name": "Anthropic: Claude Opus 5",
+      "contextLength": 1000000,
+      "promptPerM": 5,
+      "completionPerM": 25,
+      "free": false
+    },
+    {
+      "id": "anthropic/claude-opus-5:batch",
+      "name": "Anthropic: Claude Opus 5 (batch)",
+      "contextLength": 1000000,
+      "promptPerM": 2.5,
+      "completionPerM": 12.5,
+      "free": false
+    },
+    {
+      "id": "anthropic/claude-opus-5.5",
+      "name": "Anthropic: Claude Opus 5.5",
+      "contextLength": 1000000,
+      "promptPerM": 4,
+      "completionPerM": 20,
+      "free": false
+    },
+    {
+      "id": "anthropic/claude-opus-5.5:batch",
+      "name": "Anthropic: Claude Opus 5.5 (batch)",
+      "contextLength": 1000000,
+      "promptPerM": 2,
+      "completionPerM": 10,
+      "free": false
+    },
+    {
+      "id": "anthropic/claude-sonnet-4.5",
+      "name": "Anthropic: Claude Sonnet 4.5",
+      "contextLength": 1000000,
+      "promptPerM": 3,
+      "completionPerM": 15,
+      "free": false
+    },
+    {
+      "id": "anthropic/claude-sonnet-4.5:batch",
+      "name": "Anthropic: Claude Sonnet 4.5 (batch)",
+      "contextLength": 1000000,
+      "promptPerM": 1.5,
+      "completionPerM": 7.5,
+      "free": false
+    },
+    {
+      "id": "anthropic/claude-sonnet-4.6",
+      "name": "Anthropic: Claude Sonnet 4.6",
+      "contextLength": 1000000,
+      "promptPerM": 3,
+      "completionPerM": 15,
+      "free": false
+    },
+    {
+      "id": "anthropic/claude-sonnet-4.6:batch",
+      "name": "Anthropic: Claude Sonnet 4.6 (batch)",
+      "contextLength": 1000000,
+      "promptPerM": 1.5,
+      "completionPerM": 7.5,
+      "free": false
+    },
+    {
+      "id": "anthropic/claude-sonnet-5",
+      "name": "Anthropic: Claude Sonnet 5",
+      "contextLength": 1000000,
+      "promptPerM": 2,
+      "completionPerM": 10,
+      "free": false
+    },
+    {
+      "id": "anthropic/claude-sonnet-5:batch",
+      "name": "Anthropic: Claude Sonnet 5 (batch)",
+      "contextLength": 1000000,
+      "promptPerM": 1,
+      "completionPerM": 5,
+      "free": false
+    },
+    {
+      "id": "anthropic/claude-sonnet-5.5",
+      "name": "Anthropic: Claude Sonnet 5.5",
+      "contextLength": 1000000,
+      "promptPerM": 2,
+      "completionPerM": 10,
+      "free": false
+    },
+    {
+      "id": "anthropic/claude-sonnet-5.5:batch",
+      "name": "Anthropic: Claude Sonnet 5.5 (batch)",
+      "contextLength": 1000000,
+      "promptPerM": 1,
+      "completionPerM": 5,
+      "free": false
+    },
+    {
+      "id": "arcee-ai/trinity-large-thinking",
+      "name": "Arcee AI: Trinity Large Thinking",
+      "contextLength": 262144,
+      "promptPerM": 0.25,
+      "completionPerM": 0.8,
+      "free": false
+    },
+    {
+      "id": "bytedance-seed/seed-1.6",
+      "name": "ByteDance Seed: Seed 1.6",
+      "contextLength": 262144,
+      "promptPerM": 0.25,
+      "completionPerM": 2,
+      "free": false
+    },
+    {
+      "id": "bytedance-seed/seed-1.6-flash",
+      "name": "ByteDance Seed: Seed 1.6 Flash",
+      "contextLength": 262144,
+      "promptPerM": 0.075,
+      "completionPerM": 0.3,
+      "free": false
+    },
+    {
+      "id": "bytedance-seed/seed-2-1-turbo",
+      "name": "ByteDance Seed: Seed 2.1 Turbo",
+      "contextLength": 262144,
+      "promptPerM": 0.5,
+      "completionPerM": 2.5,
+      "free": false
+    },
+    {
+      "id": "bytedance-seed/seed-2.0-code",
+      "name": "ByteDance Seed: Seed-2.0-Code",
+      "contextLength": 262144,
+      "promptPerM": 0.5,
+      "completionPerM": 3,
+      "free": false
+    },
+    {
+      "id": "bytedance-seed/seed-2.0-lite",
+      "name": "ByteDance Seed: Seed-2.0-Lite",
+      "contextLength": 262144,
+      "promptPerM": 0.25,
+      "completionPerM": 2,
+      "free": false
+    },
+    {
+      "id": "bytedance-seed/seed-2.0-mini",
+      "name": "ByteDance Seed: Seed-2.0-Mini",
+      "contextLength": 262144,
+      "promptPerM": 0.1,
+      "completionPerM": 0.4,
+      "free": false
+    },
+    {
+      "id": "bytedance/ui-tars-1.5-7b",
+      "name": "ByteDance: UI-TARS 7B ",
+      "contextLength": 128000,
+      "promptPerM": 0.1,
+      "completionPerM": 0.2,
+      "free": false
+    },
+    {
+      "id": "cognitivecomputations/dolphin-mistral-24b-venice-edition",
+      "name": "Venice: Uncensored",
+      "contextLength": 128000,
+      "promptPerM": 0.2,
+      "completionPerM": 0.9,
+      "free": false
+    },
+    {
+      "id": "cohere/command-a",
+      "name": "Cohere: Command A",
+      "contextLength": 256000,
+      "promptPerM": 2.5,
+      "completionPerM": 10,
+      "free": false
+    },
+    {
+      "id": "cohere/command-a-plus",
+      "name": "Cohere: Command A+",
+      "contextLength": 192000,
+      "promptPerM": 0.3,
+      "completionPerM": 1.5,
+      "free": false
+    },
+    {
+      "id": "cohere/command-r-08-2024",
+      "name": "Cohere: Command R (08-2024)",
+      "contextLength": 128000,
+      "promptPerM": 0.15,
+      "completionPerM": 0.6,
+      "free": false
+    },
+    {
+      "id": "cohere/command-r-plus-08-2024",
+      "name": "Cohere: Command R+ (08-2024)",
+      "contextLength": 128000,
+      "promptPerM": 2.5,
+      "completionPerM": 10,
+      "free": false
+    },
+    {
+      "id": "cohere/command-r7b-12-2024",
+      "name": "Cohere: Command R7B (12-2024)",
+      "contextLength": 128000,
+      "promptPerM": 0.0375,
+      "completionPerM": 0.15,
+      "free": false
+    },
+    {
+      "id": "deepseek/deepseek-chat",
+      "name": "DeepSeek: DeepSeek V3",
+      "contextLength": 163840,
+      "promptPerM": 0.32,
+      "completionPerM": 0.89,
+      "free": false
+    },
+    {
+      "id": "deepseek/deepseek-chat-v3-0324",
+      "name": "DeepSeek: DeepSeek V3 0324",
+      "contextLength": 163840,
+      "promptPerM": 0.29,
+      "completionPerM": 1.14,
+      "free": false
+    },
+    {
+      "id": "deepseek/deepseek-chat-v3.1",
+      "name": "DeepSeek: DeepSeek V3.1",
+      "contextLength": 163840,
+      "promptPerM": 0.25,
+      "completionPerM": 0.95,
+      "free": false
+    },
+    {
+      "id": "deepseek/deepseek-r1",
+      "name": "DeepSeek: R1",
+      "contextLength": 64000,
+      "promptPerM": 0.7,
+      "completionPerM": 2.5,
+      "free": false
+    },
+    {
+      "id": "deepseek/deepseek-r1-0528",
+      "name": "DeepSeek: R1 0528",
+      "contextLength": 163840,
+      "promptPerM": 0.5,
+      "completionPerM": 2.15,
+      "free": false
+    },
+    {
+      "id": "deepseek/deepseek-v3.1-terminus",
+      "name": "DeepSeek: DeepSeek V3.1 Terminus",
+      "contextLength": 163840,
+      "promptPerM": 0.27,
+      "completionPerM": 1,
+      "free": false
+    },
+    {
+      "id": "deepseek/deepseek-v3.2",
+      "name": "DeepSeek: DeepSeek V3.2",
+      "contextLength": 163840,
+      "promptPerM": 0.28,
+      "completionPerM": 0.42,
+      "free": false
+    },
+    {
+      "id": "deepseek/deepseek-v3.2-exp",
+      "name": "DeepSeek: DeepSeek V3.2 Exp",
+      "contextLength": 163840,
+      "promptPerM": 0.27,
+      "completionPerM": 0.41,
+      "free": false
+    },
+    {
+      "id": "deepseek/deepseek-v4-flash",
+      "name": "DeepSeek: DeepSeek V4 Flash 0423",
+      "contextLength": 1048576,
+      "promptPerM": 0.091,
+      "completionPerM": 0.182,
+      "free": false
+    },
+    {
+      "id": "deepseek/deepseek-v4-flash-0731",
+      "name": "DeepSeek: DeepSeek V4 Flash 0731",
+      "contextLength": 1048576,
+      "promptPerM": 0.0071,
+      "completionPerM": 0.2829,
+      "free": false
+    },
+    {
+      "id": "deepseek/deepseek-v4-flash-vision-exp",
+      "name": "DeepSeek: DeepSeek V4 Flash Vision Exp",
+      "contextLength": 1048576,
+      "promptPerM": 0.2156,
+      "completionPerM": 0.6468,
+      "free": false
+    },
+    {
+      "id": "deepseek/deepseek-v4-pro",
+      "name": "DeepSeek: DeepSeek V4 Pro 0423",
+      "contextLength": 1048576,
+      "promptPerM": 0.2088,
+      "completionPerM": 0.4176,
+      "free": false
+    },
+    {
+      "id": "deepseek/deepseek-v4-pro-0813",
+      "name": "DeepSeek: DeepSeek V4 Pro 0813",
+      "contextLength": 1048576,
+      "promptPerM": 0.66,
+      "completionPerM": 1.98,
+      "free": false
+    },
+    {
+      "id": "deepseek/deepseek-v4.1-flash",
+      "name": "DeepSeek: DeepSeek V4.1 Flash",
+      "contextLength": 1048576,
+      "promptPerM": 0.0138,
+      "completionPerM": 0.594,
+      "free": false
+    },
+    {
+      "id": "deepseek/deepseek-v4.1-flash-1017",
+      "name": "DeepSeek: DeepSeek V4.1 Flash 1017",
+      "contextLength": 1048576,
+      "promptPerM": 0.15,
+      "completionPerM": 0.6,
+      "free": false
+    },
+    {
+      "id": "deepseek/deepseek-v4.1-flash:batch",
+      "name": "DeepSeek: DeepSeek V4.1 Flash (batch)",
+      "contextLength": 1048576,
+      "promptPerM": 0.05,
+      "completionPerM": 0.15,
+      "free": false
+    },
+    {
+      "id": "elorian/glimpse",
+      "name": "Elorian: Glimpse",
+      "contextLength": 262144,
+      "promptPerM": 0.6,
+      "completionPerM": 3,
+      "free": false
+    },
+    {
+      "id": "fireworks/ember-1",
+      "name": "Fireworks: Ember-1",
+      "contextLength": 1048576,
+      "promptPerM": 3,
+      "completionPerM": 15,
+      "free": false
+    },
+    {
+      "id": "google/gemini-2.5-flash",
+      "name": "Google: Gemini 2.5 Flash",
+      "contextLength": 1048576,
+      "promptPerM": 0.3,
+      "completionPerM": 2.5,
+      "free": false
+    },
+    {
+      "id": "google/gemini-2.5-flash-image",
+      "name": "Google: Nano Banana (Gemini 2.5 Flash Image)",
+      "contextLength": 32768,
+      "promptPerM": 0.3,
+      "completionPerM": 2.5,
+      "free": false
+    },
+    {
+      "id": "google/gemini-2.5-flash-lite",
+      "name": "Google: Gemini 2.5 Flash Lite",
+      "contextLength": 1048576,
+      "promptPerM": 0.1,
+      "completionPerM": 0.4,
+      "free": false
+    },
+    {
+      "id": "google/gemini-2.5-flash-lite:batch",
+      "name": "Google: Gemini 2.5 Flash Lite (batch)",
+      "contextLength": 1048576,
+      "promptPerM": 0.05,
+      "completionPerM": 0.2,
+      "free": false
+    },
+    {
+      "id": "google/gemini-2.5-flash:batch",
+      "name": "Google: Gemini 2.5 Flash (batch)",
+      "contextLength": 1048576,
+      "promptPerM": 0.15,
+      "completionPerM": 1.25,
+      "free": false
+    },
+    {
+      "id": "google/gemini-2.5-pro",
+      "name": "Google: Gemini 2.5 Pro",
+      "contextLength": 1048576,
+      "promptPerM": 1.25,
+      "completionPerM": 10,
+      "free": false
+    },
+    {
+      "id": "google/gemini-2.5-pro-preview",
+      "name": "Google: Gemini 2.5 Pro Preview 06-05",
+      "contextLength": 1048576,
+      "promptPerM": 1.25,
+      "completionPerM": 10,
+      "free": false
+    },
+    {
+      "id": "google/gemini-2.5-pro:batch",
+      "name": "Google: Gemini 2.5 Pro (batch)",
+      "contextLength": 1048576,
+      "promptPerM": 0.625,
+      "completionPerM": 5,
+      "free": false
+    },
+    {
+      "id": "google/gemini-3-flash-preview",
+      "name": "Google: Gemini 3 Flash Preview",
+      "contextLength": 1048576,
+      "promptPerM": 0.5,
+      "completionPerM": 3,
+      "free": false
+    },
+    {
+      "id": "google/gemini-3-flash-preview:batch",
+      "name": "Google: Gemini 3 Flash Preview (batch)",
+      "contextLength": 1048576,
+      "promptPerM": 0.25,
+      "completionPerM": 1.5,
+      "free": false
+    },
+    {
+      "id": "google/gemini-3-pro-image",
+      "name": "Google: Nano Banana Pro (Gemini 3 Pro Image)",
+      "contextLength": 131072,
+      "promptPerM": 2,
+      "completionPerM": 12,
+      "free": false
+    },
+    {
+      "id": "google/gemini-3-pro-image-preview",
+      "name": "Google: Nano Banana Pro (Gemini 3 Pro Image Preview)",
+      "contextLength": 65536,
+      "promptPerM": 2,
+      "completionPerM": 12,
+      "free": false
+    },
+    {
+      "id": "google/gemini-3.1-flash-image",
+      "name": "Google: Nano Banana 2 (Gemini 3.1 Flash Image)",
+      "contextLength": 131072,
+      "promptPerM": 0.5,
+      "completionPerM": 3,
+      "free": false
+    },
+    {
+      "id": "google/gemini-3.1-flash-image-preview",
+      "name": "Google: Nano Banana 2 (Gemini 3.1 Flash Image Preview)",
+      "contextLength": 65536,
+      "promptPerM": 0.5,
+      "completionPerM": 3,
+      "free": false
+    },
+    {
+      "id": "google/gemini-3.1-flash-lite",
+      "name": "Google: Gemini 3.1 Flash Lite",
+      "contextLength": 1048576,
+      "promptPerM": 0.25,
+      "completionPerM": 1.5,
+      "free": false
+    },
+    {
+      "id": "google/gemini-3.1-flash-lite-image",
+      "name": "Google: Nano Banana 2 Lite (Gemini 3.1 Flash Lite Image)",
+      "contextLength": 65536,
+      "promptPerM": 0.25,
+      "completionPerM": 1.5,
+      "free": false
+    },
+    {
+      "id": "google/gemini-3.1-flash-lite-preview",
+      "name": "Google: Gemini 3.1 Flash Lite Preview",
+      "contextLength": 1048576,
+      "promptPerM": 0.25,
+      "completionPerM": 1.5,
+      "free": false
+    },
+    {
+      "id": "google/gemini-3.1-flash-lite:batch",
+      "name": "Google: Gemini 3.1 Flash Lite (batch)",
+      "contextLength": 1048576,
+      "promptPerM": 0.125,
+      "completionPerM": 0.75,
+      "free": false
+    },
+    {
+      "id": "google/gemini-3.1-pro-preview",
+      "name": "Google: Gemini 3.1 Pro Preview",
+      "contextLength": 1048576,
+      "promptPerM": 2,
+      "completionPerM": 12,
+      "free": false
+    },
+    {
+      "id": "google/gemini-3.1-pro-preview-customtools",
+      "name": "Google: Gemini 3.1 Pro Preview Custom Tools",
+      "contextLength": 1048576,
+      "promptPerM": 2,
+      "completionPerM": 12,
+      "free": false
+    },
+    {
+      "id": "google/gemini-3.1-pro-preview:batch",
+      "name": "Google: Gemini 3.1 Pro Preview (batch)",
+      "contextLength": 1048576,
+      "promptPerM": 1,
+      "completionPerM": 6,
+      "free": false
+    },
+    {
+      "id": "google/gemini-3.5-flash",
+      "name": "Google: Gemini 3.5 Flash",
+      "contextLength": 1048576,
+      "promptPerM": 1.5,
+      "completionPerM": 9,
+      "free": false
+    },
+    {
+      "id": "google/gemini-3.5-flash-lite",
+      "name": "Google: Gemini 3.5 Flash Lite",
+      "contextLength": 1048576,
+      "promptPerM": 0.3,
+      "completionPerM": 2.5,
+      "free": false
+    },
+    {
+      "id": "google/gemini-3.5-flash-lite:batch",
+      "name": "Google: Gemini 3.5 Flash Lite (batch)",
+      "contextLength": 1048576,
+      "promptPerM": 0.15,
+      "completionPerM": 1.25,
+      "free": false
+    },
+    {
+      "id": "google/gemini-3.5-flash:batch",
+      "name": "Google: Gemini 3.5 Flash (batch)",
+      "contextLength": 1048576,
+      "promptPerM": 0.75,
+      "completionPerM": 4.5,
+      "free": false
+    },
+    {
+      "id": "google/gemini-3.6-flash",
+      "name": "Google: Gemini 3.6 Flash",
+      "contextLength": 1048576,
+      "promptPerM": 0.75,
+      "completionPerM": 3.75,
+      "free": false
+    },
+    {
+      "id": "google/gemini-3.6-flash:batch",
+      "name": "Google: Gemini 3.6 Flash (batch)",
+      "contextLength": 1048576,
+      "promptPerM": 0.375,
+      "completionPerM": 1.875,
+      "free": false
+    },
+    {
+      "id": "google/gemini-3.7-flash",
+      "name": "Google: Gemini 3.7 Flash",
+      "contextLength": 1048576,
+      "promptPerM": 0.75,
+      "completionPerM": 3.75,
+      "free": false
+    },
+    {
+      "id": "google/gemini-3.7-flash:batch",
+      "name": "Google: Gemini 3.7 Flash (batch)",
+      "contextLength": 1048576,
+      "promptPerM": 0.375,
+      "completionPerM": 1.875,
+      "free": false
+    },
+    {
+      "id": "google/gemini-3.8-flash",
+      "name": "Google: Gemini 3.8 Flash",
+      "contextLength": 1048576,
+      "promptPerM": 0.825,
+      "completionPerM": 4.125,
+      "free": false
+    },
+    {
+      "id": "google/gemini-3.8-flash:batch",
+      "name": "Google: Gemini 3.8 Flash (batch)",
+      "contextLength": 1048576,
+      "promptPerM": 0.375,
+      "completionPerM": 1.875,
+      "free": false
+    },
+    {
+      "id": "google/gemini-4-argon",
+      "name": "Google: Gemini 4 Argon",
+      "contextLength": 1048576,
+      "promptPerM": 2,
+      "completionPerM": 10,
+      "free": false
+    },
+    {
+      "id": "google/gemini-4-argon:batch",
+      "name": "Google: Gemini 4 Argon (batch)",
+      "contextLength": 1048576,
+      "promptPerM": 1,
+      "completionPerM": 5,
+      "free": false
+    },
+    {
+      "id": "google/gemini-nano-banana-2.1",
+      "name": "Google: Nano Banana 2.1",
+      "contextLength": 65536,
+      "promptPerM": 1.5,
+      "completionPerM": 7.5,
+      "free": false
+    },
+    {
+      "id": "google/gemma-2-27b-it",
+      "name": "Google: Gemma 2 27B",
+      "contextLength": 8192,
+      "promptPerM": 0.65,
+      "completionPerM": 0.65,
+      "free": false
+    },
+    {
+      "id": "google/gemma-3-12b-it",
+      "name": "Google: Gemma 3 12B",
+      "contextLength": 131072,
+      "promptPerM": 0.05,
+      "completionPerM": 0.15,
+      "free": false
+    },
+    {
+      "id": "google/gemma-3-27b-it",
+      "name": "Google: Gemma 3 27B",
+      "contextLength": 131072,
+      "promptPerM": 0.08,
+      "completionPerM": 0.45,
+      "free": false
+    },
+    {
+      "id": "google/gemma-3-4b-it",
+      "name": "Google: Gemma 3 4B",
+      "contextLength": 131072,
+      "promptPerM": 0.05,
+      "completionPerM": 0.1,
+      "free": false
+    },
+    {
+      "id": "google/gemma-4-26b-a4b-it",
+      "name": "Google: Gemma 4 26B A4B ",
+      "contextLength": 262144,
+      "promptPerM": 0.0675,
+      "completionPerM": 0.225,
+      "free": false
+    },
+    {
+      "id": "google/gemma-4-31b-it",
+      "name": "Google: Gemma 4 31B",
+      "contextLength": 262144,
+      "promptPerM": 0.2,
+      "completionPerM": 0.4,
+      "free": false
+    },
+    {
+      "id": "gryphe/mythomax-l2-13b",
+      "name": "MythoMax 13B",
+      "contextLength": 8192,
+      "promptPerM": 0.08,
+      "completionPerM": 0.11,
+      "free": false
+    },
+    {
+      "id": "ibm-granite/granite-4.0-h-micro",
+      "name": "IBM: Granite 4.0 Micro",
+      "contextLength": 131000,
+      "promptPerM": 0.017,
+      "completionPerM": 0.112,
+      "free": false
+    },
+    {
+      "id": "ibm-granite/granite-4.2-8b",
+      "name": "IBM: Granite 4.2 8B",
+      "contextLength": 131072,
+      "promptPerM": 0.06,
+      "completionPerM": 0.25,
+      "free": false
+    },
+    {
+      "id": "inception/mercury-2",
+      "name": "Inception: Mercury 2",
+      "contextLength": 128000,
+      "promptPerM": 0.25,
+      "completionPerM": 0.75,
+      "free": false
+    },
+    {
+      "id": "inception/mercury-2.5",
+      "name": "Inception: Mercury 2.5",
+      "contextLength": 260000,
+      "promptPerM": 0.04,
+      "completionPerM": 0.15,
+      "free": false
+    },
+    {
+      "id": "inclusionai/ling-3.0-flash",
+      "name": "inclusionAI: Ling 3.0 Flash",
+      "contextLength": 262144,
+      "promptPerM": 0.021,
+      "completionPerM": 0.063,
+      "free": false
+    },
+    {
+      "id": "inclusionai/ling-3.0-flash-vl",
+      "name": "inclusionAI: Ling 3.0 Flash VL",
+      "contextLength": 131072,
+      "promptPerM": 0.06,
+      "completionPerM": 0.18,
+      "free": false
+    },
+    {
+      "id": "inclusionai/ling-3.1-flash",
+      "name": "inclusionAI: Ling 3.1 Flash",
+      "contextLength": 262144,
+      "promptPerM": 0.075,
+      "completionPerM": 0.225,
+      "free": false
+    },
+    {
+      "id": "inference-net/schematron-v2-small",
+      "name": "Inference.net: Schematron V2 Small",
+      "contextLength": 128000,
+      "promptPerM": 0.05,
+      "completionPerM": 0.23,
+      "free": false
+    },
+    {
+      "id": "inference-net/schematron-v2-turbo",
+      "name": "Inference.net: Schematron V2 Turbo",
+      "contextLength": 128000,
+      "promptPerM": 0.03,
+      "completionPerM": 0.15,
+      "free": false
+    },
+    {
+      "id": "liquid/lfm-2.5-24b-a2b",
+      "name": "LiquidAI: LFM2.5-24B-A2B",
+      "contextLength": 128000,
+      "promptPerM": 0.05,
+      "completionPerM": 0.7,
+      "free": false
+    },
+    {
+      "id": "mancer/weaver",
+      "name": "Mancer: Weaver (alpha)",
+      "contextLength": 8000,
+      "promptPerM": 0.4,
+      "completionPerM": 0.75,
+      "free": false
+    },
+    {
+      "id": "meituan/longcat-2.0",
+      "name": "Meituan: LongCat 2.0",
+      "contextLength": 1048756,
+      "promptPerM": 0.3,
+      "completionPerM": 1.2,
+      "free": false
+    },
+    {
+      "id": "meta-llama/llama-3.1-70b-instruct",
+      "name": "Meta: Llama 3.1 70B Instruct",
+      "contextLength": 131072,
+      "promptPerM": 0.4,
+      "completionPerM": 0.4,
+      "free": false
+    },
+    {
+      "id": "meta-llama/llama-3.1-8b-instruct",
+      "name": "Meta: Llama 3.1 8B Instruct",
+      "contextLength": 131072,
+      "promptPerM": 0.05,
+      "completionPerM": 0.08,
+      "free": false
+    },
+    {
+      "id": "meta-llama/llama-3.2-1b-instruct",
+      "name": "Meta: Llama 3.2 1B Instruct",
+      "contextLength": 60000,
+      "promptPerM": 0.027,
+      "completionPerM": 0.201,
+      "free": false
+    },
+    {
+      "id": "meta-llama/llama-3.2-3b-instruct",
+      "name": "Meta: Llama 3.2 3B Instruct",
+      "contextLength": 131072,
+      "promptPerM": 0.05,
+      "completionPerM": 0.33,
+      "free": false
+    },
+    {
+      "id": "meta-llama/llama-3.3-70b-instruct",
+      "name": "Meta: Llama 3.3 70B Instruct",
+      "contextLength": 131072,
+      "promptPerM": 0.1,
+      "completionPerM": 0.32,
+      "free": false
+    },
+    {
+      "id": "meta-llama/llama-4-maverick",
+      "name": "Meta: Llama 4 Maverick",
+      "contextLength": 1048576,
+      "promptPerM": 0.1875,
+      "completionPerM": 0.6525,
+      "free": false
+    },
+    {
+      "id": "meta-llama/llama-4-scout",
+      "name": "Meta: Llama 4 Scout",
+      "contextLength": 1310720,
+      "promptPerM": 0.1,
+      "completionPerM": 0.3,
+      "free": false
+    },
+    {
+      "id": "meta-llama/llama-guard-4-12b",
+      "name": "Meta: Llama Guard 4 12B",
+      "contextLength": 163840,
+      "promptPerM": 0.18,
+      "completionPerM": 0.18,
+      "free": false
+    },
+    {
+      "id": "meta/muse-glimmer-30b",
+      "name": "Meta: Muse Glimmer 30B",
+      "contextLength": 131072,
+      "promptPerM": 0.3,
+      "completionPerM": 1.2,
+      "free": false
+    },
+    {
+      "id": "meta/muse-spark-1.1",
+      "name": "Meta: Muse Spark 1.1",
+      "contextLength": 1048576,
+      "promptPerM": 1.25,
+      "completionPerM": 4.25,
+      "free": false
+    },
+    {
+      "id": "meta/muse-spark-1.2",
+      "name": "Meta: Muse Spark 1.2",
+      "contextLength": 1048576,
+      "promptPerM": 1.25,
+      "completionPerM": 4.25,
+      "free": false
+    },
+    {
+      "id": "meta/muse-spark-1.2-contributor",
+      "name": "Meta: Muse Spark 1.2 Contributor",
+      "contextLength": 1048576,
+      "promptPerM": 0.1,
+      "completionPerM": 0.2,
+      "free": false
+    },
+    {
+      "id": "meta/muse-spark-1.3",
+      "name": "Meta: Muse Spark 1.3",
+      "contextLength": 1048576,
+      "promptPerM": 1.25,
+      "completionPerM": 4.25,
+      "free": false
+    },
+    {
+      "id": "meta/muse-spark-1.3-contributor",
+      "name": "Meta: Muse Spark 1.3 Contributor",
+      "contextLength": 1048576,
+      "promptPerM": 0.1,
+      "completionPerM": 0.2,
+      "free": false
+    },
+    {
+      "id": "meta/muse-spark-open",
+      "name": "Meta: Muse Spark Open",
+      "contextLength": 1048576,
+      "promptPerM": 1.25,
+      "completionPerM": 4.25,
+      "free": false
+    },
+    {
+      "id": "meta/muse-wonder",
+      "name": "Meta: Muse Wonder",
+      "contextLength": 1048576,
+      "promptPerM": 4,
+      "completionPerM": 20,
+      "free": false
+    },
+    {
+      "id": "microsoft/phi-4",
+      "name": "Microsoft: Phi 4",
+      "contextLength": 16384,
+      "promptPerM": 0.07,
+      "completionPerM": 0.14,
+      "free": false
+    },
+    {
+      "id": "microsoft/wizardlm-2-8x22b",
+      "name": "WizardLM-2 8x22B",
+      "contextLength": 65535,
+      "promptPerM": 0.62,
+      "completionPerM": 0.62,
+      "free": false
+    },
+    {
+      "id": "minimax/minimax-01",
+      "name": "MiniMax: MiniMax-01",
+      "contextLength": 1000192,
+      "promptPerM": 0.2,
+      "completionPerM": 1.1,
+      "free": false
+    },
+    {
+      "id": "minimax/minimax-m1",
+      "name": "MiniMax: MiniMax M1",
+      "contextLength": 1000000,
+      "promptPerM": 0.55,
+      "completionPerM": 2.2,
+      "free": false
+    },
+    {
+      "id": "minimax/minimax-m2",
+      "name": "MiniMax: MiniMax M2",
+      "contextLength": 204800,
+      "promptPerM": 0.255,
+      "completionPerM": 1.02,
+      "free": false
+    },
+    {
+      "id": "minimax/minimax-m2-her",
+      "name": "MiniMax: MiniMax M2-her",
+      "contextLength": 65536,
+      "promptPerM": 0.3,
+      "completionPerM": 1.2,
+      "free": false
+    },
+    {
+      "id": "minimax/minimax-m2.1",
+      "name": "MiniMax: MiniMax M2.1",
+      "contextLength": 204800,
+      "promptPerM": 0.3,
+      "completionPerM": 1.2,
+      "free": false
+    },
+    {
+      "id": "minimax/minimax-m2.5",
+      "name": "MiniMax: MiniMax M2.5",
+      "contextLength": 204800,
+      "promptPerM": 0.27,
+      "completionPerM": 0.95,
+      "free": false
+    },
+    {
+      "id": "minimax/minimax-m2.7",
+      "name": "MiniMax: MiniMax M2.7",
+      "contextLength": 204800,
+      "promptPerM": 0.3,
+      "completionPerM": 1.2,
+      "free": false
+    },
+    {
+      "id": "minimax/minimax-m3",
+      "name": "MiniMax: MiniMax M3",
+      "contextLength": 1048576,
+      "promptPerM": 0.3,
+      "completionPerM": 1.2,
+      "free": false
+    },
+    {
+      "id": "mistralai/codestral-2508",
+      "name": "Mistral: Codestral 2508",
+      "contextLength": 256000,
+      "promptPerM": 0.3,
+      "completionPerM": 0.9,
+      "free": false
+    },
+    {
+      "id": "mistralai/codestral-2508:batch",
+      "name": "Mistral: Codestral 2508 (batch)",
+      "contextLength": 256000,
+      "promptPerM": 0.15,
+      "completionPerM": 0.45,
+      "free": false
+    },
+    {
+      "id": "mistralai/devstral-2512",
+      "name": "Mistral: Devstral 2 2512",
+      "contextLength": 262144,
+      "promptPerM": 0.4,
+      "completionPerM": 2,
+      "free": false
+    },
+    {
+      "id": "mistralai/ministral-14b-2512",
+      "name": "Mistral: Ministral 3 14B 2512",
+      "contextLength": 262144,
+      "promptPerM": 0.2,
+      "completionPerM": 0.2,
+      "free": false
+    },
+    {
+      "id": "mistralai/ministral-3b-2512",
+      "name": "Mistral: Ministral 3 3B 2512",
+      "contextLength": 131072,
+      "promptPerM": 0.1,
+      "completionPerM": 0.1,
+      "free": false
+    },
+    {
+      "id": "mistralai/ministral-8b-2512",
+      "name": "Mistral: Ministral 3 8B 2512",
+      "contextLength": 262144,
+      "promptPerM": 0.15,
+      "completionPerM": 0.15,
+      "free": false
+    },
+    {
+      "id": "mistralai/ministral-8b-2512:batch",
+      "name": "Mistral: Ministral 3 8B 2512 (batch)",
+      "contextLength": 262144,
+      "promptPerM": 0.075,
+      "completionPerM": 0.075,
+      "free": false
+    },
+    {
+      "id": "mistralai/mistral-large",
+      "name": "Mistral Large",
+      "contextLength": 128000,
+      "promptPerM": 2,
+      "completionPerM": 6,
+      "free": false
+    },
+    {
+      "id": "mistralai/mistral-large-2407",
+      "name": "Mistral Large 2407",
+      "contextLength": 131072,
+      "promptPerM": 2,
+      "completionPerM": 6,
+      "free": false
+    },
+    {
+      "id": "mistralai/mistral-large-2512",
+      "name": "Mistral: Mistral Large 3 2512",
+      "contextLength": 262144,
+      "promptPerM": 0.5,
+      "completionPerM": 1.5,
+      "free": false
+    },
+    {
+      "id": "mistralai/mistral-large-2512:batch",
+      "name": "Mistral: Mistral Large 3 2512 (batch)",
+      "contextLength": 262144,
+      "promptPerM": 0.25,
+      "completionPerM": 0.75,
+      "free": false
+    },
+    {
+      "id": "mistralai/mistral-large-4-0",
+      "name": "Mistral: Mistral Large 4",
+      "contextLength": 1048576,
+      "promptPerM": 0.68,
+      "completionPerM": 2.09,
+      "free": false
+    },
+    {
+      "id": "mistralai/mistral-medium-3",
+      "name": "Mistral: Mistral Medium 3",
+      "contextLength": 131072,
+      "promptPerM": 0.4,
+      "completionPerM": 2,
+      "free": false
+    },
+    {
+      "id": "mistralai/mistral-medium-3-5",
+      "name": "Mistral: Mistral Medium 3.5",
+      "contextLength": 262144,
+      "promptPerM": 1.5,
+      "completionPerM": 7.5,
+      "free": false
+    },
+    {
+      "id": "mistralai/mistral-medium-3-5:batch",
+      "name": "Mistral: Mistral Medium 3.5 (batch)",
+      "contextLength": 262144,
+      "promptPerM": 0.75,
+      "completionPerM": 3.75,
+      "free": false
+    },
+    {
+      "id": "mistralai/mistral-medium-3.1",
+      "name": "Mistral: Mistral Medium 3.1",
+      "contextLength": 131072,
+      "promptPerM": 0.4,
+      "completionPerM": 2,
+      "free": false
+    },
+    {
+      "id": "mistralai/mistral-medium-3.1:batch",
+      "name": "Mistral: Mistral Medium 3.1 (batch)",
+      "contextLength": 131072,
+      "promptPerM": 0.2,
+      "completionPerM": 1,
+      "free": false
+    },
+    {
+      "id": "mistralai/mistral-nemo",
+      "name": "Mistral: Mistral Nemo",
+      "contextLength": 131072,
+      "promptPerM": 0.029,
+      "completionPerM": 0.03,
+      "free": false
+    },
+    {
+      "id": "mistralai/mistral-saba",
+      "name": "Mistral: Saba",
+      "contextLength": 32768,
+      "promptPerM": 0.2,
+      "completionPerM": 0.6,
+      "free": false
+    },
+    {
+      "id": "mistralai/mistral-small-24b-instruct-2501",
+      "name": "Mistral: Mistral Small 3",
+      "contextLength": 32768,
+      "promptPerM": 0.05,
+      "completionPerM": 0.08,
+      "free": false
+    },
+    {
+      "id": "mistralai/mistral-small-2603",
+      "name": "Mistral: Mistral Small 4",
+      "contextLength": 262144,
+      "promptPerM": 0.15,
+      "completionPerM": 0.6,
+      "free": false
+    },
+    {
+      "id": "mistralai/mistral-small-2603:batch",
+      "name": "Mistral: Mistral Small 4 (batch)",
+      "contextLength": 262144,
+      "promptPerM": 0.075,
+      "completionPerM": 0.3,
+      "free": false
+    },
+    {
+      "id": "mistralai/mistral-small-3.1-24b-instruct",
+      "name": "Mistral: Mistral Small 3.1 24B",
+      "contextLength": 128000,
+      "promptPerM": 0.351,
+      "completionPerM": 0.555,
+      "free": false
+    },
+    {
+      "id": "mistralai/mistral-small-3.2-24b-instruct",
+      "name": "Mistral: Mistral Small 3.2 24B",
+      "contextLength": 256000,
+      "promptPerM": 0.0938,
+      "completionPerM": 0.25,
+      "free": false
+    },
+    {
+      "id": "mistralai/mixtral-8x22b-instruct",
+      "name": "Mistral: Mixtral 8x22B Instruct",
+      "contextLength": 65536,
+      "promptPerM": 2,
+      "completionPerM": 6,
+      "free": false
+    },
+    {
+      "id": "mistralai/voxtral-small-24b-2507",
+      "name": "Mistral: Voxtral Small 24B 2507",
+      "contextLength": 32768,
+      "promptPerM": 0.1,
+      "completionPerM": 0.3,
+      "free": false
+    },
+    {
+      "id": "moondream/moondream3-preview",
+      "name": "Moondream: Moondream 3 Preview",
+      "contextLength": 32000,
+      "promptPerM": 0.3,
+      "completionPerM": 2.5,
+      "free": false
+    },
+    {
+      "id": "moondream/moondream3.1-9b-a2b",
+      "name": "Moondream: Moondream 3.1",
+      "contextLength": 32000,
+      "promptPerM": 0.3,
+      "completionPerM": 2.5,
+      "free": false
+    },
+    {
+      "id": "moonshotai/kimi-k2",
+      "name": "MoonshotAI: Kimi K2 0711",
+      "contextLength": 131072,
+      "promptPerM": 0.57,
+      "completionPerM": 2.3,
+      "free": false
+    },
+    {
+      "id": "moonshotai/kimi-k2-0905",
+      "name": "MoonshotAI: Kimi K2 0905",
+      "contextLength": 262144,
+      "promptPerM": 0.6,
+      "completionPerM": 2.5,
+      "free": false
+    },
+    {
+      "id": "moonshotai/kimi-k2-thinking",
+      "name": "MoonshotAI: Kimi K2 Thinking",
+      "contextLength": 262144,
+      "promptPerM": 0.6,
+      "completionPerM": 2.5,
+      "free": false
+    },
+    {
+      "id": "moonshotai/kimi-k2.5",
+      "name": "MoonshotAI: Kimi K2.5",
+      "contextLength": 262144,
+      "promptPerM": 0.5,
+      "completionPerM": 2.5,
+      "free": false
+    },
+    {
+      "id": "moonshotai/kimi-k2.6",
+      "name": "MoonshotAI: Kimi K2.6",
+      "contextLength": 262144,
+      "promptPerM": 0.65,
+      "completionPerM": 3.41,
+      "free": false
+    },
+    {
+      "id": "moonshotai/kimi-k2.7-code",
+      "name": "MoonshotAI: Kimi K2.7 Code",
+      "contextLength": 262144,
+      "promptPerM": 0.6712,
+      "completionPerM": 3.35,
+      "free": false
+    },
+    {
+      "id": "moonshotai/kimi-k3",
+      "name": "MoonshotAI: Kimi K3",
+      "contextLength": 1048576,
+      "promptPerM": 0.304,
+      "completionPerM": 11.936,
+      "free": false
+    },
+    {
+      "id": "moonshotai/kimi-k3:batch",
+      "name": "MoonshotAI: Kimi K3 (batch)",
+      "contextLength": 1048576,
+      "promptPerM": 2.28,
+      "completionPerM": 11.4,
+      "free": false
+    },
+    {
+      "id": "morph/morph-v3-fast",
+      "name": "Morph: Morph V3 Fast",
+      "contextLength": 81920,
+      "promptPerM": 0.8,
+      "completionPerM": 1.2,
+      "free": false
+    },
+    {
+      "id": "morph/morph-v3-large",
+      "name": "Morph: Morph V3 Large",
+      "contextLength": 262144,
+      "promptPerM": 0.9,
+      "completionPerM": 1.9,
+      "free": false
+    },
+    {
+      "id": "nex-agi/nex-n2.5-mini",
+      "name": "Nex AGI: Nex-N2.5-Mini",
+      "contextLength": 262144,
+      "promptPerM": 0.025,
+      "completionPerM": 0.1,
+      "free": false
+    },
+    {
+      "id": "nex-agi/nex-n2.5-pro",
+      "name": "Nex AGI: Nex-N2.5-Pro",
+      "contextLength": 262144,
+      "promptPerM": 0.075,
+      "completionPerM": 0.25,
+      "free": false
+    },
+    {
+      "id": "nousresearch/hermes-3-llama-3.1-405b",
+      "name": "Nous: Hermes 3 405B Instruct",
+      "contextLength": 131072,
+      "promptPerM": 1,
+      "completionPerM": 1,
+      "free": false
+    },
+    {
+      "id": "nousresearch/hermes-3-llama-3.1-70b",
+      "name": "Nous: Hermes 3 70B Instruct",
+      "contextLength": 131072,
+      "promptPerM": 0.7,
+      "completionPerM": 0.7,
+      "free": false
+    },
+    {
+      "id": "nousresearch/hermes-4-405b",
+      "name": "Nous: Hermes 4 405B",
+      "contextLength": 131072,
+      "promptPerM": 1,
+      "completionPerM": 3,
+      "free": false
+    },
+    {
+      "id": "nvidia/nemotron-3-nano-30b-a3b",
+      "name": "NVIDIA: Nemotron 3 Nano 30B A3B",
+      "contextLength": 262144,
+      "promptPerM": 0.06,
+      "completionPerM": 0.24,
+      "free": false
+    },
+    {
+      "id": "nvidia/nemotron-3-super-120b-a12b",
+      "name": "NVIDIA: Nemotron 3 Super",
+      "contextLength": 262144,
+      "promptPerM": 0.08,
+      "completionPerM": 0.45,
+      "free": false
+    },
+    {
+      "id": "nvidia/nemotron-3-ultra-550b-a55b",
+      "name": "NVIDIA: Nemotron 3 Ultra",
+      "contextLength": 262144,
+      "promptPerM": 0.6,
+      "completionPerM": 2.4,
+      "free": false
+    },
+    {
+      "id": "nvidia/nemotron-3.5-content-safety",
+      "name": "NVIDIA: Nemotron 3.5 Content Safety",
+      "contextLength": 131072,
+      "promptPerM": 0.2,
+      "completionPerM": 0.2,
+      "free": false
+    },
+    {
+      "id": "nvidia/nemotron-3.5-lightning",
+      "name": "NVIDIA: Nemotron 3.5 Lightning",
+      "contextLength": 262144,
+      "promptPerM": 0.07,
+      "completionPerM": 0.2,
+      "free": false
+    },
+    {
+      "id": "nvidia/nemotron-3.5-super-vl",
+      "name": "NVIDIA: Nemotron 3.5 Super VL",
+      "contextLength": 1048576,
+      "promptPerM": 0.1,
+      "completionPerM": 0.4,
+      "free": false
+    },
+    {
+      "id": "nvidia/switchyard",
+      "name": "NVIDIA: Switchyard",
+      "contextLength": 1000000,
+      "promptPerM": -1000000,
+      "completionPerM": -1000000,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-3.5-turbo",
+      "name": "OpenAI: GPT-3.5 Turbo",
+      "contextLength": 16385,
+      "promptPerM": 0.5,
+      "completionPerM": 1.5,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-3.5-turbo-0613",
+      "name": "OpenAI: GPT-3.5 Turbo (older v0613)",
+      "contextLength": 4095,
+      "promptPerM": 1,
+      "completionPerM": 2,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-3.5-turbo-16k",
+      "name": "OpenAI: GPT-3.5 Turbo 16k",
+      "contextLength": 16385,
+      "promptPerM": 3,
+      "completionPerM": 4,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-3.5-turbo-instruct",
+      "name": "OpenAI: GPT-3.5 Turbo Instruct",
+      "contextLength": 4095,
+      "promptPerM": 1.5,
+      "completionPerM": 2,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-3.5-turbo:batch",
+      "name": "OpenAI: GPT-3.5 Turbo (batch)",
+      "contextLength": 16385,
+      "promptPerM": 0.25,
+      "completionPerM": 0.75,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-4",
+      "name": "OpenAI: GPT-4",
+      "contextLength": 8191,
+      "promptPerM": 30,
+      "completionPerM": 60,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-4-turbo",
+      "name": "OpenAI: GPT-4 Turbo",
+      "contextLength": 128000,
+      "promptPerM": 10,
+      "completionPerM": 30,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-4-turbo:batch",
+      "name": "OpenAI: GPT-4 Turbo (batch)",
+      "contextLength": 128000,
+      "promptPerM": 5,
+      "completionPerM": 15,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-4.1",
+      "name": "OpenAI: GPT-4.1",
+      "contextLength": 1047576,
+      "promptPerM": 2,
+      "completionPerM": 8,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-4.1-mini",
+      "name": "OpenAI: GPT-4.1 Mini",
+      "contextLength": 1047576,
+      "promptPerM": 0.4,
+      "completionPerM": 1.6,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-4.1-mini:batch",
+      "name": "OpenAI: GPT-4.1 Mini (batch)",
+      "contextLength": 1047576,
+      "promptPerM": 0.2,
+      "completionPerM": 0.8,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-4.1-nano",
+      "name": "OpenAI: GPT-4.1 Nano",
+      "contextLength": 1047576,
+      "promptPerM": 0.1,
+      "completionPerM": 0.4,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-4.1-nano:batch",
+      "name": "OpenAI: GPT-4.1 Nano (batch)",
+      "contextLength": 1047576,
+      "promptPerM": 0.05,
+      "completionPerM": 0.2,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-4.1:batch",
+      "name": "OpenAI: GPT-4.1 (batch)",
+      "contextLength": 1047576,
+      "promptPerM": 1,
+      "completionPerM": 4,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-4o",
+      "name": "OpenAI: GPT-4o",
+      "contextLength": 128000,
+      "promptPerM": 2.5,
+      "completionPerM": 10,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-4o-2024-05-13",
+      "name": "OpenAI: GPT-4o (2024-05-13)",
+      "contextLength": 128000,
+      "promptPerM": 5,
+      "completionPerM": 15,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-4o-2024-08-06",
+      "name": "OpenAI: GPT-4o (2024-08-06)",
+      "contextLength": 128000,
+      "promptPerM": 2.5,
+      "completionPerM": 10,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-4o-2024-11-20",
+      "name": "OpenAI: GPT-4o (2024-11-20)",
+      "contextLength": 128000,
+      "promptPerM": 2.5,
+      "completionPerM": 10,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-4o-mini",
+      "name": "OpenAI: GPT-4o-mini",
+      "contextLength": 128000,
+      "promptPerM": 0.15,
+      "completionPerM": 0.6,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-4o-mini-2024-07-18",
+      "name": "OpenAI: GPT-4o-mini (2024-07-18)",
+      "contextLength": 128000,
+      "promptPerM": 0.15,
+      "completionPerM": 0.6,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-4o-mini:batch",
+      "name": "OpenAI: GPT-4o-mini (batch)",
+      "contextLength": 128000,
+      "promptPerM": 0.075,
+      "completionPerM": 0.3,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-4o:batch",
+      "name": "OpenAI: GPT-4o (batch)",
+      "contextLength": 128000,
+      "promptPerM": 1.25,
+      "completionPerM": 5,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5",
+      "name": "OpenAI: GPT-5",
+      "contextLength": 400000,
+      "promptPerM": 1.25,
+      "completionPerM": 10,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5-image",
+      "name": "OpenAI: GPT-5 Image",
+      "contextLength": 400000,
+      "promptPerM": 10,
+      "completionPerM": 10,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5-image-mini",
+      "name": "OpenAI: GPT-5 Image Mini",
+      "contextLength": 400000,
+      "promptPerM": 2.5,
+      "completionPerM": 2,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5-mini",
+      "name": "OpenAI: GPT-5 Mini",
+      "contextLength": 400000,
+      "promptPerM": 0.25,
+      "completionPerM": 2,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5-mini:batch",
+      "name": "OpenAI: GPT-5 Mini (batch)",
+      "contextLength": 400000,
+      "promptPerM": 0.125,
+      "completionPerM": 1,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5-nano",
+      "name": "OpenAI: GPT-5 Nano",
+      "contextLength": 400000,
+      "promptPerM": 0.05,
+      "completionPerM": 0.4,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5-nano:batch",
+      "name": "OpenAI: GPT-5 Nano (batch)",
+      "contextLength": 400000,
+      "promptPerM": 0.025,
+      "completionPerM": 0.2,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5-pro",
+      "name": "OpenAI: GPT-5 Pro",
+      "contextLength": 400000,
+      "promptPerM": 15,
+      "completionPerM": 120,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5-pro:batch",
+      "name": "OpenAI: GPT-5 Pro (batch)",
+      "contextLength": 400000,
+      "promptPerM": 7.5,
+      "completionPerM": 60,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5:batch",
+      "name": "OpenAI: GPT-5 (batch)",
+      "contextLength": 400000,
+      "promptPerM": 0.625,
+      "completionPerM": 5,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.1",
+      "name": "OpenAI: GPT-5.1",
+      "contextLength": 400000,
+      "promptPerM": 1.25,
+      "completionPerM": 10,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.1-codex",
+      "name": "OpenAI: GPT-5.1-Codex",
+      "contextLength": 400000,
+      "promptPerM": 1.25,
+      "completionPerM": 10,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.1-codex-max",
+      "name": "OpenAI: GPT-5.1-Codex-Max",
+      "contextLength": 400000,
+      "promptPerM": 1.25,
+      "completionPerM": 10,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.1-codex-mini",
+      "name": "OpenAI: GPT-5.1-Codex-Mini",
+      "contextLength": 400000,
+      "promptPerM": 0.25,
+      "completionPerM": 2,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.1:batch",
+      "name": "OpenAI: GPT-5.1 (batch)",
+      "contextLength": 400000,
+      "promptPerM": 0.625,
+      "completionPerM": 5,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.2",
+      "name": "OpenAI: GPT-5.2",
+      "contextLength": 400000,
+      "promptPerM": 1.75,
+      "completionPerM": 14,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.2-chat",
+      "name": "OpenAI: GPT-5.2 Chat",
+      "contextLength": 128000,
+      "promptPerM": 1.75,
+      "completionPerM": 14,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.2-codex",
+      "name": "OpenAI: GPT-5.2-Codex",
+      "contextLength": 400000,
+      "promptPerM": 1.75,
+      "completionPerM": 14,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.2-pro",
+      "name": "OpenAI: GPT-5.2 Pro",
+      "contextLength": 400000,
+      "promptPerM": 21,
+      "completionPerM": 168,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.2-pro:batch",
+      "name": "OpenAI: GPT-5.2 Pro (batch)",
+      "contextLength": 400000,
+      "promptPerM": 10.5,
+      "completionPerM": 84,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.2:batch",
+      "name": "OpenAI: GPT-5.2 (batch)",
+      "contextLength": 400000,
+      "promptPerM": 0.875,
+      "completionPerM": 7,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.3-codex",
+      "name": "OpenAI: GPT-5.3-Codex",
+      "contextLength": 400000,
+      "promptPerM": 1.75,
+      "completionPerM": 14,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.4",
+      "name": "OpenAI: GPT-5.4",
+      "contextLength": 1050000,
+      "promptPerM": 2.5,
+      "completionPerM": 15,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.4-image-2",
+      "name": "OpenAI: GPT-5.4 Image 2",
+      "contextLength": 272000,
+      "promptPerM": 8,
+      "completionPerM": 15,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.4-mini",
+      "name": "OpenAI: GPT-5.4 Mini",
+      "contextLength": 400000,
+      "promptPerM": 0.75,
+      "completionPerM": 4.5,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.4-mini:batch",
+      "name": "OpenAI: GPT-5.4 Mini (batch)",
+      "contextLength": 400000,
+      "promptPerM": 0.375,
+      "completionPerM": 2.25,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.4-nano",
+      "name": "OpenAI: GPT-5.4 Nano",
+      "contextLength": 400000,
+      "promptPerM": 0.2,
+      "completionPerM": 1.25,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.4-nano:batch",
+      "name": "OpenAI: GPT-5.4 Nano (batch)",
+      "contextLength": 400000,
+      "promptPerM": 0.1,
+      "completionPerM": 0.625,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.4-pro",
+      "name": "OpenAI: GPT-5.4 Pro",
+      "contextLength": 1050000,
+      "promptPerM": 30,
+      "completionPerM": 180,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.4-pro:batch",
+      "name": "OpenAI: GPT-5.4 Pro (batch)",
+      "contextLength": 1050000,
+      "promptPerM": 15,
+      "completionPerM": 90,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.4:batch",
+      "name": "OpenAI: GPT-5.4 (batch)",
+      "contextLength": 1050000,
+      "promptPerM": 1.25,
+      "completionPerM": 7.5,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.5",
+      "name": "OpenAI: GPT-5.5",
+      "contextLength": 1050000,
+      "promptPerM": 5,
+      "completionPerM": 30,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.5-pro",
+      "name": "OpenAI: GPT-5.5 Pro",
+      "contextLength": 1050000,
+      "promptPerM": 30,
+      "completionPerM": 180,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.5-pro:batch",
+      "name": "OpenAI: GPT-5.5 Pro (batch)",
+      "contextLength": 1050000,
+      "promptPerM": 15,
+      "completionPerM": 90,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.5:batch",
+      "name": "OpenAI: GPT-5.5 (batch)",
+      "contextLength": 1050000,
+      "promptPerM": 2.5,
+      "completionPerM": 15,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.6-luna",
+      "name": "OpenAI: GPT-5.6 Luna",
+      "contextLength": 1050000,
+      "promptPerM": 0.2,
+      "completionPerM": 1.2,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.6-luna-pro",
+      "name": "OpenAI: GPT-5.6 Luna Pro",
+      "contextLength": 1050000,
+      "promptPerM": 0.2,
+      "completionPerM": 1.2,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.6-luna-pro:batch",
+      "name": "OpenAI: GPT-5.6 Luna Pro (batch)",
+      "contextLength": 1050000,
+      "promptPerM": 0.1,
+      "completionPerM": 0.6,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.6-luna:batch",
+      "name": "OpenAI: GPT-5.6 Luna (batch)",
+      "contextLength": 1050000,
+      "promptPerM": 0.1,
+      "completionPerM": 0.6,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.6-sol",
+      "name": "OpenAI: GPT-5.6 Sol",
+      "contextLength": 1050000,
+      "promptPerM": 4,
+      "completionPerM": 20,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.6-sol-pro",
+      "name": "OpenAI: GPT-5.6 Sol Pro",
+      "contextLength": 1050000,
+      "promptPerM": 4,
+      "completionPerM": 20,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.6-sol-pro:batch",
+      "name": "OpenAI: GPT-5.6 Sol Pro (batch)",
+      "contextLength": 1050000,
+      "promptPerM": 2,
+      "completionPerM": 10,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.6-sol:batch",
+      "name": "OpenAI: GPT-5.6 Sol (batch)",
+      "contextLength": 1050000,
+      "promptPerM": 2,
+      "completionPerM": 10,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.6-terra",
+      "name": "OpenAI: GPT-5.6 Terra",
+      "contextLength": 1050000,
+      "promptPerM": 2,
+      "completionPerM": 12,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.6-terra-pro",
+      "name": "OpenAI: GPT-5.6 Terra Pro",
+      "contextLength": 1050000,
+      "promptPerM": 2,
+      "completionPerM": 12,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.6-terra-pro:batch",
+      "name": "OpenAI: GPT-5.6 Terra Pro (batch)",
+      "contextLength": 1050000,
+      "promptPerM": 1,
+      "completionPerM": 6,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-5.6-terra:batch",
+      "name": "OpenAI: GPT-5.6 Terra (batch)",
+      "contextLength": 1050000,
+      "promptPerM": 1,
+      "completionPerM": 6,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-6-astra",
+      "name": "OpenAI: GPT-6 Astra",
+      "contextLength": 1050000,
+      "promptPerM": 10,
+      "completionPerM": 50,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-6-astra-pro",
+      "name": "OpenAI: GPT-6 Astra Pro",
+      "contextLength": 1050000,
+      "promptPerM": 10,
+      "completionPerM": 50,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-6-astra-pro:batch",
+      "name": "OpenAI: GPT-6 Astra Pro (batch)",
+      "contextLength": 1050000,
+      "promptPerM": 5,
+      "completionPerM": 25,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-6-astra:batch",
+      "name": "OpenAI: GPT-6 Astra (batch)",
+      "contextLength": 1050000,
+      "promptPerM": 5,
+      "completionPerM": 25,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-6-luna",
+      "name": "OpenAI: GPT-6 Luna",
+      "contextLength": 1050000,
+      "promptPerM": 0.1,
+      "completionPerM": 0.5,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-6-luna-pro",
+      "name": "OpenAI: GPT-6 Luna Pro",
+      "contextLength": 1050000,
+      "promptPerM": 0.1,
+      "completionPerM": 0.5,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-6-luna-pro:batch",
+      "name": "OpenAI: GPT-6 Luna Pro (batch)",
+      "contextLength": 1050000,
+      "promptPerM": 0.05,
+      "completionPerM": 0.25,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-6-luna:batch",
+      "name": "OpenAI: GPT-6 Luna (batch)",
+      "contextLength": 1050000,
+      "promptPerM": 0.05,
+      "completionPerM": 0.25,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-6-sol",
+      "name": "OpenAI: GPT-6 Sol",
+      "contextLength": 1050000,
+      "promptPerM": 2,
+      "completionPerM": 10,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-6-sol-pro",
+      "name": "OpenAI: GPT-6 Sol Pro",
+      "contextLength": 1050000,
+      "promptPerM": 2,
+      "completionPerM": 10,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-6-sol-pro:batch",
+      "name": "OpenAI: GPT-6 Sol Pro (batch)",
+      "contextLength": 1050000,
+      "promptPerM": 1,
+      "completionPerM": 5,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-6-sol:batch",
+      "name": "OpenAI: GPT-6 Sol (batch)",
+      "contextLength": 1050000,
+      "promptPerM": 1,
+      "completionPerM": 5,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-6.1-sol",
+      "name": "OpenAI: GPT-6.1 Sol",
+      "contextLength": 1050000,
+      "promptPerM": 2,
+      "completionPerM": 10,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-6.1-sol-pro",
+      "name": "OpenAI: GPT-6.1 Sol Pro",
+      "contextLength": 1050000,
+      "promptPerM": 2,
+      "completionPerM": 10,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-6.1-sol-pro:batch",
+      "name": "OpenAI: GPT-6.1 Sol Pro (batch)",
+      "contextLength": 1050000,
+      "promptPerM": 1,
+      "completionPerM": 5,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-6.1-sol:batch",
+      "name": "OpenAI: GPT-6.1 Sol (batch)",
+      "contextLength": 1050000,
+      "promptPerM": 1,
+      "completionPerM": 5,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-audio",
+      "name": "OpenAI: GPT Audio",
+      "contextLength": 128000,
+      "promptPerM": 2.5,
+      "completionPerM": 10,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-audio-mini",
+      "name": "OpenAI: GPT Audio Mini",
+      "contextLength": 128000,
+      "promptPerM": 0.6,
+      "completionPerM": 2.4,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-chat-latest",
+      "name": "OpenAI: GPT Chat Latest",
+      "contextLength": 400000,
+      "promptPerM": 5,
+      "completionPerM": 30,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-oss-120b",
+      "name": "OpenAI: gpt-oss-120b",
+      "contextLength": 131072,
+      "promptPerM": 0.15,
+      "completionPerM": 0.6,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-oss-120b:batch",
+      "name": "OpenAI: gpt-oss-120b (batch)",
+      "contextLength": 131072,
+      "promptPerM": 0.0296,
+      "completionPerM": 0.136,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-oss-20b",
+      "name": "OpenAI: gpt-oss-20b",
+      "contextLength": 131072,
+      "promptPerM": 0.018,
+      "completionPerM": 0.09,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-oss-20b:batch",
+      "name": "OpenAI: gpt-oss-20b (batch)",
+      "contextLength": 131072,
+      "promptPerM": 0.024,
+      "completionPerM": 0.112,
+      "free": false
+    },
+    {
+      "id": "openai/gpt-oss-safeguard-20b",
+      "name": "OpenAI: gpt-oss-safeguard-20b",
+      "contextLength": 131072,
+      "promptPerM": 0.075,
+      "completionPerM": 0.3,
+      "free": false
+    },
+    {
+      "id": "openai/o1",
+      "name": "OpenAI: o1",
+      "contextLength": 200000,
+      "promptPerM": 15,
+      "completionPerM": 60,
+      "free": false
+    },
+    {
+      "id": "openai/o1-pro",
+      "name": "OpenAI: o1-pro",
+      "contextLength": 200000,
+      "promptPerM": 150,
+      "completionPerM": 600,
+      "free": false
+    },
+    {
+      "id": "openai/o3",
+      "name": "OpenAI: o3",
+      "contextLength": 200000,
+      "promptPerM": 2,
+      "completionPerM": 8,
+      "free": false
+    },
+    {
+      "id": "openai/o3-mini",
+      "name": "OpenAI: o3 Mini",
+      "contextLength": 200000,
+      "promptPerM": 1.1,
+      "completionPerM": 4.4,
+      "free": false
+    },
+    {
+      "id": "openai/o3-mini-high",
+      "name": "OpenAI: o3 Mini High",
+      "contextLength": 200000,
+      "promptPerM": 1.1,
+      "completionPerM": 4.4,
+      "free": false
+    },
+    {
+      "id": "openai/o3-mini:batch",
+      "name": "OpenAI: o3 Mini (batch)",
+      "contextLength": 200000,
+      "promptPerM": 0.55,
+      "completionPerM": 2.2,
+      "free": false
+    },
+    {
+      "id": "openai/o3-pro",
+      "name": "OpenAI: o3 Pro",
+      "contextLength": 200000,
+      "promptPerM": 20,
+      "completionPerM": 80,
+      "free": false
+    },
+    {
+      "id": "openai/o3:batch",
+      "name": "OpenAI: o3 (batch)",
+      "contextLength": 200000,
+      "promptPerM": 1,
+      "completionPerM": 4,
+      "free": false
+    },
+    {
+      "id": "openai/o4-mini",
+      "name": "OpenAI: o4 Mini",
+      "contextLength": 200000,
+      "promptPerM": 1.1,
+      "completionPerM": 4.4,
+      "free": false
+    },
+    {
+      "id": "openai/o4-mini-high",
+      "name": "OpenAI: o4 Mini High",
+      "contextLength": 200000,
+      "promptPerM": 1.1,
+      "completionPerM": 4.4,
+      "free": false
+    },
+    {
+      "id": "openai/o4-mini:batch",
+      "name": "OpenAI: o4 Mini (batch)",
+      "contextLength": 200000,
+      "promptPerM": 0.55,
+      "completionPerM": 2.2,
+      "free": false
+    },
+    {
+      "id": "openrouter/auto",
+      "name": "Auto Router",
+      "contextLength": 2000000,
+      "promptPerM": -1000000,
+      "completionPerM": -1000000,
+      "free": false
+    },
+    {
+      "id": "openrouter/auto-beta",
+      "name": "Auto Router (Beta)",
+      "contextLength": 2000000,
+      "promptPerM": -1000000,
+      "completionPerM": -1000000,
+      "free": false
+    },
+    {
+      "id": "openrouter/bodybuilder",
+      "name": "Body Builder (beta)",
+      "contextLength": 128000,
+      "promptPerM": -1000000,
+      "completionPerM": -1000000,
+      "free": false
+    },
+    {
+      "id": "openrouter/fusion",
+      "name": "OpenRouter: Fusion",
+      "contextLength": 1000000,
+      "promptPerM": -1000000,
+      "completionPerM": -1000000,
+      "free": false
+    },
+    {
+      "id": "openrouter/pareto-code",
+      "name": "Pareto Code Router",
+      "contextLength": 2000000,
+      "promptPerM": -1000000,
+      "completionPerM": -1000000,
+      "free": false
+    },
+    {
+      "id": "perceptron/perceptron-mk1",
+      "name": "Perceptron: Perceptron Mk1",
+      "contextLength": 32768,
+      "promptPerM": 0.15,
+      "completionPerM": 1.5,
+      "free": false
+    },
+    {
+      "id": "perceptron/perceptron-mk1.5",
+      "name": "Perceptron: Perceptron Mk1.5",
+      "contextLength": 36864,
+      "promptPerM": 0.15,
+      "completionPerM": 1.5,
+      "free": false
+    },
+    {
+      "id": "perplexity/sonar",
+      "name": "Perplexity: Sonar",
+      "contextLength": 127072,
+      "promptPerM": 1,
+      "completionPerM": 1,
+      "free": false
+    },
+    {
+      "id": "perplexity/sonar-deep-research",
+      "name": "Perplexity: Sonar Deep Research",
+      "contextLength": 128000,
+      "promptPerM": 2,
+      "completionPerM": 8,
+      "free": false
+    },
+    {
+      "id": "perplexity/sonar-pro",
+      "name": "Perplexity: Sonar Pro",
+      "contextLength": 200000,
+      "promptPerM": 3,
+      "completionPerM": 15,
+      "free": false
+    },
+    {
+      "id": "perplexity/sonar-pro-search",
+      "name": "Perplexity: Sonar Pro Search",
+      "contextLength": 200000,
+      "promptPerM": 3,
+      "completionPerM": 15,
+      "free": false
+    },
+    {
+      "id": "perplexity/sonar-reasoning-pro",
+      "name": "Perplexity: Sonar Reasoning Pro",
+      "contextLength": 128000,
+      "promptPerM": 2,
+      "completionPerM": 8,
+      "free": false
+    },
+    {
+      "id": "poolside/laguna-s-2.1",
+      "name": "Poolside: Laguna S 2.1",
+      "contextLength": 1048576,
+      "promptPerM": 0.09,
+      "completionPerM": 0.18,
+      "free": false
+    },
+    {
+      "id": "poolside/laguna-xs-2.1",
+      "name": "Poolside: Laguna XS 2.1",
+      "contextLength": 262144,
+      "promptPerM": 0.06,
+      "completionPerM": 0.12,
+      "free": false
+    },
+    {
+      "id": "prism-ml/ternary-bonsai-2-27b",
+      "name": "PrismML: Ternary Bonsai 2 27B",
+      "contextLength": 262144,
+      "promptPerM": 0.075,
+      "completionPerM": 0.5,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen-2.5-72b-instruct",
+      "name": "Qwen2.5 72B Instruct",
+      "contextLength": 32768,
+      "promptPerM": 0.36,
+      "completionPerM": 0.4,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen-2.5-7b-instruct",
+      "name": "Qwen: Qwen2.5 7B Instruct",
+      "contextLength": 32768,
+      "promptPerM": 0.1,
+      "completionPerM": 0.2,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen-2.5-coder-32b-instruct",
+      "name": "Qwen2.5 Coder 32B Instruct",
+      "contextLength": 32768,
+      "promptPerM": 0.66,
+      "completionPerM": 1,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen-plus",
+      "name": "Qwen: Qwen-Plus",
+      "contextLength": 1000000,
+      "promptPerM": 0.26,
+      "completionPerM": 0.78,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen2.5-vl-72b-instruct",
+      "name": "Qwen: Qwen2.5 VL 72B Instruct",
+      "contextLength": 128000,
+      "promptPerM": 0.8,
+      "completionPerM": 1,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3-14b",
+      "name": "Qwen: Qwen3 14B",
+      "contextLength": 40960,
+      "promptPerM": 0.12,
+      "completionPerM": 0.24,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3-235b-a22b-2507",
+      "name": "Qwen: Qwen3 235B A22B Instruct 2507",
+      "contextLength": 262144,
+      "promptPerM": 0.09,
+      "completionPerM": 0.55,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3-235b-a22b-thinking-2507",
+      "name": "Qwen: Qwen3 235B A22B Thinking 2507",
+      "contextLength": 128000,
+      "promptPerM": 0.45,
+      "completionPerM": 3.5,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3-30b-a3b",
+      "name": "Qwen: Qwen3 30B A3B",
+      "contextLength": 40960,
+      "promptPerM": 0.12,
+      "completionPerM": 0.5,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3-30b-a3b-instruct-2507",
+      "name": "Qwen: Qwen3 30B A3B Instruct 2507",
+      "contextLength": 262144,
+      "promptPerM": 0.1,
+      "completionPerM": 0.3,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3-32b",
+      "name": "Qwen: Qwen3 32B",
+      "contextLength": 131072,
+      "promptPerM": 0.08,
+      "completionPerM": 0.28,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3-coder",
+      "name": "Qwen: Qwen3 Coder 480B A35B",
+      "contextLength": 262144,
+      "promptPerM": 0.3,
+      "completionPerM": 1,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3-coder-30b-a3b-instruct",
+      "name": "Qwen: Qwen3 Coder 30B A3B Instruct",
+      "contextLength": 262144,
+      "promptPerM": 0.07,
+      "completionPerM": 0.28,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3-coder-flash",
+      "name": "Qwen: Qwen3 Coder Flash",
+      "contextLength": 1000000,
+      "promptPerM": 0.195,
+      "completionPerM": 0.975,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3-coder-next",
+      "name": "Qwen: Qwen3 Coder Next",
+      "contextLength": 262144,
+      "promptPerM": 0.12,
+      "completionPerM": 0.8,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3-next-80b-a3b-instruct",
+      "name": "Qwen: Qwen3 Next 80B A3B Instruct",
+      "contextLength": 262144,
+      "promptPerM": 0.09,
+      "completionPerM": 1.1,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3-next-80b-a3b-thinking",
+      "name": "Qwen: Qwen3 Next 80B A3B Thinking",
+      "contextLength": 262144,
+      "promptPerM": 0.15,
+      "completionPerM": 1.2,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3-vl-235b-a22b-instruct",
+      "name": "Qwen: Qwen3 VL 235B A22B Instruct",
+      "contextLength": 262144,
+      "promptPerM": 0.21,
+      "completionPerM": 1.9,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3-vl-30b-a3b-instruct",
+      "name": "Qwen: Qwen3 VL 30B A3B Instruct",
+      "contextLength": 262144,
+      "promptPerM": 0.15,
+      "completionPerM": 0.6,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3-vl-30b-a3b-thinking",
+      "name": "Qwen: Qwen3 VL 30B A3B Thinking",
+      "contextLength": 262144,
+      "promptPerM": 0.29,
+      "completionPerM": 1,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3-vl-8b-instruct",
+      "name": "Qwen: Qwen3 VL 8B Instruct",
+      "contextLength": 262144,
+      "promptPerM": 0.25,
+      "completionPerM": 0.75,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3.5-122b-a10b",
+      "name": "Qwen: Qwen3.5-122B-A10B",
+      "contextLength": 262144,
+      "promptPerM": 0.26,
+      "completionPerM": 2.08,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3.5-27b",
+      "name": "Qwen: Qwen3.5-27B",
+      "contextLength": 262144,
+      "promptPerM": 0.26,
+      "completionPerM": 2.6,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3.5-35b-a3b",
+      "name": "Qwen: Qwen3.5-35B-A3B",
+      "contextLength": 262144,
+      "promptPerM": 0.15,
+      "completionPerM": 1,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3.5-397b-a17b",
+      "name": "Qwen: Qwen3.5 397B A17B",
+      "contextLength": 262144,
+      "promptPerM": 0.5,
+      "completionPerM": 3.6,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3.5-9b",
+      "name": "Qwen: Qwen3.5-9B",
+      "contextLength": 262144,
+      "promptPerM": 0.1,
+      "completionPerM": 0.15,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3.5-flash-02-23",
+      "name": "Qwen: Qwen3.5-Flash",
+      "contextLength": 1000000,
+      "promptPerM": 0.065,
+      "completionPerM": 0.26,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3.5-plus-02-15",
+      "name": "Qwen: Qwen3.5 Plus 2026-02-15",
+      "contextLength": 1000000,
+      "promptPerM": 0.26,
+      "completionPerM": 1.56,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3.5-plus-20260420",
+      "name": "Qwen: Qwen3.5 Plus 2026-04-20",
+      "contextLength": 1000000,
+      "promptPerM": 0.3,
+      "completionPerM": 1.8,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3.6-27b",
+      "name": "Qwen: Qwen3.6 27B",
+      "contextLength": 262144,
+      "promptPerM": 0.25,
+      "completionPerM": 2,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3.6-35b-a3b",
+      "name": "Qwen: Qwen3.6 35B A3B",
+      "contextLength": 262144,
+      "promptPerM": 0.15,
+      "completionPerM": 1,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3.6-flash",
+      "name": "Qwen: Qwen3.6 Flash",
+      "contextLength": 1000000,
+      "promptPerM": 0.1875,
+      "completionPerM": 1.125,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3.6-plus",
+      "name": "Qwen: Qwen3.6 Plus",
+      "contextLength": 1000000,
+      "promptPerM": 0.325,
+      "completionPerM": 1.95,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3.7-flash",
+      "name": "Qwen: Qwen3.7 Flash",
+      "contextLength": 1000000,
+      "promptPerM": 0.03,
+      "completionPerM": 0.13,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3.7-max",
+      "name": "Qwen: Qwen3.7 Max",
+      "contextLength": 1000000,
+      "promptPerM": 1.475,
+      "completionPerM": 4.425,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3.7-plus",
+      "name": "Qwen: Qwen3.7 Plus",
+      "contextLength": 1000000,
+      "promptPerM": 0.32,
+      "completionPerM": 1.28,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3.7-plus:batch",
+      "name": "Qwen: Qwen3.7 Plus (batch)",
+      "contextLength": 262144,
+      "promptPerM": 0.23,
+      "completionPerM": 0.92,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3.8-2.4t-a95b",
+      "name": "Qwen: Qwen3.8 2.4T A95B",
+      "contextLength": 1048576,
+      "promptPerM": 2,
+      "completionPerM": 6,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3.8-27b",
+      "name": "Qwen: Qwen3.8 27B",
+      "contextLength": 1000000,
+      "promptPerM": 0.24,
+      "completionPerM": 2.2,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3.8-flash",
+      "name": "Qwen: Qwen3.8 Flash",
+      "contextLength": 1000000,
+      "promptPerM": 0.15,
+      "completionPerM": 0.47,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3.8-max-0902",
+      "name": "Qwen: Qwen3.8 Max (0902)",
+      "contextLength": 1000000,
+      "promptPerM": 2,
+      "completionPerM": 6,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3.8-max-prime",
+      "name": "Qwen: Qwen3.8 Max Prime",
+      "contextLength": 1000000,
+      "promptPerM": 4,
+      "completionPerM": 12,
+      "free": false
+    },
+    {
+      "id": "qwen/qwen3.8-omni-flash",
+      "name": "Qwen: Qwen3.8 Omni Flash",
+      "contextLength": 1000000,
+      "promptPerM": 0.15,
+      "completionPerM": 0.47,
+      "free": false
+    },
+    {
+      "id": "reflection/beam-1.0-501b-a23b",
+      "name": "Reflection: Beam 1.0 501B A23B",
+      "contextLength": 1048576,
+      "promptPerM": 1,
+      "completionPerM": 3,
+      "free": false
+    },
+    {
+      "id": "rekaai/reka-edge",
+      "name": "Reka Edge",
+      "contextLength": 16384,
+      "promptPerM": 0.1,
+      "completionPerM": 0.1,
+      "free": false
+    },
+    {
+      "id": "rekaai/reka-flash-3",
+      "name": "Reka Flash 3",
+      "contextLength": 65536,
+      "promptPerM": 0.1,
+      "completionPerM": 0.2,
+      "free": false
+    },
+    {
+      "id": "relace/relace-apply-3",
+      "name": "Relace: Relace Apply 3",
+      "contextLength": 256000,
+      "promptPerM": 0.85,
+      "completionPerM": 1.25,
+      "free": false
+    },
+    {
+      "id": "relace/relace-search",
+      "name": "Relace: Relace Search",
+      "contextLength": 256000,
+      "promptPerM": 1,
+      "completionPerM": 3,
+      "free": false
+    },
+    {
+      "id": "sakana/fugu-max",
+      "name": "Sakana: Fugu Max",
+      "contextLength": 1000000,
+      "promptPerM": 2,
+      "completionPerM": 6,
+      "free": false
+    },
+    {
+      "id": "sakana/fugu-ultra",
+      "name": "Sakana: Fugu Ultra",
+      "contextLength": 1000000,
+      "promptPerM": 5,
+      "completionPerM": 30,
+      "free": false
+    },
+    {
+      "id": "sakana/fugu-ultra-v2",
+      "name": "Sakana: Fugu Ultra v2",
+      "contextLength": 1000000,
+      "promptPerM": 5,
+      "completionPerM": 30,
+      "free": false
+    },
+    {
+      "id": "sakana/sakana-namazu",
+      "name": "Sakana: Sakana Namazu",
+      "contextLength": 262144,
+      "promptPerM": 0.95,
+      "completionPerM": 4,
+      "free": false
+    },
+    {
+      "id": "sao10k/l3-lunaris-8b",
+      "name": "Sao10K: Llama 3 8B Lunaris",
+      "contextLength": 8192,
+      "promptPerM": 0.04,
+      "completionPerM": 0.05,
+      "free": false
+    },
+    {
+      "id": "sao10k/l3.1-euryale-70b",
+      "name": "Sao10K: Llama 3.1 Euryale 70B v2.2",
+      "contextLength": 131072,
+      "promptPerM": 0.85,
+      "completionPerM": 0.85,
+      "free": false
+    },
+    {
+      "id": "sao10k/l3.3-euryale-70b",
+      "name": "Sao10K: Llama 3.3 Euryale 70B",
+      "contextLength": 131072,
+      "promptPerM": 0.65,
+      "completionPerM": 0.75,
+      "free": false
+    },
+    {
+      "id": "scaledown/extract",
+      "name": "ScaleDown: Extract",
+      "contextLength": 1000000,
+      "promptPerM": 0.04,
+      "completionPerM": 0,
+      "free": false
+    },
+    {
+      "id": "scaledown/summarize",
+      "name": "ScaleDown: Summarize",
+      "contextLength": 1000000,
+      "promptPerM": 0.04,
+      "completionPerM": 0,
+      "free": false
+    },
+    {
+      "id": "stepfun/step-3.5-flash",
+      "name": "StepFun: Step 3.5 Flash",
+      "contextLength": 262144,
+      "promptPerM": 0.1,
+      "completionPerM": 0.3,
+      "free": false
+    },
+    {
+      "id": "stepfun/step-3.7-flash",
+      "name": "StepFun: Step 3.7 Flash",
+      "contextLength": 262144,
+      "promptPerM": 0.2,
+      "completionPerM": 1.15,
+      "free": false
+    },
+    {
+      "id": "stepfun/step-5-preview",
+      "name": "StepFun: Step 5 Preview",
+      "contextLength": 1048576,
+      "promptPerM": 1,
+      "completionPerM": 2.7,
+      "free": false
+    },
+    {
+      "id": "tencent/hunyuan-a13b-instruct",
+      "name": "Tencent: Hunyuan A13B Instruct",
+      "contextLength": 131072,
+      "promptPerM": 0.14,
+      "completionPerM": 0.57,
+      "free": false
+    },
+    {
+      "id": "tencent/hy-mt2-1.8b",
+      "name": "Tencent: Hy-MT2-1.8B",
+      "contextLength": 8192,
+      "promptPerM": 0.044,
+      "completionPerM": 0.177,
+      "free": false
+    },
+    {
+      "id": "tencent/hy-mt2-30b-a3b",
+      "name": "Tencent: Hy-MT2-30B-A3B",
+      "contextLength": 8192,
+      "promptPerM": 0.074,
+      "completionPerM": 0.295,
+      "free": false
+    },
+    {
+      "id": "tencent/hy-mt2-7b",
+      "name": "Tencent: Hy-MT2-7B",
+      "contextLength": 8192,
+      "promptPerM": 0.074,
+      "completionPerM": 0.295,
+      "free": false
+    },
+    {
+      "id": "tencent/hy3",
+      "name": "Tencent: Hy3",
+      "contextLength": 262144,
+      "promptPerM": 0.132,
+      "completionPerM": 0.528,
+      "free": false
+    },
+    {
+      "id": "tencent/hy3-preview",
+      "name": "Tencent: Hy3 preview",
+      "contextLength": 262144,
+      "promptPerM": 0.18,
+      "completionPerM": 0.6,
+      "free": false
+    },
+    {
+      "id": "tencent/hy4-preview",
+      "name": "Tencent: Hy4 preview",
+      "contextLength": 1048576,
+      "promptPerM": 0.834,
+      "completionPerM": 2.501,
+      "free": false
+    },
+    {
+      "id": "thedrummer/cydonia-24b-v4.1",
+      "name": "TheDrummer: Cydonia 24B V4.1",
+      "contextLength": 131072,
+      "promptPerM": 0.3,
+      "completionPerM": 0.5,
+      "free": false
+    },
+    {
+      "id": "thedrummer/skyfall-36b-v2",
+      "name": "TheDrummer: Skyfall 36B V2",
+      "contextLength": 32768,
+      "promptPerM": 0.55,
+      "completionPerM": 0.8,
+      "free": false
+    },
+    {
+      "id": "thedrummer/unslopnemo-12b",
+      "name": "TheDrummer: UnslopNemo 12B",
+      "contextLength": 1024000,
+      "promptPerM": 0.4,
+      "completionPerM": 0.4,
+      "free": false
+    },
+    {
+      "id": "thinkingmachines/inkling",
+      "name": "Thinking Machines: Inkling",
+      "contextLength": 524288,
+      "promptPerM": 1,
+      "completionPerM": 4.05,
+      "free": false
+    },
+    {
+      "id": "thinkingmachines/inkling-small",
+      "name": "Thinking Machines: Inkling Small",
+      "contextLength": 524288,
+      "promptPerM": 0.45,
+      "completionPerM": 1.2,
+      "free": false
+    },
+    {
+      "id": "typesafe/jev-router",
+      "name": "TypeSafe: Jev Router",
+      "contextLength": 1000000,
+      "promptPerM": -1000000,
+      "completionPerM": -1000000,
+      "free": false
+    },
+    {
+      "id": "unbiased/pareto-26.9",
+      "name": "Pareto 26.9",
+      "contextLength": 262144,
+      "promptPerM": 2.5,
+      "completionPerM": 7.5,
+      "free": false
+    },
+    {
+      "id": "undi95/remm-slerp-l2-13b",
+      "name": "ReMM SLERP 13B",
+      "contextLength": 6144,
+      "promptPerM": 0.35,
+      "completionPerM": 0.65,
+      "free": false
+    },
+    {
+      "id": "upstage/solar-mini4",
+      "name": "Upstage: Solar Mini 4",
+      "contextLength": 524288,
+      "promptPerM": 0.05,
+      "completionPerM": 0.2,
+      "free": false
+    },
+    {
+      "id": "upstage/solar-pro-3",
+      "name": "Upstage: Solar Pro 3",
+      "contextLength": 131072,
+      "promptPerM": 0.15,
+      "completionPerM": 0.6,
+      "free": false
+    },
+    {
+      "id": "upstage/solar-pro4",
+      "name": "Upstage: Solar Pro 4",
+      "contextLength": 524288,
+      "promptPerM": 0.09,
+      "completionPerM": 0.36,
+      "free": false
+    },
+    {
+      "id": "writer/palmyra-x5",
+      "name": "Writer: Palmyra X5",
+      "contextLength": 1040000,
+      "promptPerM": 0.6,
+      "completionPerM": 6,
+      "free": false
+    },
+    {
+      "id": "x-ai/grok-4.20",
+      "name": "SpaceXAI: Grok 4.20",
+      "contextLength": 2000000,
+      "promptPerM": 1.25,
+      "completionPerM": 2.5,
+      "free": false
+    },
+    {
+      "id": "x-ai/grok-4.20-multi-agent",
+      "name": "SpaceXAI: Grok 4.20 Multi-Agent",
+      "contextLength": 2000000,
+      "promptPerM": 1.25,
+      "completionPerM": 2.5,
+      "free": false
+    },
+    {
+      "id": "x-ai/grok-4.3",
+      "name": "SpaceXAI: Grok 4.3",
+      "contextLength": 1000000,
+      "promptPerM": 1.25,
+      "completionPerM": 2.5,
+      "free": false
+    },
+    {
+      "id": "x-ai/grok-4.3:batch",
+      "name": "SpaceXAI: Grok 4.3 (batch)",
+      "contextLength": 1000000,
+      "promptPerM": 1,
+      "completionPerM": 2,
+      "free": false
+    },
+    {
+      "id": "x-ai/grok-4.5",
+      "name": "SpaceXAI: Grok 4.5",
+      "contextLength": 500000,
+      "promptPerM": 2,
+      "completionPerM": 6,
+      "free": false
+    },
+    {
+      "id": "x-ai/grok-4.6",
+      "name": "SpaceXAI: Grok 4.6",
+      "contextLength": 500000,
+      "promptPerM": 2,
+      "completionPerM": 6,
+      "free": false
+    },
+    {
+      "id": "x-ai/grok-4.7",
+      "name": "SpaceXAI: Grok 4.7",
+      "contextLength": 500000,
+      "promptPerM": 2,
+      "completionPerM": 6,
+      "free": false
+    },
+    {
+      "id": "x-ai/grok-build-0.1",
+      "name": "SpaceXAI: Grok Build 0.1",
+      "contextLength": 256000,
+      "promptPerM": 1,
+      "completionPerM": 2,
+      "free": false
+    },
+    {
+      "id": "xiaomi/mimo-v2.5",
+      "name": "Xiaomi: MiMo-V2.5",
+      "contextLength": 1050000,
+      "promptPerM": 0.14,
+      "completionPerM": 0.28,
+      "free": false
+    },
+    {
+      "id": "xiaomi/mimo-v2.5-pro",
+      "name": "Xiaomi: MiMo-V2.5-Pro",
+      "contextLength": 1050000,
+      "promptPerM": 0.435,
+      "completionPerM": 0.87,
+      "free": false
+    },
+    {
+      "id": "xiaomi/mimo-v2.6-flash",
+      "name": "Xiaomi: MiMo-V2.6-Flash",
+      "contextLength": 1050000,
+      "promptPerM": 0.14,
+      "completionPerM": 0.28,
+      "free": false
+    },
+    {
+      "id": "xiaomi/mimo-v2.6-pro",
+      "name": "Xiaomi: MiMo-V2.6-Pro",
+      "contextLength": 1050000,
+      "promptPerM": 0.435,
+      "completionPerM": 0.87,
+      "free": false
+    },
+    {
+      "id": "xiaomi/mimo-v2.6-pro-ultraspeed",
+      "name": "Xiaomi: MiMo-V2.6-Pro-UltraSpeed",
+      "contextLength": 1048576,
+      "promptPerM": 4.35,
+      "completionPerM": 8.7,
+      "free": false
+    },
+    {
+      "id": "z-ai/glm-4.5",
+      "name": "Z.ai: GLM 4.5",
+      "contextLength": 131072,
+      "promptPerM": 0.6,
+      "completionPerM": 2.2,
+      "free": false
+    },
+    {
+      "id": "z-ai/glm-4.5-air",
+      "name": "Z.ai: GLM 4.5 Air",
+      "contextLength": 131072,
+      "promptPerM": 0.13,
+      "completionPerM": 0.85,
+      "free": false
+    },
+    {
+      "id": "z-ai/glm-4.5v",
+      "name": "Z.ai: GLM 4.5V",
+      "contextLength": 65536,
+      "promptPerM": 0.6,
+      "completionPerM": 1.8,
+      "free": false
+    },
+    {
+      "id": "z-ai/glm-4.6",
+      "name": "Z.ai: GLM 4.6",
+      "contextLength": 204800,
+      "promptPerM": 0.5,
+      "completionPerM": 2,
+      "free": false
+    },
+    {
+      "id": "z-ai/glm-4.6v",
+      "name": "Z.ai: GLM 4.6V",
+      "contextLength": 131072,
+      "promptPerM": 0.3,
+      "completionPerM": 0.9,
+      "free": false
+    },
+    {
+      "id": "z-ai/glm-4.7",
+      "name": "Z.ai: GLM 4.7",
+      "contextLength": 204800,
+      "promptPerM": 0.54,
+      "completionPerM": 1.98,
+      "free": false
+    },
+    {
+      "id": "z-ai/glm-4.7-flash",
+      "name": "Z.ai: GLM 4.7 Flash",
+      "contextLength": 200000,
+      "promptPerM": 0.0605,
+      "completionPerM": 0.4,
+      "free": false
+    },
+    {
+      "id": "z-ai/glm-5",
+      "name": "Z.ai: GLM 5",
+      "contextLength": 204800,
+      "promptPerM": 1,
+      "completionPerM": 3.2,
+      "free": false
+    },
+    {
+      "id": "z-ai/glm-5-turbo",
+      "name": "Z.ai: GLM 5 Turbo",
+      "contextLength": 202752,
+      "promptPerM": 1.2,
+      "completionPerM": 4,
+      "free": false
+    },
+    {
+      "id": "z-ai/glm-5.1",
+      "name": "Z.ai: GLM 5.1",
+      "contextLength": 204800,
+      "promptPerM": 0.966,
+      "completionPerM": 3.036,
+      "free": false
+    },
+    {
+      "id": "z-ai/glm-5.2",
+      "name": "Z.ai: GLM 5.2",
+      "contextLength": 1048576,
+      "promptPerM": 0.62,
+      "completionPerM": 2.42,
+      "free": false
+    },
+    {
+      "id": "z-ai/glm-5.3",
+      "name": "Z.ai: GLM 5.3",
+      "contextLength": 1048576,
+      "promptPerM": 0.079,
+      "completionPerM": 4.8,
+      "free": false
+    },
+    {
+      "id": "z-ai/glm-5.3-flash",
+      "name": "Z.ai: GLM 5.3 Flash",
+      "contextLength": 1048576,
+      "promptPerM": 0.0215,
+      "completionPerM": 0.3966,
+      "free": false
+    },
+    {
+      "id": "z-ai/glm-5.3-flash:batch",
+      "name": "Z.ai: GLM 5.3 Flash (batch)",
+      "contextLength": 1048576,
+      "promptPerM": 0.05,
+      "completionPerM": 0.18,
+      "free": false
+    },
+    {
+      "id": "z-ai/glm-5.3-flashx",
+      "name": "Z.ai: GLM 5.3 FlashX",
+      "contextLength": 1048576,
+      "promptPerM": 0.37,
+      "completionPerM": 1.25,
+      "free": false
+    },
+    {
+      "id": "z-ai/glm-5.3-prime",
+      "name": "Z.ai: GLM 5.3 Prime",
+      "contextLength": 1000000,
+      "promptPerM": 2.8,
+      "completionPerM": 8.8,
+      "free": false
+    },
+    {
+      "id": "z-ai/glm-5.3:batch",
+      "name": "Z.ai: GLM 5.3 (batch)",
+      "contextLength": 1048576,
+      "promptPerM": 0.45,
+      "completionPerM": 2,
+      "free": false
+    },
+    {
+      "id": "z-ai/glm-5v-turbo",
+      "name": "Z.ai: GLM 5V Turbo",
+      "contextLength": 202752,
+      "promptPerM": 1.2,
+      "completionPerM": 4,
+      "free": false
+    }
+  ]
+}

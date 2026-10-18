@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Badge from '../components/Badge.astro';
+import { getFresh, getEvents } from '../lib/load';
 
 const today = new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
 
@@ -14,41 +15,115 @@ const tips = [
   'The best first project is one you will use yourself. "Who is this even for?" — for you. That is a valid answer.',
 ];
 const tip = tips[new Date().getDay() % tips.length];
+
+const fresh = getFresh();
+const events = getEvents();
+const fetched = fresh.fetchedAt ? new Date(fresh.fetchedAt).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : null;
+
+const bySource = (s: string) => fresh.items.filter((i) => i.source === s).slice(0, 3);
+const hf = bySource('huggingface');
+const gh = bySource('github');
+const hn = bySource('hackernews');
 ---
 
-<Base title={`Today — ${today} · HELPINhex`} description="Your daily briefing: what's new, one tip, one deadline.">
+<Base title={`Today — ${today} · HELPINhex`} description="Your daily briefing: what's new in AI, one tip, one deadline. Caught and explained fresh every day.">
   <section class="section">
     <div class="container">
       <div class="section-head">
         <h1 style="font-size:2.2rem">Today</h1>
-        <span class="muted">{today}</span>
+        <div>
+          {fetched && <Badge tone="accent">freshness engine: last catch {fetched}</Badge>}
+        </div>
       </div>
 
       <div class="card mb-2">
-        <div class="flex-between">
-          <h3>💡 Tip of the day</h3>
-        </div>
+        <h3>💡 Tip of the day</h3>
         <p style="margin-bottom:0">{tip}</p>
       </div>
 
-      <h2 class="mt-3">Fresh catches</h2>
-      <p class="muted small">The three things from overnight you might actually care about.</p>
+      <h2>Fresh catches</h2>
+      <p class="muted small">
+        Caught automatically from Hugging Face, GitHub and Hacker News — dated, sourced, no editorializing until a human verifies it.
+      </p>
       <div class="grid">
-        <div class="card"><h3>🛰️ Hugging Face</h3><p class="muted small">New models feed — arrives with Phase 2.</p></div>
-        <div class="card"><h3>🐙 GitHub</h3><p class="muted small">Trending AI repos — arrives with Phase 2.</p></div>
-        <div class="card"><h3>⚡ Product launches</h3><p class="muted small">"X just added AI" — arrives with Phase 2.</p></div>
+        <div class="card">
+          <h3>🛰️ New open-weight models</h3>
+          {
+            hf.length > 0 ? (
+              <ul style="padding-left:1.1rem; margin:0">
+                {hf.map((i) => (
+                  <li class="small" style="margin-bottom:0.6rem">
+                    <a href={i.url} target="_blank" rel="noopener">{i.title}</a><br />
+                    <span class="muted">{i.detail} · {i.stats}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p class="muted small">No notable models caught in the last crawl (likes/downloads floor filters test repos).</p>
+            )
+          }
+        </div>
+        <div class="card">
+          <h3>🐙 Hot new GitHub repos</h3>
+          {
+            gh.length > 0 ? (
+              <ul style="padding-left:1.1rem; margin:0">
+                {gh.map((i) => (
+                  <li class="small" style="margin-bottom:0.6rem">
+                    <a href={i.url} target="_blank" rel="noopener">{i.title}</a><br />
+                    <span class="muted">{i.detail}</span><br />
+                    <span class="muted">{i.stats}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p class="muted small">GitHub feed unavailable on last crawl.</p>
+            )
+          }
+        </div>
+        <div class="card">
+          <h3>⚡ AI launches (Show HN)</h3>
+          {
+            hn.length > 0 ? (
+              <ul style="padding-left:1.1rem; margin:0">
+                {hn.map((i) => (
+                  <li class="small" style="margin-bottom:0.6rem">
+                    <a href={i.url} target="_blank" rel="noopener">{i.title}</a><br />
+                    <span class="muted">{i.stats}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p class="muted small">No AI launches in the last crawl window.</p>
+            )
+          }
+        </div>
       </div>
 
-      <h2 class="mt-3">Deadlines</h2>
+      <h2 class="mt-3">Deadlines & events</h2>
       <div class="card">
-        <p class="muted" style="margin-bottom:0">
-          Hackathon + grant countdowns land here with the Phase 2 events feed, with calendar export.
-          Until then — <a href="/paths/ai-zero-builder/">the beginner path</a> has no deadline. Start today.
-        </p>
+        {
+          events && events.items.length > 0 ? (
+            <ul style="padding-left:1.1rem; margin:0">
+              {events.items.slice(0, 6).map((e) => (
+                <li class="small" style="margin-bottom:0.5rem">
+                  <a href={e.url} target="_blank" rel="noopener">{e.title}</a>
+                  <span class="muted"> · {e.when ? new Date(e.when).toLocaleDateString() : 'dates on page'} · {e.location}</span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p class="muted" style="margin:0">
+              The MLH auto-feed is unavailable right now (they change endpoints often) — use the hand-verified portal list on the
+              <a href="/events/"> Events page</a>. Countdown widgets + calendar export arrive with the next connector pass.
+            </p>
+          )
+        }
       </div>
 
       <p class="muted small mt-3">
-        <Badge tone="warn">honesty badge</Badge> This page shows empty states instead of fake news. Real, sourced, dated items only — that is the trust system.
+        <Badge tone="warn">honesty badge</Badge>
+        Every catch shows its source and stats exactly as fetched. Nothing is hand-picked to look exciting — the filter is a floor (stars/likes), not an opinion.
       </p>
     </div>
   </section>

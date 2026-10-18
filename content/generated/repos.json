@@ -1,0 +1,775 @@
+{
+  "source": "github",
+  "fetchedAt": "2026-10-18T04:30:05.551Z",
+  "latest": [
+    {
+      "kind": "repo",
+      "source": "github",
+      "title": "LosaLosSantos/aurelio-finance",
+      "url": "https://github.com/LosaLosSantos/aurelio-finance",
+      "detail": "Open-source personal finance app with an AI financial advisor: track your net worth, investments, ETFs, cash and debts on your own computer.",
+      "stats": "⭐ 3951 · updated 2026-10-17",
+      "when": "2026-10-17T13:14:11Z"
+    },
+    {
+      "kind": "repo",
+      "source": "github",
+      "title": "onehumanbeing/esp32-iphone-agent",
+      "url": "https://github.com/onehumanbeing/esp32-iphone-agent",
+      "detail": "Let an AI model use a real iPhone with a $7 ESP32: AirPlay eyes, USB HID hands, any OpenAI-compatible vision model. No Mac, no developer acc",
+      "stats": "⭐ 3016 · updated 2026-10-18",
+      "when": "2026-10-18T00:06:23Z"
+    },
+    {
+      "kind": "repo",
+      "source": "github",
+      "title": "deeplethe/solid-glass",
+      "url": "https://github.com/deeplethe/solid-glass",
+      "detail": "A design system for AI applications. Material, physical, tactile, technical.",
+      "stats": "⭐ 1808 · updated 2026-10-16",
+      "when": "2026-10-16T04:35:40Z"
+    },
+    {
+      "kind": "repo",
+      "source": "github",
+      "title": "rociiu/talorys",
+      "url": "https://github.com/rociiu/talorys",
+      "detail": "Your personal AI agent in your own Cloudflare account. Chat, memory, tasks, notes and scheduled reminders, deployed with one command: npx cr",
+      "stats": "⭐ 1306 · updated 2026-10-18",
+      "when": "2026-10-18T01:32:57Z"
+    },
+    {
+      "kind": "repo",
+      "source": "github",
+      "title": "trhhubsd/ARTEX",
+      "url": "https://github.com/trhhubsd/ARTEX",
+      "detail": "ARTEX，AI 自主渗透测试系统。百度 agent+ 攻防挑战赛冠军项目。",
+      "stats": "⭐ 1229 · updated 2026-10-16",
+      "when": "2026-10-16T07:32:16Z"
+    },
+    {
+      "kind": "repo",
+      "source": "github",
+      "title": "feder-cr/git-ai",
+      "url": "https://github.com/feder-cr/git-ai",
+      "detail": "Git designed for AI agents.",
+      "stats": "⭐ 1146 · updated 2026-10-16",
+      "when": "2026-10-16T23:02:12Z"
+    },
+    {
+      "kind": "repo",
+      "source": "github",
+      "title": "mw00/project-maya",
+      "url": "https://github.com/mw00/project-maya",
+      "detail": "Project Maya - run GLM-5.3-Flash (321B MoE) privately on your own GPU(s), from one card to 16, NVIDIA or AMD, Linux or Windows. Engine, serv",
+      "stats": "⭐ 1014 · updated 2026-10-16",
+      "when": "2026-10-16T22:22:14Z"
+    },
+    {
+      "kind": "repo",
+      "source": "github",
+      "title": "outcrawlai/scout",
+      "url": "https://github.com/outcrawlai/scout",
+      "detail": "Scout: the open-source browser agent, by Outcrawl. Mirrored automatically from Outcrawl's own repository.",
+      "stats": "⭐ 941 · updated 2026-10-16",
+      "when": "2026-10-16T07:57:53Z"
+    },
+    {
+      "kind": "repo",
+      "source": "github",
+      "title": "jwuthri-cloud/Tracely-ai",
+      "url": "https://github.com/jwuthri-cloud/Tracely-ai",
+      "detail": "Trace-native CI/CD for AI agents: grade production traces, cluster failures, freeze them into replayable regression tests, and block PRs tha",
+      "stats": "⭐ 940 · updated 2026-10-15",
+      "when": "2026-10-15T23:52:25Z"
+    },
+    {
+      "kind": "repo",
+      "source": "github",
+      "title": "Tejashmakwana/motionmaxxing",
+      "url": "https://github.com/Tejashmakwana/motionmaxxing",
+      "detail": "Looksmaxxing for motion graphics. An agent skill that turns AI slop videos into films that look made by a motion designer.",
+      "stats": "⭐ 844 · updated 2026-10-06",
+      "when": "2026-10-06T18:20:43Z"
+    },
+    {
+      "kind": "repo",
+      "source": "github",
+      "title": "franzenzenhofer/big-arrow-on-the-screen",
+      "url": "https://github.com/franzenzenhofer/big-arrow-on-the-screen",
+      "detail": "Let your AI agents paint big arrows, boxes and text on your Mac screen. One CLI, click-through, gone by itself. Skill for Claude Code and Co",
+      "stats": "⭐ 776 · updated 2026-10-12",
+      "when": "2026-10-12T16:38:15Z"
+    },
+    {
+      "kind": "repo",
+      "source": "github",
+      "title": "Leonxlnx/earshot",
+      "url": "https://github.com/Leonxlnx/earshot",
+      "detail": "Ears for coding agents: let AI hear, review and make sound. CPU-only, open source.",
+      "stats": "⭐ 695 · updated 2026-10-18",
+      "when": "2026-10-18T00:03:32Z"
+    },
+    {
+      "kind": "repo",
+      "source": "github",
+      "title": "anujasid/blender-ai-mcp-addon",
+      "url": "https://github.com/anujasid/blender-ai-mcp-addon",
+      "detail": "AI assistant and MCP server for Blender: visual chat, scene tools, multi-agent workflows. Works with OpenAI, ChatGPT, Claude, Gemini, Ollama",
+      "stats": "⭐ 646 · updated 2026-10-17",
+      "when": "2026-10-17T09:46:44Z"
+    },
+    {
+      "kind": "repo",
+      "source": "github",
+      "title": "yeyuxin777/baoyan-agent-benchmark",
+      "url": "https://github.com/yeyuxin777/baoyan-agent-benchmark",
+      "detail": "Sprix AI at 屿智同行 × 保研岛 — an open-source benchmark for AI agents in Baoyan advising and application planning.",
+      "stats": "⭐ 569 · updated 2026-10-15",
+      "when": "2026-10-15T03:41:22Z"
+    },
+    {
+      "kind": "repo",
+      "source": "github",
+      "title": "thesysdev/open-intelligent-ui",
+      "url": "https://github.com/thesysdev/open-intelligent-ui",
+      "detail": "An open-source take on ChatGPT's Intelligent UI: answers stream as interactive UI (maps, photos, charts, drawings and working tools). Built ",
+      "stats": "⭐ 525 · updated 2026-10-17",
+      "when": "2026-10-17T18:40:14Z"
+    }
+  ],
+  "channels": [
+    {
+      "name": "🧠 LLMs & model tools",
+      "query": "topic:llm stars:>200 pushed:>2026-07-20",
+      "searchUrl": "https://github.com/search?type=repositories&s=stars&o=desc&q=topic%3Allm%20stars%3A%3E200%20pushed%3A%3E2026-07-20",
+      "items": [
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "morluto/rea",
+          "url": "https://github.com/morluto/rea",
+          "detail": "Reverse engineer anything with agents, from app behavior down to native binaries.",
+          "stats": "⭐ 309881 · updated 2026-10-18",
+          "when": "2026-10-18T04:23:19Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "affaan-m/ECC",
+          "url": "https://github.com/affaan-m/ECC",
+          "detail": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Code",
+          "stats": "⭐ 282646 · updated 2026-10-15",
+          "when": "2026-10-15T19:17:01Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "NousResearch/hermes-agent",
+          "url": "https://github.com/NousResearch/hermes-agent",
+          "detail": "The agent that grows with you",
+          "stats": "⭐ 254724 · updated 2026-10-18",
+          "when": "2026-10-18T04:22:26Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "firecrawl/firecrawl",
+          "url": "https://github.com/firecrawl/firecrawl",
+          "detail": "Supercharge your AI agents with data from the web and beyond. Building the library for superintelligence. 🔥",
+          "stats": "⭐ 192539 · updated 2026-10-18",
+          "when": "2026-10-18T03:03:26Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "Significant-Gravitas/AutoGPT",
+          "url": "https://github.com/Significant-Gravitas/AutoGPT",
+          "detail": "AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on w",
+          "stats": "⭐ 187629 · updated 2026-10-18",
+          "when": "2026-10-18T04:28:40Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "ollama/ollama",
+          "url": "https://github.com/ollama/ollama",
+          "detail": "Get up and running with Kimi, GLM, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models.",
+          "stats": "⭐ 183661 · updated 2026-10-18",
+          "when": "2026-10-18T02:07:15Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "f/prompts.chat",
+          "url": "https://github.com/f/prompts.chat",
+          "detail": "f.k.a. Awesome ChatGPT Prompts. Share, discover, and collect prompts from the community. Free and open source — self-host for your organizat",
+          "stats": "⭐ 173272 · updated 2026-10-18",
+          "when": "2026-10-18T03:17:54Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "huggingface/transformers",
+          "url": "https://github.com/huggingface/transformers",
+          "detail": "🤗 Transformers: the model-definition framework for state-of-the-art machine learning models in text, vision, audio, and multimodal models, ",
+          "stats": "⭐ 167800 · updated 2026-10-18",
+          "when": "2026-10-18T04:14:43Z"
+        }
+      ]
+    },
+    {
+      "name": "🤖 AI agents",
+      "query": "topic:ai-agents stars:>200 pushed:>2026-07-20",
+      "searchUrl": "https://github.com/search?type=repositories&s=stars&o=desc&q=topic%3Aai-agents%20stars%3A%3E200%20pushed%3A%3E2026-07-20",
+      "items": [
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "morluto/rea",
+          "url": "https://github.com/morluto/rea",
+          "detail": "Reverse engineer anything with agents, from app behavior down to native binaries.",
+          "stats": "⭐ 309883 · updated 2026-10-18",
+          "when": "2026-10-18T04:23:19Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "affaan-m/ECC",
+          "url": "https://github.com/affaan-m/ECC",
+          "detail": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Code",
+          "stats": "⭐ 282646 · updated 2026-10-15",
+          "when": "2026-10-15T19:17:01Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "NousResearch/hermes-agent",
+          "url": "https://github.com/NousResearch/hermes-agent",
+          "detail": "The agent that grows with you",
+          "stats": "⭐ 254724 · updated 2026-10-18",
+          "when": "2026-10-18T04:22:26Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "deepseek-ai/deepseek-harness",
+          "url": "https://github.com/deepseek-ai/deepseek-harness",
+          "detail": "DeepSeek Harness: Everything is a Plugin.",
+          "stats": "⭐ 252329 · updated 2026-10-17",
+          "when": "2026-10-17T08:16:09Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "firecrawl/firecrawl",
+          "url": "https://github.com/firecrawl/firecrawl",
+          "detail": "Supercharge your AI agents with data from the web and beyond. Building the library for superintelligence. 🔥",
+          "stats": "⭐ 192539 · updated 2026-10-18",
+          "when": "2026-10-18T03:03:26Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "DietrichGebert/ponytail",
+          "url": "https://github.com/DietrichGebert/ponytail",
+          "detail": "Makes your AI agent think like the laziest senior dev in the room. The best code is the code you never wrote.",
+          "stats": "⭐ 166335 · updated 2026-10-18",
+          "when": "2026-10-18T01:55:14Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "langchain-ai/langchain",
+          "url": "https://github.com/langchain-ai/langchain",
+          "detail": "The agent engineering platform.",
+          "stats": "⭐ 148006 · updated 2026-10-17",
+          "when": "2026-10-17T08:50:05Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "Graphify-Labs/graphify",
+          "url": "https://github.com/Graphify-Labs/graphify",
+          "detail": "Turn any codebase, with its docs, SQL schemas, configs, and PDFs, into a queryable knowledge graph. A /graphify skill for Claude Code, Curso",
+          "stats": "⭐ 127860 · updated 2026-10-16",
+          "when": "2026-10-16T17:57:21Z"
+        }
+      ]
+    },
+    {
+      "name": "🏠 Local AI (Ollama & friends)",
+      "query": "topic:ollama stars:>300 pushed:>2026-07-20",
+      "searchUrl": "https://github.com/search?type=repositories&s=stars&o=desc&q=topic%3Aollama%20stars%3A%3E300%20pushed%3A%3E2026-07-20",
+      "items": [
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "ollama/ollama",
+          "url": "https://github.com/ollama/ollama",
+          "detail": "Get up and running with Kimi, GLM, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models.",
+          "stats": "⭐ 183661 · updated 2026-10-18",
+          "when": "2026-10-18T02:07:15Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "open-webui/open-webui",
+          "url": "https://github.com/open-webui/open-webui",
+          "detail": "User-friendly AI Interface (Supports Ollama, OpenAI API, ...)",
+          "stats": "⭐ 156006 · updated 2026-10-16",
+          "when": "2026-10-16T14:59:01Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "ChatGPTNextWeb/NextChat",
+          "url": "https://github.com/ChatGPTNextWeb/NextChat",
+          "detail": "✨ Zero-config AI chat assistant. No API key needed — sign up and instantly chat with GPT-5, Claude 4, Gemini 2.5, DeepSeek & 100+ top models",
+          "stats": "⭐ 88853 · updated 2026-10-15",
+          "when": "2026-10-15T07:27:55Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "chatboxai/chatbox",
+          "url": "https://github.com/chatboxai/chatbox",
+          "detail": "Powerful AI Client",
+          "stats": "⭐ 42056 · updated 2026-09-24",
+          "when": "2026-09-24T14:09:13Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "1Panel-dev/1Panel",
+          "url": "https://github.com/1Panel-dev/1Panel",
+          "detail": "🔥 1Panel is a modern, open-source Linux server management panel and a lightweight AI management platform.",
+          "stats": "⭐ 37194 · updated 2026-10-16",
+          "when": "2026-10-16T09:27:51Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "Tencent/WeKnora",
+          "url": "https://github.com/Tencent/WeKnora",
+          "detail": "Open-source LLM knowledge platform: turn raw documents into a queryable RAG, an autonomous reasoning agent, and a self-maintaining Wiki.",
+          "stats": "⭐ 34539 · updated 2026-10-17",
+          "when": "2026-10-17T15:52:23Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "Zackriya-Solutions/meetily",
+          "url": "https://github.com/Zackriya-Solutions/meetily",
+          "detail": "Privacy first, AI meeting assistant with 4x faster Parakeet/Whisper live transcription, speaker diarization, and Ollama summarization built ",
+          "stats": "⭐ 31865 · updated 2026-09-15",
+          "when": "2026-09-15T18:32:32Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "1Panel-dev/MaxKB",
+          "url": "https://github.com/1Panel-dev/MaxKB",
+          "detail": "🔥 MaxKB is an open-source platform for building enterprise-grade agents.  强大易用的开源企业级智能体平台。",
+          "stats": "⭐ 22989 · updated 2026-10-16",
+          "when": "2026-10-16T14:02:35Z"
+        }
+      ]
+    },
+    {
+      "name": "🔎 RAG & search",
+      "query": "topic:rag stars:>100 pushed:>2026-07-20",
+      "searchUrl": "https://github.com/search?type=repositories&s=stars&o=desc&q=topic%3Arag%20stars%3A%3E100%20pushed%3A%3E2026-07-20",
+      "items": [
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "open-webui/open-webui",
+          "url": "https://github.com/open-webui/open-webui",
+          "detail": "User-friendly AI Interface (Supports Ollama, OpenAI API, ...)",
+          "stats": "⭐ 156006 · updated 2026-10-16",
+          "when": "2026-10-16T14:59:01Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "langchain-ai/langchain",
+          "url": "https://github.com/langchain-ai/langchain",
+          "detail": "The agent engineering platform.",
+          "stats": "⭐ 148006 · updated 2026-10-17",
+          "when": "2026-10-17T08:50:05Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "Shubhamsaboo/awesome-llm-apps",
+          "url": "https://github.com/Shubhamsaboo/awesome-llm-apps",
+          "detail": "100+ AI Agents, Agent Skills and RAG Apps - Free and Open Source.",
+          "stats": "⭐ 142149 · updated 2026-10-17",
+          "when": "2026-10-17T16:56:09Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "Graphify-Labs/graphify",
+          "url": "https://github.com/Graphify-Labs/graphify",
+          "detail": "Turn any codebase, with its docs, SQL schemas, configs, and PDFs, into a queryable knowledge graph. A /graphify skill for Claude Code, Curso",
+          "stats": "⭐ 127860 · updated 2026-10-16",
+          "when": "2026-10-16T17:57:21Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "thedotmack/claude-mem",
+          "url": "https://github.com/thedotmack/claude-mem",
+          "detail": "Persistent Context Across Sessions for Every Agent –  Captures everything your agent does during sessions, compresses it with AI, and inject",
+          "stats": "⭐ 101446 · updated 2026-10-18",
+          "when": "2026-10-18T00:01:34Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "infiniflow/ragflow",
+          "url": "https://github.com/infiniflow/ragflow",
+          "detail": "RAGFlow is a leading open-source Retrieval-Augmented Generation (RAG) engine that fuses cutting-edge RAG with Agent capabilities to create a",
+          "stats": "⭐ 92387 · updated 2026-10-17",
+          "when": "2026-10-17T13:11:26Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "PaddlePaddle/PaddleOCR",
+          "url": "https://github.com/PaddlePaddle/PaddleOCR",
+          "detail": "Turn any PDF or image document into structured data for your AI. A powerful, lightweight OCR toolkit that bridges the gap between images/PDF",
+          "stats": "⭐ 91292 · updated 2026-09-16",
+          "when": "2026-09-16T03:31:50Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "unclecode/crawl4ai",
+          "url": "https://github.com/unclecode/crawl4ai",
+          "detail": "Open-source web crawler and scraper for LLMs and AI agents: any website into clean, LLM-ready Markdown. Run it yourself, or use Crawl4AI Clo",
+          "stats": "⭐ 85732 · updated 2026-10-15",
+          "when": "2026-10-15T10:16:13Z"
+        }
+      ]
+    },
+    {
+      "name": "🎨 Image & video gen",
+      "query": "topic:stable-diffusion stars:>500 pushed:>2026-07-20",
+      "searchUrl": "https://github.com/search?type=repositories&s=stars&o=desc&q=topic%3Astable-diffusion%20stars%3A%3E500%20pushed%3A%3E2026-07-20",
+      "items": [
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "Comfy-Org/ComfyUI",
+          "url": "https://github.com/Comfy-Org/ComfyUI",
+          "detail": "The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface. The fastest local inference engine in the w",
+          "stats": "⭐ 138086 · updated 2026-10-18",
+          "when": "2026-10-18T02:37:21Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "unslothai/unsloth",
+          "url": "https://github.com/unslothai/unsloth",
+          "detail": "Local UI to run and train LLMs and diffusion models. Supports GGUF, MLX, Qwen3.8, DeepSeek-V4, MiniMax-H3, Gemma 4, FLUX and more.",
+          "stats": "⭐ 78202 · updated 2026-10-18",
+          "when": "2026-10-18T00:57:07Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "calesthio/OpenMontage",
+          "url": "https://github.com/calesthio/OpenMontage",
+          "detail": "World's first open-source, agentic video production system. 12 production pipelines, 100+ tools, 700+ agent skill and production-knowledge f",
+          "stats": "⭐ 69235 · updated 2026-10-16",
+          "when": "2026-10-16T15:07:33Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "mudler/LocalAI",
+          "url": "https://github.com/mudler/LocalAI",
+          "detail": "LocalAI is the open-source AI engine. Run any model - LLMs, vision, voice, image, video - on any hardware. No GPU required.",
+          "stats": "⭐ 49610 · updated 2026-10-17",
+          "when": "2026-10-17T23:31:41Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "huggingface/diffusers",
+          "url": "https://github.com/huggingface/diffusers",
+          "detail": "🤗 Diffusers: State-of-the-art diffusion models for image, video, and audio generation in PyTorch.",
+          "stats": "⭐ 34747 · updated 2026-10-16",
+          "when": "2026-10-16T23:34:13Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "invoke-ai/InvokeAI",
+          "url": "https://github.com/invoke-ai/InvokeAI",
+          "detail": "Invoke is a leading creative engine for Stable Diffusion models, empowering professionals, artists, and enthusiasts to generate and create v",
+          "stats": "⭐ 28713 · updated 2026-10-18",
+          "when": "2026-10-18T03:24:21Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "openvinotoolkit/openvino",
+          "url": "https://github.com/openvinotoolkit/openvino",
+          "detail": "OpenVINO™ is an open source toolkit for optimizing and deploying AI inference",
+          "stats": "⭐ 11018 · updated 2026-10-17",
+          "when": "2026-10-17T18:51:35Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "Acly/krita-ai-diffusion",
+          "url": "https://github.com/Acly/krita-ai-diffusion",
+          "detail": "Streamlined interface for generating images with AI in Krita. Inpaint and outpaint with optional text prompt, no tweaking required.",
+          "stats": "⭐ 10734 · updated 2026-10-03",
+          "when": "2026-10-03T10:54:01Z"
+        }
+      ]
+    },
+    {
+      "name": "🎙️ Voice & audio",
+      "query": "topic:whisper stars:>300 pushed:>2026-07-20",
+      "searchUrl": "https://github.com/search?type=repositories&s=stars&o=desc&q=topic%3Awhisper%20stars%3A%3E300%20pushed%3A%3E2026-07-20",
+      "items": [
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "jamiepine/voicebox",
+          "url": "https://github.com/jamiepine/voicebox",
+          "detail": "The open-source AI voice studio. Clone, dictate, create.",
+          "stats": "⭐ 57883 · updated 2026-10-07",
+          "when": "2026-10-07T01:17:58Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "ggml-org/whisper.cpp",
+          "url": "https://github.com/ggml-org/whisper.cpp",
+          "detail": "Port of OpenAI's Whisper model in C/C++",
+          "stats": "⭐ 54457 · updated 2026-10-12",
+          "when": "2026-10-12T05:01:56Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "Zackriya-Solutions/meetily",
+          "url": "https://github.com/Zackriya-Solutions/meetily",
+          "detail": "Privacy first, AI meeting assistant with 4x faster Parakeet/Whisper live transcription, speaker diarization, and Ollama summarization built ",
+          "stats": "⭐ 31865 · updated 2026-09-15",
+          "when": "2026-09-15T18:32:32Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "SYSTRAN/faster-whisper",
+          "url": "https://github.com/SYSTRAN/faster-whisper",
+          "detail": "Faster Whisper transcription with CTranslate2",
+          "stats": "⭐ 25931 · updated 2026-10-16",
+          "when": "2026-10-16T11:12:55Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "m-bain/whisperX",
+          "url": "https://github.com/m-bain/whisperX",
+          "detail": "WhisperX:  Automatic Speech Recognition with Word-level Timestamps (& Diarization)",
+          "stats": "⭐ 24636 · updated 2026-09-26",
+          "when": "2026-09-26T20:53:59Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "chidiwilliams/buzz",
+          "url": "https://github.com/chidiwilliams/buzz",
+          "detail": "Buzz transcribes and translates audio offline on your personal computer. Powered by OpenAI's Whisper.",
+          "stats": "⭐ 22047 · updated 2026-10-17",
+          "when": "2026-10-17T09:14:59Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "PaddlePaddle/PaddleSpeech",
+          "url": "https://github.com/PaddlePaddle/PaddleSpeech",
+          "detail": "Easy-to-use Speech Toolkit including Self-Supervised Learning model, SOTA/Streaming ASR with punctuation, Streaming TTS with text frontend, ",
+          "stats": "⭐ 12694 · updated 2026-08-12",
+          "when": "2026-08-12T01:07:51Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "QuentinFuxa/WhisperLiveKit",
+          "url": "https://github.com/QuentinFuxa/WhisperLiveKit",
+          "detail": "Real-time, local speech-to-text with streaming ASR, speaker diarization, translation, and OpenAI/Deepgram-compatible APIs.",
+          "stats": "⭐ 11149 · updated 2026-10-01",
+          "when": "2026-10-01T04:24:41Z"
+        }
+      ]
+    },
+    {
+      "name": "🔗 Automation & n8n",
+      "query": "n8n stars:>100 pushed:>2026-07-20",
+      "searchUrl": "https://github.com/search?type=repositories&s=stars&o=desc&q=n8n%20stars%3A%3E100%20pushed%3A%3E2026-07-20",
+      "items": [
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "n8n-io/n8n",
+          "url": "https://github.com/n8n-io/n8n",
+          "detail": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integ",
+          "stats": "⭐ 207839 · updated 2026-10-17",
+          "when": "2026-10-17T21:01:17Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "enescingoz/awesome-n8n-templates",
+          "url": "https://github.com/enescingoz/awesome-n8n-templates",
+          "detail": "280+ free n8n automation templates — ready-to-use workflows for Gmail, Telegram, Slack, Discord, WhatsApp, Google Drive, Notion, OpenAI, and",
+          "stats": "⭐ 25989 · updated 2026-09-12",
+          "when": "2026-09-12T13:00:32Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "czlonkowski/n8n-mcp",
+          "url": "https://github.com/czlonkowski/n8n-mcp",
+          "detail": "A MCP for Claude Desktop / Claude Code / Windsurf / Cursor to build n8n workflows for you ",
+          "stats": "⭐ 23098 · updated 2026-10-15",
+          "when": "2026-10-15T14:46:59Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "langbot-app/LangBot",
+          "url": "https://github.com/langbot-app/LangBot",
+          "detail": "Production-grade platform for building agentic IM bots - 生产级多平台智能机器人开发平台/ Agent、知识库编排、插件系统 / Bots for Discord / Slack / LINE / Telegram / We",
+          "stats": "⭐ 18240 · updated 2026-10-18",
+          "when": "2026-10-18T04:26:21Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "n8n-io/self-hosted-ai-starter-kit",
+          "url": "https://github.com/n8n-io/self-hosted-ai-starter-kit",
+          "detail": "The Self-hosted AI Starter Kit is an open-source template that quickly sets up a local AI environment. Curated by n8n, it provides essential",
+          "stats": "⭐ 15295 · updated 2026-10-12",
+          "when": "2026-10-12T08:50:13Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "nanobrowser/nanobrowser",
+          "url": "https://github.com/nanobrowser/nanobrowser",
+          "detail": "Open-source AI agent for web automation. Use your real, logged-in browser to automate daily tasks.",
+          "stats": "⭐ 14112 · updated 2026-10-15",
+          "when": "2026-10-15T15:44:39Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "Osmantic/ODS",
+          "url": "https://github.com/Osmantic/ODS",
+          "detail": "ODS V3 Pre-Release: Public testing and refinement ahead of the official V3 launch. Turn your PC, Mac, or Linux box into a private AI server.",
+          "stats": "⭐ 7564 · updated 2026-10-18",
+          "when": "2026-10-18T03:36:30Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "czlonkowski/n8n-skills",
+          "url": "https://github.com/czlonkowski/n8n-skills",
+          "detail": "n8n skillset for Claude Code to build flawless n8n workflows",
+          "stats": "⭐ 6452 · updated 2026-10-15",
+          "when": "2026-10-15T21:35:32Z"
+        }
+      ]
+    },
+    {
+      "name": "🧩 LLM frameworks",
+      "query": "topic:langchain stars:>300 pushed:>2026-07-20",
+      "searchUrl": "https://github.com/search?type=repositories&s=stars&o=desc&q=topic%3Alangchain%20stars%3A%3E300%20pushed%3A%3E2026-07-20",
+      "items": [
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "microsoft/markitdown",
+          "url": "https://github.com/microsoft/markitdown",
+          "detail": "Python tool for converting files and office documents to Markdown.",
+          "stats": "⭐ 190797 · updated 2026-10-04",
+          "when": "2026-10-04T03:59:52Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "langchain-ai/langchain",
+          "url": "https://github.com/langchain-ai/langchain",
+          "detail": "The agent engineering platform.",
+          "stats": "⭐ 148006 · updated 2026-10-17",
+          "when": "2026-10-17T08:50:05Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "bytedance/deer-flow",
+          "url": "https://github.com/bytedance/deer-flow",
+          "detail": "An open-source long-horizon SuperAgent harness that researches, codes, and creates. With the help of sandboxes, memories, tools, skill, suba",
+          "stats": "⭐ 84037 · updated 2026-10-18",
+          "when": "2026-10-18T03:24:41Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "headroomlabs-ai/headroom",
+          "url": "https://github.com/headroomlabs-ai/headroom",
+          "detail": "Compress tool outputs, logs, files, and RAG chunks before they reach the LLM. 20% fewer tokens for coding agents, 60-95% fewer tokens for JS",
+          "stats": "⭐ 75605 · updated 2026-10-17",
+          "when": "2026-10-17T18:29:50Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "BerriAI/litellm",
+          "url": "https://github.com/BerriAI/litellm",
+          "detail": "The fastest, litest AI Gateway. Rust core with Python SDK. Call 100+ LLM APIs in OpenAI (or native) format with cost tracking, guardrails, l",
+          "stats": "⭐ 61457 · updated 2026-10-18",
+          "when": "2026-10-18T03:50:02Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "FlowiseAI/Flowise",
+          "url": "https://github.com/FlowiseAI/Flowise",
+          "detail": "Build AI Agents, Visually",
+          "stats": "⭐ 55514 · updated 2026-08-13",
+          "when": "2026-08-13T12:38:19Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "langchain-ai/langgraph",
+          "url": "https://github.com/langchain-ai/langgraph",
+          "detail": "Build resilient agents.",
+          "stats": "⭐ 43426 · updated 2026-10-18",
+          "when": "2026-10-18T01:27:12Z"
+        },
+        {
+          "kind": "repo",
+          "source": "github",
+          "title": "langfuse/langfuse",
+          "url": "https://github.com/langfuse/langfuse",
+          "detail": "🪢 Open source agent evals & observability: Trace, evaluate, and improve LLM applications with one open platform.",
+          "stats": "⭐ 35980 · updated 2026-10-18",
+          "when": "2026-10-18T04:18:22Z"
+        }
+      ]
+    }
+  ]
+}

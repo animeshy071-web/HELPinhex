@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import AskBox from '../components/AskBox.astro';
 import Badge from '../components/Badge.astro';
 import ToolCard from '../components/ToolCard.astro';
-import { getTools, getModels, getPaths, getGuides, getTerms } from '../lib/load';
+import { getTools, getModels, getPaths, getGuides, getTerms, getFresh } from '../lib/load';
 import { linkTerms } from '../lib/format';
 
 const tools = getTools();
@@ -11,6 +11,10 @@ const models = getModels();
 const paths = getPaths();
 const guides = getGuides();
 const terms = getTerms();
+const fresh = getFresh();
+const fetched = fresh.fetchedAt
+  ? new Date(fresh.fetchedAt).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })
+  : null;
 ---
 
 <Base>
@@ -93,13 +97,22 @@ const terms = getTerms();
         <h2>Fresh today</h2>
         <a class="small" href="/today/">the Today page →</a>
       </div>
-      <div class="card">
-        <p style="margin:0" class="muted">
-          <strong>The freshness engine ships in Phase 2.</strong>
-          The scrapers are specced (Hugging Face, GitHub, Hacker News, hackathon feeds) — from then on, new models and tools appear here
-          daily, auto-classified and auto-explained, with honesty badges. Until then, everything above is human-verified.
-        </p>
+      <div class="grid">
+        {
+          fresh.items.slice(0, 3).map((i) => (
+            <a class="card hover" href={i.url} target="_blank" rel="noopener">
+              <Badge>{i.source}</Badge>
+              <h3 style="margin:0.6rem 0 0.25rem; font-size:1rem; word-break:break-word">{i.title}</h3>
+              <p class="muted small" style="margin:0">{i.detail}</p>
+              <p class="muted small" style="margin:0.4rem 0 0">{i.stats}</p>
+            </a>
+          ))
+        }
       </div>
+      <p class="muted small mt-2">
+        Caught {fetched ?? '—'} by the freshness engine —
+        it runs daily on GitHub Actions, no human in the loop, no opinions. Want to build something? <a href="/ask/">Ask →</a>
+      </p>
     </div>
   </section>
 </Base>

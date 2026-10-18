@@ -1,0 +1,106 @@
+---
+import Base from '../layouts/Base.astro';
+import Badge from '../components/Badge.astro';
+import { getRepos } from '../lib/load';
+
+const radar = getRepos();
+const fetched = radar ? new Date(radar.fetchedAt).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : null;
+
+// teach a beginner to fish: search cheat codes
+const cheatCodes = [
+  { label: 'New + popular AI repos', q: 'topic:llm created:>2026-10-01' },
+  { label: 'Big repos, still alive', q: 'topic:llm stars:>1000 pushed:>2026-09-01' },
+  { label: 'Beginner-friendly', q: 'topic:llm stars:>500 good-first-issue:>1' },
+  { label: 'Everything agents', q: 'topic:ai-agents stars:>500' },
+];
+---
+
+<Base title="Repo Radar — find AI repos & catch the newest · HELPINhex" description="Where AI launches first: brand-new GitHub repos gaining stars, plus browsable channels for LLMs, agents, local AI, RAG, image gen, voice, automation.">
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h1 style="font-size:2.2rem">Repo Radar</h1>
+        {fetched && <Badge tone="accent">last catch: {fetched}</Badge>}
+      </div>
+      <p class="muted">
+        AI tools almost always launch on GitHub first — before Product Hunt, before the articles, before the hype.
+        This radar catches them two ways: <strong>just launched</strong> (created in the last 14 days, already earning stars)
+        and <strong>channels</strong> (the established, still-alive greats per topic, pushed recently — graveyard-bound repos get filtered out).
+      </p>
+
+      <h2 class="mt-3">🚀 Just launched</h2>
+      <p class="muted small">Sorted by stars. A repo here with real stars and a real description is a signal — dig into its README before betting a weekend on it.</p>
+      {
+        radar && radar.latest.length > 0 ? (
+          <div class="grid">
+            {radar.latest.map((r) => (
+              <a class="card hover" href={r.url} target="_blank" rel="noopener">
+                <Badge>🚀 new</Badge>
+                <h3 style="margin:0.6rem 0 0.25rem; font-size:1rem; word-break:break-all">{r.title}</h3>
+                <p class="muted small" style="margin:0">{r.detail}</p>
+                <p class="muted small" style="margin:0.4rem 0 0">{r.stats}</p>
+              </a>
+            ))}
+          </div>
+        ) : (
+          <div class="card"><p class="muted" style="margin:0">No fresh launches caught in the last crawl — quiet day on GitHub. Check back after the next run.</p></div>
+        )
+      }
+
+      <h2 class="mt-3">Channels</h2>
+      <p class="muted small">Established repos per topic, checked for recent activity. Each channel links to its live GitHub search — the radar is a starting point, not a cage.</p>
+      {
+        radar && radar.channels.map((c) => (
+          <div class="mt-2">
+            <div class="section-head" style="margin-bottom:0.6rem">
+              <h3 style="margin:0">{c.name}</h3>
+              <a class="small" href={c.searchUrl} target="_blank" rel="noopener">open this search on GitHub →</a>
+            </div>
+            {
+              c.items.length > 0 ? (
+                <div class="grid">
+                  {c.items.map((r) => (
+                    <a class="card hover" href={r.url} target="_blank" rel="noopener">
+                      <h3 style="margin:0 0 0.25rem; font-size:0.95rem; word-break:break-all">{r.title}</h3>
+                      <p class="muted small" style="margin:0">{r.detail}</p>
+                      <p class="muted small" style="margin:0.4rem 0 0">{r.stats}</p>
+                    </a>
+                  ))}
+                </div>
+              ) : (
+                <p class="muted small">Channel feed unavailable on last crawl — <a href={c.searchUrl} target="_blank" rel="noopener">use the live GitHub search instead</a>.</p>
+              )
+            }
+          </div>
+        ))
+      }
+
+      <h2 class="mt-3">🧑‍🔬 Find repos yourself (cheat codes)</h2>
+      <div class="card">
+        <p class="small muted" style="margin-top:0">
+          GitHub search has a tiny query language that most beginners never learn. Copy these, change the words, press Enter —
+          you now out-search most people:
+        </p>
+        <ul class="small" style="padding-left:1.1rem">
+          {
+            cheatCodes.map((c) => (
+              <li style="margin-bottom:0.5rem">
+                <a href={`https://github.com/search?type=repositories&s=stars&o=desc&q=${encodeURIComponent(c.q)}`} target="_blank" rel="noopener">{c.label}</a>
+                <br /><code class="inline">{c.q}</code>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="small muted" style="margin-bottom:0">
+          The pattern: <code class="inline">topic:llm</code> narrows the category · <code class="inline">stars:>500</code> sets a popularity floor ·
+          <code class="inline">created:>2026-10-01</code> = only new · <code class="inline">pushed:>2026-09-01</code> = only alive.
+          Want the full survival kit? <a href="/paths/developer-basics/">Developer Basics path →</a>
+        </p>
+      </div>
+
+      <p class="muted small mt-3">
+        <Badge tone="warn">honesty badge</Badge> Stars measure popularity, not quality — and the radar shows numbers exactly as fetched, with the catch time. Old data looks old here, on purpose.
+      </p>
+    </div>
+  </section>
+</Base>

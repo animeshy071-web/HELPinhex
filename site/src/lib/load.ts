@@ -7,6 +7,107 @@ import type { Tool, Model, Term, Guide, Path, Workflow, NewsItem } from './types
 
 const contentDir = path.resolve(process.cwd(), '..', 'content');
 
+// ===== Generated data (written by /scrapers, refreshed daily by GitHub Actions) =====
+
+export interface FreshItem {
+  kind: string;
+  source: string;
+  title: string;
+  url: string;
+  detail: string;
+  stats: string;
+  when: string;
+}
+
+export interface FreshFeed {
+  source: string;
+  fetchedAt: string;
+  items: FreshItem[];
+}
+
+export interface PriceModel {
+  id: string;
+  name: string;
+  contextLength: number | null;
+  promptPerM: number | null;
+  completionPerM: number | null;
+  free: boolean;
+}
+
+export interface PriceFeed {
+  source: string;
+  fetchedAt: string;
+  models: PriceModel[];
+}
+
+export interface EventItem {
+  title: string;
+  url: string;
+  when: string | null;
+  location: string;
+  org: string;
+}
+
+export interface EventFeed {
+  source: string;
+  fetchedAt: string;
+  items: EventItem[];
+}
+
+function readGenerated<T>(name: string): T | null {
+  const file = path.join(contentDir, 'generated', name);
+  if (!fs.existsSync(file)) return null;
+  return JSON.parse(fs.readFileSync(file, 'utf8')) as T;
+}
+
+/** Merges the fresh feeds (HF models, HN launches, Repo Radar latest), newest fetchedAt wins for the honesty stamp. */
+export function getFresh(): { items: FreshItem[]; fetchedAt: string | null } {
+  const hf = readGenerated<FreshFeed>('fresh-huggingface.json');
+  const hn = readGenerated<FreshFeed>('fresh-hackernews.json');
+  const repos = readGenerated<RepoFeed>('repos.json');
+  const feeds = [hf, hn, repos].filter((f): f is FreshFeed => f !== null);
+  const items = feeds.flatMap((f) => (f as RepoFeed).latest ?? f.items);
+  const fetchedAt = feeds.length ? feeds.map((f) => f.fetchedAt).sort().at(-1) ?? null : null;
+  return { items, fetchedAt };
+}
+
+export interface RepoChannel {
+  name: string;
+  query: string;
+  searchUrl: string;
+  items: FreshItem[];
+}
+
+export interface RepoFeed extends FreshFeed {
+  latest: FreshItem[];
+  channels: RepoChannel[];
+}
+
+/** The Repo Radar — just-launched AI repos + browsable topic channels. */
+export function getRepos(): RepoFeed | null {
+  return readGenerated<RepoFeed>('repos.json');
+}
+
+export function getPrices(): PriceFeed | null {
+  return readGenerated<PriceFeed>('prices.json');
+}
+
+/** Live price for one model family — matched against the OpenRouter feed. */
+export function getPriceForFamily(family: string): PriceModel | null {
+  const feed = getPrices();
+  if (!feed) return null;
+  const needle = family.toLowerCase();
+  return (
+    feed.models.find((m) => m.id.toLowerCase().includes(needle)) ??
+    feed.models.find((m) => m.name.toLowerCase().includes(needle)) ??
+    null
+  );
+}
+
+export function getEvents(): EventFeed | null {
+  return readGenerated<EventFeed>('events.json');
+}
+
 function readJson<T>(name: string): T {
   const file = path.join(contentDir, name);
   if (!fs.existsSync(file)) {
@@ -40,7 +141,7 @@ export function getGuideBySlug(slug: string): Guide | undefined {
 export interface SearchDoc {
   id: string;
   title: string;
-  kind: 'tool' | 'model' | 'guide' | 'path' | 'term' | 'workflow';
+  kind: 'tool' | 'model' | 'guide' | 'path' | 'term' | 'workflow' | 'page';
   url: string;
   extra: string;
 }
@@ -53,6 +154,7 @@ export function getSearchDocs(): SearchDoc[] {
   for (const p of getPaths()) docs.push({ id: p.id, title: p.title, kind: 'path', url: `/paths/${p.slug}/`, extra: p.goal });
   for (const t of getTerms()) docs.push({ id: t.id, title: t.word, kind: 'term', url: `/glossary/#${t.id}`, extra: t.plain });
   for (const w of getWorkflows()) docs.push({ id: w.id, title: w.title, kind: 'workflow', url: `/ask/#${w.id}`, extra: w.totalCost });
+  docs.push({ id: 'repos', title: 'Repo Radar', kind: 'page', url: '/repos/', extra: 'Latest AI repos + find repos by topic — where AI launches first' });
   return docs;
 }
 
