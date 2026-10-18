@@ -1,0 +1,107 @@
+[
+  {
+    "id": "tutor-loop",
+    "category": "Learning",
+    "title": "The tutor loop",
+    "use": "Any new skill or subject. Turns a chat into an active tutor instead of a lecture.",
+    "text": "You are my tutor for [SUBJECT]. I know [WHAT YOU KNOW] but not [WHAT YOU DON'T]. Explain one concept at a time in plain language, then give me a tiny exercise to check I understood. Wait for my answer before continuing. If I'm wrong, explain differently — don't repeat the same words."
+  },
+  {
+    "id": "explain-5-ways",
+    "category": "Learning",
+    "title": "Explain it 5 ways",
+    "use": "When something just won't click after three tutorials.",
+    "text": "Explain [CONCEPT] to me five different ways: 1) like I'm 12, 2) with a cooking analogy, 3) with a sports analogy, 4) as its history (why it exists), 5) in one perfect sentence. Then tell me which explanation most beginners should use."
+  },
+  {
+    "id": "quiz-me",
+    "category": "Studying",
+    "title": "Quiz me hard",
+    "use": "Exam prep. Recall beats re-reading — this forces recall.",
+    "text": "Quiz me on [TOPIC]. One question at a time, increasing difficulty. After each answer: correct it if wrong, explain why the right answer is right, then ask the next. 10 questions total, then give me a score and my 2 weakest areas."
+  },
+  {
+    "id": "feynman",
+    "category": "Studying",
+    "title": "The Feynman check",
+    "use": "Testing whether you actually understand something (the best study move there is).",
+    "text": "I'll explain [TOPIC] in my own words below. Find every gap, error, or hand-wave in my explanation. Be specific about what I glossed over, then ask me the one question that would expose my weakest point."
+  },
+  {
+    "id": "project-planner",
+    "category": "Building",
+    "title": "The scolding project planner",
+    "use": "Before starting any project. Cuts scope before you waste weekends.",
+    "text": "I want to build [PROJECT]. Assume I'm a beginner with [X HOURS] per week. Give me: 1) the smallest version that is still genuinely worth shipping, 2) everything I should cut from my idea for version 1, 3) the first 30-minute task. Be ruthless about cutting."
+  },
+  {
+    "id": "code-tutor",
+    "category": "Building",
+    "title": "Explain this code line by line",
+    "use": "Reading real code — the fastest way to level up.",
+    "text": "Explain this code to a beginner, line by line. Then: 1) what it does overall, 2) the three concepts a beginner must understand to have written it themselves, 3) one small change I could make and what it would do. CODE: [PASTE]"
+  },
+  {
+    "id": "error-whisperer",
+    "category": "Building",
+    "title": "The error whisperer",
+    "use": "When something breaks. Gets you a diagnosis, not a panic.",
+    "text": "I got this error: [PASTE ERROR + what you were doing]. Explain: 1) what the error actually means in plain words, 2) the 3 most likely causes ranked, 3) how I check which one it is, 4) the fix for each. Don't rewrite all my code — diagnose first."
+  },
+  {
+    "id": "workflow-designer",
+    "category": "Automation",
+    "title": "Design my automation",
+    "use": "Before building any n8n/Zapier flow.",
+    "text": "I want to automate [BORING TASK], which I do [HOW OFTEN]. It involves [TOOLS/APPS]. Design the simplest automation that would work, step by step: trigger → steps → output. Flag anything that needs a human in the loop, and tell me honestly if a 5-minute manual habit would beat automating it."
+  },
+  {
+    "id": "prompt-critic",
+    "category": "Prompting",
+    "title": "Critique my prompt",
+    "use": "The meta-move: improve the thing that improves everything else.",
+    "text": "Here is a prompt I keep using: [PROMPT]. Critique it: 1) what information I'm forcing the AI to guess, 2) what format I forgot to specify, 3) rewrite it twice — once for better output, once shorter. Then tell me the one habit that would improve ALL my future prompts."
+  },
+  {
+    "id": "writing-critic",
+    "category": "Writing",
+    "title": "Critique, don't rewrite",
+    "use": "Improving writing while keeping YOUR voice.",
+    "text": "Critique this draft. Do NOT rewrite it. List: 1) sentences that are unclear, 2) words that sound corporate or lazy, 3) what's missing that a reader would wonder about, 4) the single weakest paragraph and why. DRAFT: [PASTE]"
+  },
+  {
+    "id": "hook-factory",
+    "category": "Content",
+    "title": "The hook factory",
+    "use": "Video intros, post openings, first lines that stop the scroll.",
+    "text": "My content is about [TOPIC] for [AUDIENCE]. Write 10 opening lines that make someone stop scrolling: 5 curiosity-based, 3 mistake/warning-based, 2 bold-claim-based. Each under 12 words. Then tell me which one you'd bet on and why."
+  },
+  {
+    "id": "audience-translator",
+    "category": "Content",
+    "title": "Translate to beginner",
+    "use": "When your draft accidentally sounds like a textbook.",
+    "text": "Rewrite this for a total beginner: [DRAFT]. Rules: no jargon without a one-line explanation, sentences under 20 words, one idea per paragraph, keep my point but make it land in the first 2 sentences."
+  },
+  {
+    "id": "decide-like-a-table",
+    "category": "Decisions",
+    "title": "The decision table",
+    "use": "Choosing between tools, languages, laptops, options of any kind.",
+    "text": "I'm choosing between [OPTION A] and [OPTION B] for [USE CASE]. My priorities in order: [PRIORITIES]. Build a decision table, score both honestly, declare a winner for MY case — and then steel-man the losing option: what would have to be true for it to be the right choice?"
+  },
+  {
+    "id": "weekly-review",
+    "category": "Productivity",
+    "title": "The weekly review",
+    "use": "End of week — 10 minutes that make next week actually different.",
+    "text": "Here is what I did this week: [BRAIN DUMP]. Ask me 5 sharp questions about it, one at a time, to figure out: 1) what actually moved me forward, 2) what was fake work, 3) the one thing to do more of next week and the one thing to stop. End with a 3-item plan for next week."
+  },
+  {
+    "id": "rubber-duck-plus",
+    "category": "Decisions",
+    "title": "Rubber duck, upgraded",
+    "use": "Stuck on ANY problem — code, plan, essay, decision.",
+    "text": "Act as my rubber duck. I'll explain my problem and my current approach. Your job: ask me one question at a time, each designed to expose what I haven't thought about. Do not give me the answer until I say 'ok solve it' — make me find it first."
+  }
+]

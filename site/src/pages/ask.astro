@@ -2,24 +2,112 @@
 import Base from '../layouts/Base.astro';
 import AskBox from '../components/AskBox.astro';
 import Badge from '../components/Badge.astro';
-import { getWorkflows, getTerms } from '../lib/load';
+import { getWorkflows, getTerms, getGuides, getTools, getPrices } from '../lib/load';
 import { linkTerms } from '../lib/format';
 
 const workflows = getWorkflows();
 const terms = getTerms();
+const guides = getGuides();
+const tools = getTools();
+const feed = getPrices();
+
+// --- Build the HEX+ model pick-list from the live price feed ---
+const freeModels = (feed?.models ?? []).filter((m) => m.free).slice(0, 15);
+const cheapModels = (feed?.models ?? [])
+  .filter((m) => !m.free && m.promptPerM !== null)
+  .sort((a, b) => (a.promptPerM ?? 999) - (b.promptPerM ?? 999))
+  .slice(0, 20);
+
+// --- Build the system prompt (build-time, versioned with the content) ---
+const systemPrompt = [
+  'You are "Ask HEX+" — the AI guide of HELPINhex, a beginner-first living map of tech/AI.',
+  'Rules:',
+  '- Answer as a sequenced plan: numbered steps. Each step names: what to do, which tool (prefer free tiers), cost, rough time.',
+  '- Beginner tone: assume zero background; explain any jargon inline in one short clause.',
+  '- When a HELPINhex guide or workflow matches, reference it by exact name.',
+  '- Never invent prices or features; if unsure, say "check current pricing".',
+  '- If the question is too vague, ask ONE short clarifying question first, nothing else.',
+  '- Keep answers under ~350 words unless asked for depth.',
+  'HELPINhex site knowledge:',
+  `- Tools: ${tools.map((t) => `${t.name} (${t.tagline})`).join('; ')}.`,
+  `- Guides: ${guides.map((g) => `'${g.title}'`).join(', ')}.`,
+  `- Verified workflows: ${workflows.map((w) => `'${w.title}'`).join(', ')}.`,
+].join('\n');
+
+const depthSuffix: Record<string, string> = {
+  eli5: 'Depth: ELI5 — zero jargon, short sentences, analogies welcome.',
+  builder: 'Depth: Builder — assumes they can follow steps and copy code; exact instructions, minimal hand-holding.',
+  dev: 'Depth: Dev — assumes a developer; include code/commands where useful, skip basics.',
+};
+
+const jsonSafe = (v: unknown) => JSON.stringify(v).replace(/</g, '\\u003c');
+const hexModels = { freeModels, cheapModels, fetchedAt: feed?.fetchedAt ?? null };
 ---
 
-<Base title="Ask HELPINhex — get a sequenced plan, not links" description="Describe what you want to make. Get the tools, the order, the costs and the beginner mistakes — in one answer.">
+<Base title="Ask HELPINhex — get a sequenced plan, not links" description="Describe what you want to make. Get the tools, the order, the costs and the beginner mistakes — instantly, or AI-composed with your own free key.">
   <section class="section">
     <div class="container">
       <h1 style="font-size:2.2rem">Ask for a <span style="background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent">plan</span>, not links.</h1>
       <p class="muted">
-        Instant mode matches your question against our verified workflow library — deterministic, offline, no AI needed.
-        <span class="badge accent" style="margin-left:0.35rem">live now</span>
-        <span class="muted small"> · Ask HEX+ (AI-composed answers) arrives in Phase 4</span>
+        <strong>Instant mode</strong> matches against our 20 verified workflows — deterministic, offline, free.
+        <Badge tone="accent" style="margin-left:0.35rem">live</Badge>
+        Below it: <strong>Ask HEX+</strong>, the AI mode — bring your own free key.
       </p>
       <div class="mt-3">
         <AskBox />
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="hexplus">
+    <div class="container">
+      <div class="section-head">
+        <h2>⚡ Ask HEX+ (AI mode)</h2>
+        <Badge tone="violet">bring your own key — free tiers work</Badge>
+      </div>
+      <p class="muted small" set:html={linkTerms('Instant mode answers from our verified library. HEX+ composes a custom answer for questions the library does not cover, using your own OpenRouter key. The key is stored in this browser only and sent directly to openrouter.ai — HELPINhex has no server, so nothing passes through us.', terms)} />
+
+      <div class="card mt-2">
+        <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+          <label class="small">
+            <strong>1 · Your OpenRouter key</strong>
+            <input id="hex-key" type="password" class="input mt-1" placeholder="sk-or-v1-…" autocomplete="off" />
+            <span class="muted small" id="hex-key-status" style="display:block;margin-top:0.35rem"></span>
+            <span class="muted small" style="display:block;margin-top:0.2rem">Get one free at <a href="https://openrouter.ai/keys" target="_blank" rel="noopener">openrouter.ai/keys</a> → then <a href="/guides/keep-your-keys-safe/">read the key safety guide</a></span>
+          </label>
+          <label class="small">
+            <strong>2 · Model</strong>
+            <select id="hex-model" class="input mt-1">
+              {freeModels.map((m) => <option value={m.id}>{m.id} — free</option>)}
+              {cheapModels.map((m) => <option value={m.id}>{m.id} — ${m.promptPerM}/M in</option>)}
+            </select>
+            <input id="hex-model-custom" class="input mt-1" placeholder="or type any model id…" style="margin-top:0.5rem" />
+          </label>
+          <label class="small">
+            <strong>3 · Depth</strong>
+            <div class="chips mt-1" id="hex-depth">
+              <label class="badge accent"><input type="radio" name="depth" value="eli5" checked /> ELI5</label>
+              <label class="badge"><input type="radio" name="depth" value="builder" /> Builder</label>
+              <label class="badge"><input type="radio" name="depth" value="dev" /> Dev</label>
+            </div>
+          </label>
+        </div>
+        <label class="small" style="display:block;margin-top:1rem">
+          <strong>4 · Your question</strong>
+          <textarea id="hex-question" class="input mt-1" rows="3" placeholder="e.g. I want to turn my college notes into a searchable chatbot that runs on my own laptop — what are the steps?"></textarea>
+        </label>
+        <div class="flex-between mt-1">
+          <div>
+            <button class="btn" id="hex-ask">Ask HEX+ →</button>
+            <button class="btn ghost" id="hex-stop" style="display:none">■ stop</button>
+          </div>
+          <button class="btn ghost small" id="hex-clear-key">forget my key</button>
+        </div>
+      </div>
+
+      <div class="card mt-2" id="hex-output-card" style="display:none">
+        <div class="flex-between"><strong id="hex-output-title">HEX+ says:</strong><span class="muted small" id="hex-meta"></span></div>
+        <div id="hex-output" style="white-space:pre-wrap;margin-top:0.5rem"></div>
       </div>
     </div>
   </section>
@@ -28,7 +116,7 @@ const terms = getTerms();
     <div class="container">
       <div class="section-head">
         <h2>The workflow library</h2>
-        <span class="muted small">{workflows.length} verified workflows · grows weekly</span>
+        <span class="muted small">{workflows.length} verified workflows · grows from your unanswered questions</span>
       </div>
       {
         workflows.map((w) => (
@@ -61,4 +149,101 @@ const terms = getTerms();
       }
     </div>
   </section>
+
+  <script type="application/json" id="hex-data" set:html={jsonSafe({ systemPrompt, depthSuffix, models: hexModels })} />
+
+  <script>
+    import { getStoredKey, setStoredKey, clearStoredKey, streamChat } from '../lib/openrouter-client';
+
+    const AMP = String.fromCharCode(38);
+    const ENT: Record<string, string> = { '&': AMP + 'amp;', '<': AMP + 'lt;', '>': AMP + 'gt;', '"': AMP + 'quot;', "'": AMP + '#39;' };
+    const esc = (s: unknown) => String(s ?? '').replace(/[&<>"']/g, (c) => ENT[c]);
+
+    const data = JSON.parse(document.getElementById('hex-data')?.textContent || '{}');
+    const keyInput = document.getElementById('hex-key') as HTMLInputElement;
+    const keyStatus = document.getElementById('hex-key-status')!;
+    const modelSel = document.getElementById('hex-model') as HTMLSelectElement;
+    const modelCustom = document.getElementById('hex-model-custom') as HTMLInputElement;
+    const questionEl = document.getElementById('hex-question') as HTMLTextAreaElement;
+    const askBtn = document.getElementById('hex-ask') as HTMLButtonElement;
+    const stopBtn = document.getElementById('hex-stop') as HTMLButtonElement;
+    const outCard = document.getElementById('hex-output-card')!;
+    const out = document.getElementById('hex-output')!;
+    const outMeta = document.getElementById('hex-meta')!;
+
+    let controller: AbortController | null = null;
+
+    function refreshKeyStatus(): void {
+      const k = getStoredKey();
+      keyStatus.textContent = k ? '✓ key saved in this browser (never sent anywhere but openrouter.ai)' : 'no key saved yet';
+    }
+
+    keyInput.addEventListener('change', () => setStoredKey(keyInput.value.trim()));
+    document.getElementById('hex-clear-key')?.addEventListener('click', () => {
+      clearStoredKey();
+      keyInput.value = '';
+      refreshKeyStatus();
+    });
+    keyInput.value = getStoredKey();
+    refreshKeyStatus();
+
+    function currentModel(): string {
+      return modelCustom.value.trim() || modelSel.value;
+    }
+
+    askBtn.addEventListener('click', async () => {
+      const key = getStoredKey();
+      if (!key) {
+        outCard.style.display = 'block';
+        out.textContent = 'No key saved. Paste your OpenRouter key in step 1 — get one free at openrouter.ai/keys. It stays in your browser.';
+        return;
+      }
+      const q = questionEl.value.trim();
+      if (!q) {
+        questionEl.focus();
+        return;
+      }
+      const depth = (document.querySelector('input[name="depth"]:checked') as HTMLInputElement | null)?.value || 'eli5';
+      const model = currentModel();
+
+      controller = new AbortController();
+      askBtn.disabled = true;
+      stopBtn.style.display = 'inline-block';
+      outCard.style.display = 'block';
+      out.textContent = '';
+      outMeta.textContent = `${model} · streaming…`;
+      const t0 = performance.now();
+
+      try {
+        await streamChat(
+          {
+            key,
+            model,
+            messages: [
+              { role: 'system', content: (data.systemPrompt || '') + '\n' + (data.depthSuffix?.[depth] || '') },
+              { role: 'user', content: q },
+            ],
+            signal: controller.signal,
+          },
+          (delta) => {
+            out.textContent += delta;
+          }
+        );
+        outMeta.textContent = `${model} · done in ${Math.round(performance.now() - t0) / 1000}s`;
+      } catch (e: any) {
+        if (e.name === 'AbortError') {
+          outMeta.textContent = `${model} · stopped`;
+        } else {
+          outMeta.textContent = 'error';
+          out.textContent = `Something went wrong: ${e.message}\n\nThe error hall of fame: 401 = key wrong/missing · 402 = no credits (try a free model) · 429 = rate limited, wait a minute · 400 = model id typo (check the exact id at openrouter.ai/models).`;
+        }
+      } finally {
+        askBtn.disabled = false;
+        stopBtn.style.display = 'none';
+        controller = null;
+      }
+    });
+
+    stopBtn.addEventListener('click', () => controller?.abort());
+  </script>
 </Base>

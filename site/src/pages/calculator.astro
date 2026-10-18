@@ -1,0 +1,139 @@
+---
+import Base from '../layouts/Base.astro';
+import Badge from '../components/Badge.astro';
+import { getPrices } from '../lib/load';
+
+const feed = getPrices();
+const freeModels = (feed?.models ?? []).filter((m) => m.free).slice(0, 15);
+const cheapModels = (feed?.models ?? [])
+  .filter((m) => !m.free && m.promptPerM !== null && m.completionPerM !== null)
+  .sort((a, b) => (a.promptPerM ?? 999) - (b.promptPerM ?? 999))
+  .slice(0, 30);
+const fetched = feed ? new Date(feed.fetchedAt).toLocaleDateString() : null;
+const jsonSafe = (v: unknown) => JSON.stringify(v).replace(/</g, '\\u003c');
+---
+
+<Base title="Cost calculator — what will your AI project cost? · HELPINhex" description="Estimate your real monthly AI API cost from live prices — messages per day, tokens per message, done.">
+  <section class="section">
+    <div class="container">
+      <h1 style="font-size:2.2rem">Cost calculator</h1>
+      <p class="muted">
+        The question every tutorial skips: "so what would this cost me per month?"
+        Answer honestly with live prices{fetched ? ` (fetched ${fetched} from OpenRouter)` : ''} —
+        tokens are what you pay for, so the estimate is all about them.
+      </p>
+
+      <div class="card mt-2">
+        <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">
+          <label class="small">
+            <strong>Model</strong>
+            <select id="cc-model" class="input mt-1">
+              <optgroup label="Free (cost: $0)">
+                {freeModels.map((m) => <option value={m.id}>{m.id}</option>)}
+              </optgroup>
+              <optgroup label="Paid (live prices)">
+                {cheapModels.map((m) => <option value={m.id}>{m.id} — ${m.promptPerM} / ${m.completionPerM} per M</option>)}
+              </optgroup>
+            </select>
+          </label>
+          <label class="small">
+            <strong>Messages per day</strong>
+            <input id="cc-msgs" type="number" class="input mt-1" value="20" min="1" />
+            <span class="muted small" style="display:block;margin-top:0.3rem">a quick session is ~10, a heavy app is ~200</span>
+          </label>
+          <label class="small">
+            <strong>Tokens you send per message</strong>
+            <input id="cc-in" type="number" class="input mt-1" value="800" min="1" />
+            <span class="muted small" style="display:block;margin-top:0.3rem">~800 tokens ≈ a detailed question + some context</span>
+          </label>
+          <label class="small">
+            <strong>Tokens you get back per message</strong>
+            <input id="cc-out" type="number" class="input mt-1" value="400" min="1" />
+            <span class="muted small" style="display:block;margin-top:0.3rem">~400 tokens ≈ a few paragraphs of answer</span>
+          </label>
+        </div>
+        <div class="chips mt-2" id="cc-suggest">
+          <button class="badge" data-preset="light">personal: 10 msgs/day</button>
+          <button class="badge" data-preset="daily">small app: 100 msgs/day</button>
+          <button class="badge" data-preset="heavy">busy app: 1000 msgs/day</button>
+        </div>
+      </div>
+
+      <div class="grid wide mt-2">
+        <div class="card center">
+          <p class="muted small" style="margin:0">per day</p>
+          <p style="font-size:2.2rem;margin:0.2rem 0"><strong id="cc-day">$0.00</strong></p>
+        </div>
+        <div class="card center">
+          <p class="muted small" style="margin:0">per month</p>
+          <p style="font-size:2.2rem;margin:0.2rem 0"><strong id="cc-month">$0.00</strong></p>
+        </div>
+        <div class="card center">
+          <p class="muted small" style="margin:0">tokens per month</p>
+          <p style="font-size:2.2rem;margin:0.2rem 0"><strong id="cc-tokens">0</strong></p>
+        </div>
+      </div>
+      <p class="muted small mt-2" id="cc-note"></p>
+
+      <blockquote class="mt-2">
+        <strong>Reading the result:</strong> under $5/month is hobby territory — don't optimize it.
+        Over $50 means you should look at cheaper models (or the free tier), caching repeated answers, and
+        trimming context. The formula, if you want it: <code class="inline">msgs/day × 30 × (in/1M × priceIn + out/1M × priceOut)</code>
+      </blockquote>
+    </div>
+  </section>
+
+  <script type="application/json" id="cc-data" set:html={jsonSafe({ freeModels, cheapModels })} />
+
+  <script>
+    const data = JSON.parse(document.getElementById('cc-data')?.textContent || '{}');
+    const modelEl = document.getElementById('cc-model') as HTMLSelectElement;
+    const msgsEl = document.getElementById('cc-msgs') as HTMLInputElement;
+    const inEl = document.getElementById('cc-in') as HTMLInputElement;
+    const outEl = document.getElementById('cc-out') as HTMLInputElement;
+    const dayEl = document.getElementById('cc-day')!;
+    const monthEl = document.getElementById('cc-month')!;
+    const tokensEl = document.getElementById('cc-tokens')!;
+    const noteEl = document.getElementById('cc-note')!;
+
+    const all = [...data.freeModels, ...data.cheapModels];
+    const find = (id: string) => all.find((m: any) => m.id === id);
+
+    function fmt(n: number): string {
+      return n < 0.01 ? '$' + n.toFixed(4) : '$' + n.toFixed(2);
+    }
+
+    function render(): void {
+      const m = find(modelEl.value);
+      const msgs = Number(msgsEl.value) || 0;
+      const tin = Number(inEl.value) || 0;
+      const tout = Number(outEl.value) || 0;
+      const monthlyTokens = msgs * 30 * (tin + tout);
+      if (!m || m.free) {
+        dayEl.textContent = '$0.00';
+        monthEl.textContent = '$0.00';
+        tokensEl.textContent = (monthlyTokens / 1_000_000).toFixed(1) + 'M';
+        noteEl.textContent = 'Free model: the tokens count against free-tier rate limits instead of your wallet. Watch the requests-per-minute limit, not the dollars.';
+        return;
+      }
+      const perMsg = (tin / 1e6) * (m.promptPerM ?? 0) + (tout / 1e6) * (m.completionPerM ?? 0);
+      const perDay = perMsg * msgs;
+      dayEl.textContent = fmt(perDay);
+      monthEl.textContent = fmt(perDay * 30);
+      tokensEl.textContent = (monthlyTokens / 1_000_000).toFixed(1) + 'M';
+      noteEl.textContent = monthlyTokens > 10_000_000
+        ? '10M+ tokens/month — now the model choice matters: a 2× cheaper model pays for a nice dinner.'
+        : 'Small numbers — this is experiment territory. Build first, optimize never (yet).';
+    }
+
+    for (const el of [modelEl, msgsEl, inEl, outEl]) el.addEventListener('input', render);
+    document.querySelectorAll('[data-preset]').forEach((b) => {
+      b.addEventListener('click', () => {
+        const p = (b as HTMLElement).dataset.preset;
+        msgsEl.value = p === 'light' ? '10' : p === 'daily' ? '100' : '1000';
+        render();
+      });
+    });
+    render();
+  </script>
+</Base>

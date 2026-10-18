@@ -1,0 +1,70 @@
+---
+import Base from '../layouts/Base.astro';
+import Badge from '../components/Badge.astro';
+import { getCollections, getTools, getGuides, getWorkflows } from '../lib/load';
+
+const collections = getCollections();
+const tools = getTools();
+const guides = getGuides();
+const workflows = getWorkflows();
+
+const toolName = (id: string) => tools.find((t) => t.id === id)?.name ?? id;
+const toolSlug = (id: string) => tools.find((t) => t.id === id)?.slug ?? null;
+const guideMeta = (id: string) => guides.find((g) => g.id === id);
+const workflowTitle = (id: string) => workflows.find((w) => w.id === id)?.title ?? id;
+---
+
+<Base title="Collections — curated $0 stacks · HELPINhex" description="Curated tool kits for real situations: the $0 broke-student stack, the first-chatbot kit, the privacy kit, the faceless video kit.">
+  <section class="section">
+    <div class="container">
+      <h1 style="font-size:2.2rem">Collections</h1>
+      <p class="muted">
+        "Best AI tools" lists are usually affiliate spam in a trench coat. These stacks have a job to do,
+        every tool links to its verified playbook card, and each one carries its honest note.
+      </p>
+
+      <div class="grid wide mt-3">
+        {
+          collections.map((c) => (
+            <div class="card">
+              <div class="flex-between">
+                <h3 style="margin:0">{c.title}</h3>
+                <Badge tone="ok">{c.cost}</Badge>
+              </div>
+              <p class="small" style="margin:0.5rem 0">{c.promise}</p>
+
+              <h4 style="margin:1rem 0 0.4rem">The kit</h4>
+              <ul class="small" style="padding-left:1.1rem;margin:0">
+                {c.tools.map((t) => (
+                  <li style="margin-bottom:0.4rem">
+                    {toolSlug(t.id) ? <a href={`/tools/${toolSlug(t.id)}/`}>{toolName(t.id)}</a> : toolName(t.id)}
+                    <span class="muted"> — {t.why}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {c.guides.length > 0 && (
+                <h4 style="margin:1rem 0 0.4rem">Read along</h4>
+                <div class="chips">
+                  {c.guides.map((g) => {
+                    const meta = guideMeta(g);
+                    return meta ? <a class="badge" href={`/guides/${meta.slug}/`}>{meta.title}</a> : <span class="badge">{g}</span>;
+                  })}
+                </div>
+              )}
+
+              {c.path && <p class="small" style="margin:0.8rem 0 0">Follow the <a href={`/paths/${c.path}/`}>matching learning path</a> for the full sequence.</p>}
+              {c.workflow && (
+                <p class="small" style="margin:0.8rem 0 0">
+                  Step-by-step version: <a href={`/ask/#${c.workflow}`}>{workflowTitle(c.workflow)}</a>
+                </p>
+              )}
+
+              <p class="muted small" style="margin:0.9rem 0 0;border-top:1px solid var(--border-soft);padding-top:0.7rem">⚠️ {c.honestNote}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>

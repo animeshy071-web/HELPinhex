@@ -1,0 +1,69 @@
+---
+import Base from '../layouts/Base.astro';
+import Badge from '../components/Badge.astro';
+import { getPrompts, getTerms } from '../lib/load';
+import { linkTerms } from '../lib/format';
+
+const prompts = getPrompts();
+const terms = getTerms();
+const categories = [...new Set(prompts.map((p) => p.category))];
+---
+
+<Base title="Prompt library — prompts that actually work · HELPINhex" description="Tested beginner prompts with copy buttons: learning, studying, building, writing, content, decisions.">
+  <section class="section">
+    <div class="container">
+      <h1 style="font-size:2.2rem">Prompt library</h1>
+      <p class="muted">
+        Prompts are like recipes: good ones are specific about ingredients, amounts, and the dish you want.
+        Every prompt below is tested, has a job, and has a <strong>[BRACKETED SPOT]</strong> for you to fill.
+        Copy → paste → replace → get dramatically better answers.
+      </p>
+
+      {
+        categories.map((cat) => (
+          <div class="mt-3">
+            <h2>{cat}</h2>
+            <div class="grid wide">
+              {prompts.filter((p) => p.category === cat).map((p) => (
+                <div class="card" id={p.id}>
+                  <h3 style="margin:0 0 0.35rem">{p.title}</h3>
+                  <p class="muted small" style="margin:0 0 0.75rem" set:html={linkTerms(p.use, terms)} />
+                  <pre class="mono small" style="white-space:pre-wrap;background:var(--bg-soft);padding:0.75rem;border-radius:9px;border:1px solid var(--border-soft);margin:0 0 0.6rem">{p.text}</pre>
+                  <button class="btn ghost small" data-copy={p.id}>⧉ Copy this prompt</button>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+
+      <blockquote class="mt-3">
+        The habit that beats any library: after using a prompt, ask the AI <em>"what info do you wish I had included?"</em> —
+        then save your improved version. Three weeks of that and you have a personal library no one can copy.
+      </blockquote>
+    </div>
+  </section>
+
+  <script>
+    const buttons = document.querySelectorAll<HTMLButtonElement>('[data-copy]');
+    buttons.forEach((b) => {
+      b.addEventListener('click', async () => {
+        const pre = document.getElementById(b.getAttribute('data-copy') || '')?.querySelector('pre');
+        if (!pre) return;
+        try {
+          await navigator.clipboard.writeText(pre.textContent || '');
+        } catch {
+          // clipboard API blocked — fallback select
+          const range = document.createRange();
+          range.selectNodeContents(pre);
+          const sel = window.getSelection();
+          sel?.removeAllRanges();
+          sel?.addRange(range);
+        }
+        const original = b.textContent;
+        b.textContent = '✓ Copied — now paste it into any chat';
+        setTimeout(() => (b.textContent = original), 1800);
+      });
+    });
+  </script>
+</Base>

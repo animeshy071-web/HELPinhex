@@ -1,0 +1,58 @@
+[
+  {
+    "id": "the-0-stack",
+    "title": "The $0 broke-student AI stack",
+    "promise": "Chat with frontier models, run local models, edit video, use a real GPU, host your projects — without spending anything.",
+    "cost": "$0/month, honestly",
+    "tools": [
+      { "id": "openrouter", "why": "one free key → hundreds of models (filter to free ones)" },
+      { "id": "ollama", "why": "unlimited local chat, private, offline" },
+      { "id": "google-colab", "why": "borrow a real GPU in your browser" },
+      { "id": "capcut", "why": "video editing + auto-captions" },
+      { "id": "hugging-face", "why": "try thousands of models live, no key needed" },
+      { "id": "github", "why": "free hosting for your projects + daily automation" },
+      { "id": "vs-code", "why": "the editor where you'll build all of it" }
+    ],
+    "guides": ["what-even-is-an-llm", "your-first-api-call"],
+    "honestNote": "Free tiers have limits — that's the deal, not a trick. If you never pay a cent, you can still ship real things and learn the entire field."
+  },
+  {
+    "id": "first-chatbot-kit",
+    "title": "The first-chatbot starter kit",
+    "promise": "Everything needed to go from 'what is an API' to a working chatbot you wrote — this weekend.",
+    "cost": "$0",
+    "tools": [
+      { "id": "vs-code", "why": "where you'll write the script" },
+      { "id": "openrouter", "why": "the key that unlocks every model with one account" },
+      { "id": "github", "why": "save the project, publish it, put it on your profile" }
+    ],
+    "guides": ["what-is-an-api", "your-first-api-call", "keep-your-keys-safe"],
+    "path": "connect-any-api",
+    "honestNote": "The chatbot will be 20 ugly lines in a terminal. That's not a failure — that's the real skeleton of every AI app."
+  },
+  {
+    "id": "local-privacy-kit",
+    "title": "The private & offline kit",
+    "promise": "AI that works on your machine, with your documents, without the internet, without accounts.",
+    "cost": "$0 forever",
+    "tools": [
+      { "id": "ollama", "why": "the one-command way to run models locally" },
+      { "id": "hugging-face", "why": "the parts catalog: find which model fits your RAM" },
+      { "id": "vs-code", "why": "for wiring local models into your own tools" }
+    ],
+    "guides": ["run-ai-on-your-laptop"],
+    "honestNote": "Local models are a tier below the hosted giants. The win isn't raw quality — it's privacy, offline, and $0 forever."
+  },
+  {
+    "id": "faceless-video-kit",
+    "title": "The faceless video creator kit",
+    "promise": "Script → voice → visuals → edited video, without a camera, without showing your face.",
+    "cost": "$0 possible, ~$15/mo for comfort",
+    "tools": [
+      { "id": "capcut", "why": "assembly: captions, music, export — the free workhorse" }
+    ],
+    "guides": ["what-even-is-an-llm"],
+    "workflow": "cartoon-youtube",
+    "honestNote": "The tool part is solved — voice and image tools change monthly, the HELPinhex workflow keeps the pipeline honest. Consistency (of characters AND of posting) is the actual hard part."
+  }
+]

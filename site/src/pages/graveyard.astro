@@ -1,0 +1,60 @@
+---
+import Base from '../layouts/Base.astro';
+import Badge from '../components/Badge.astro';
+import { getTools } from '../lib/load';
+
+const tools = getTools();
+const dead = tools.filter((t) => t.status !== 'alive');
+const alive = tools.filter((t) => t.status === 'alive');
+---
+
+<Base title="The AI Graveyard — is that tool still alive? · HELPINhex" description="AI tools die constantly. How to spot a dead one before you build your project on it.">
+  <section class="section">
+    <div class="container">
+      <h1 style="font-size:2.2rem">🪦 The AI Graveyard</h1>
+      <p class="muted">
+        AI tools die at a brutal rate: the company pivots, the repo goes quiet, the domain expires,
+        the free tier becomes a paid wall. Nothing on this page is drama — it's maintenance reality.
+      </p>
+
+      <h2 class="mt-3">Current status of our catalog</h2>
+      {
+        dead.length > 0 ? (
+          <div class="grid wide">
+            {dead.map((t) => (
+              <div class="card">
+                <div class="flex-between"><h3 style="margin:0">{t.name}</h3><Badge tone="warn">{t.status}</Badge></div>
+                <p class="muted small">{t.tagline}</p>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div class="card">
+            <p style="margin:0">✓ Every tool in the HELPinhex catalog is currently <strong>alive</strong> ({alive.length}/{tools.length}).
+            When one dies, it moves here — visibly, with its verified date. Directories never tell you when a tool died; we consider that the actual job.</p>
+          </div>
+        )
+      }
+
+      <h2 class="mt-3">Check any tool yourself (the 60-second autopsy)</h2>
+      <div class="card">
+        <ol class="howto">
+          <li><strong>GitHub?</strong> Open the repo → last commit date. 6+ months of silence on an "active" AI tool is a red flag; 2+ years is a tombstone.</li>
+          <li><strong>Links?</strong> Click the official site, the docs, and the pricing page. Dead domains and 404 docs = the maintainer moved on.</li>
+          <li><strong>Changelog/release notes?</strong> A tool with no release in a year is in maintenance mode at best. In AI, no updates ≈ falling behind monthly.</li>
+          <li><strong>Community pulse?</strong> Check the issues/Discord/reddit. Unanswered issues and a silent Discord are the smell of abandonment.</li>
+          <li><strong>Google it + "discontinued" or "shut down".</strong> Sometimes the death is announced and nobody told the directories.</li>
+        </ol>
+        <p class="muted small" style="margin-bottom:0">
+          Famous example: Inflection's consumer chatbot <em>Pi</em> — heavily covered in 2023–24, then the company pivoted to enterprise work and the consumer product faded.
+          Directories kept listing it. Users kept finding it. That gap is exactly why this page exists.
+        </p>
+      </div>
+
+      <blockquote class="mt-3">
+        <strong>Why this matters for beginners:</strong> you don't lose money when a tool dies — you lose the weekend you spent learning its interface,
+        the workflow you built around it, and the muscle memory. Choose tools the way the Repo Radar does: recent activity is the vital sign.
+      </blockquote>
+    </div>
+  </section>
+</Base>

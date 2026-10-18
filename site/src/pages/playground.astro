@@ -1,0 +1,130 @@
+---
+import Base from '../layouts/Base.astro';
+import Badge from '../components/Badge.astro';
+import { getPrices } from '../lib/load';
+
+const feed = getPrices();
+const freeModels = (feed?.models ?? []).filter((m) => m.free).slice(0, 10);
+const jsonSafe = (v: unknown) => JSON.stringify(v).replace(/</g, '\\u003c');
+---
+
+<Base title="Playground — make your first real API call · HELPINhex" description="Paste a free OpenRouter key, send a real message to a real AI model, and see the raw JSON — the moment 'AI apps' stop being magic.">
+  <section class="section">
+    <div class="container">
+      <h1 style="font-size:2.2rem">Your first real API call</h1>
+      <p class="muted">
+        This is the exact call every AI app makes — with the magic removed. You provide the key, the model, the message.
+        The browser sends it straight to OpenRouter. You see the real request, the real status, the real JSON reply.
+      </p>
+
+      <div class="card mt-2">
+        <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+          <label class="small">
+            <strong>OpenRouter key</strong>
+            <input id="pg-key" type="password" class="input mt-1" placeholder="sk-or-v1-…" autocomplete="off" />
+            <span class="muted small" style="display:block;margin-top:0.3rem">Free at <a href="https://openrouter.ai/keys" target="_blank" rel="noopener">openrouter.ai/keys</a> · stays in your browser · <a href="/guides/keep-your-keys-safe/">safety guide</a></span>
+          </label>
+          <label class="small">
+            <strong>Model</strong>
+            <select id="pg-model" class="input mt-1">
+              {freeModels.map((m) => <option value={m.id}>{m.id}</option>)}
+            </select>
+          </label>
+        </div>
+        <label class="small" style="display:block;margin-top:1rem">
+          <strong>Message</strong>
+          <textarea id="pg-message" class="input mt-1" rows="2">Say hello like a pirate.</textarea>
+        </label>
+        <button class="btn mt-1" id="pg-run">Send request →</button>
+      </div>
+
+      <div class="card mt-2">
+        <h3 style="margin-top:0">This is what gets sent</h3>
+        <p class="muted small">The request body is just JSON. In a terminal, the same thing is one curl command:</p>
+        <pre class="mono small" id="pg-request" style="white-space:pre-wrap;background:var(--bg-soft);padding:0.75rem;border-radius:9px;border:1px solid var(--border-soft);overflow-x:auto"></pre>
+      </div>
+
+      <div class="card mt-2" id="pg-response-card" style="display:none">
+        <div class="flex-between"><h3 style="margin:0">The response</h3><span id="pg-status" class="badge"></span></div>
+        <p class="muted small">Somewhere in there is <code class="inline">choices[0].message.content</code> — the model's actual reply. Every AI chat app you've ever used just makes this look pretty.</p>
+        <pre class="mono small" id="pg-response" style="white-space:pre-wrap;background:var(--bg-soft);padding:0.75rem;border-radius:9px;border:1px solid var(--border-soft);max-height:420px;overflow:auto"></pre>
+      </div>
+
+      <div class="card mt-2">
+        <h3 style="margin-top:0">The error hall of fame</h3>
+        <table class="steps-table">
+          <thead><tr><th>Status</th><th>What it means</th><th>What to do</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">401</td><td>Key missing, typo'd, or deleted</td><td>Re-copy the key from openrouter.ai/keys</td></tr>
+            <tr><td class="mono">402</td><td>No credits on the account</td><td>Switch to a model marked free</td></tr>
+            <tr><td class="mono">429</td><td>Rate limit — too many requests</td><td>Wait a minute, breathe</td></tr>
+            <tr><td class="mono">400</td><td>Model id doesn't exist (typo)</td><td>Copy the exact id from openrouter.ai/models</td></tr>
+          </tbody>
+        </table>
+        <p class="muted small" style="margin-bottom:0">Hit one of these? Congratulations — you're now doing real development. This is 90% of the job.</p>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/json" id="pg-default" set:html={jsonSafe(freeModels[0]?.id ?? '')} />
+
+  <script>
+    import { getStoredKey, setStoredKey, rawCall } from '../lib/openrouter-client';
+
+    const keyEl = document.getElementById('pg-key') as HTMLInputElement;
+    const modelEl = document.getElementById('pg-model') as HTMLSelectElement;
+    const msgEl = document.getElementById('pg-message') as HTMLTextAreaElement;
+    const reqEl = document.getElementById('pg-request')!;
+    const runBtn = document.getElementById('pg-run') as HTMLButtonElement;
+    const respCard = document.getElementById('pg-response-card')!;
+    const respEl = document.getElementById('pg-response')!;
+    const statusEl = document.getElementById('pg-status')!;
+
+    keyEl.value = getStoredKey();
+    keyEl.addEventListener('change', () => setStoredKey(keyEl.value.trim()));
+
+    function updatePreview(): void {
+      const body = { model: modelEl.value, messages: [{ role: 'user', content: msgEl.value || '…' }] };
+      const AMP = String.fromCharCode(38);
+      const curl =
+        'curl https://openrouter.ai/api/v1/chat/completions \\\n' +
+        "  -H 'Content-Type: application/json' \\\n" +
+        "  -H 'Authorization: Bearer YOUR_KEY' \\\n" +
+        `  -d '${JSON.stringify(body)}'`;
+      reqEl.textContent = curl;
+    }
+    modelEl.addEventListener('change', updatePreview);
+    msgEl.addEventListener('input', updatePreview);
+    updatePreview();
+
+    runBtn.addEventListener('click', async () => {
+      runBtn.disabled = true;
+      runBtn.textContent = 'Sending…';
+      respCard.style.display = 'block';
+      respEl.textContent = 'Waiting for the response…';
+      statusEl.textContent = '';
+      statusEl.className = 'badge';
+      try {
+        const { status, text } = await rawCall({
+          key: getStoredKey(),
+          model: modelEl.value,
+          messages: [{ role: 'user', content: msgEl.value }],
+        });
+        statusEl.textContent = `HTTP ${status}`;
+        statusEl.className = 'badge ' + (status === 200 ? 'ok' : 'warn');
+        try {
+          respEl.textContent = JSON.stringify(JSON.parse(text), null, 2);
+        } catch {
+          respEl.textContent = text;
+        }
+      } catch (e: any) {
+        statusEl.textContent = 'network error';
+        statusEl.className = 'badge warn';
+        respEl.textContent = e.message;
+      } finally {
+        runBtn.disabled = false;
+        runBtn.textContent = 'Send request →';
+      }
+    });
+  </script>
+</Base>
