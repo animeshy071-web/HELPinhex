@@ -1,0 +1,17 @@
+{
+  "name": "helpinhex-functions",
+  "description": "HEX chatbot brain - keyless RAG answers over the HELPINhex knowledge pack",
+  "engines": {
+    "node": "20"
+  },
+  "main": "index.js",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "logs": "firebase functions:log"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.0.0",
+    "firebase-functions": "^5.0.0"
+  },
+  "private": true
+}

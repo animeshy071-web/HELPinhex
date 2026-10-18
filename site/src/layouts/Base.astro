@@ -23,7 +23,7 @@ const jsonSafe = (v: unknown) => JSON.stringify(v).replace(/</g, '\\u003c');
 ---
 
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -32,17 +32,24 @@ const jsonSafe = (v: unknown) => JSON.stringify(v).replace(/</g, '\\u003c');
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="manifest" href="/manifest.webmanifest" />
     <meta name="theme-color" content="#0a0e16" />
+    <!-- Typography: Satoshi (body) + Clash Display (headings) via Fontshare -->
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=clash-display@500,600,700&display=swap"
+      rel="stylesheet"
+    />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <script is:inline>
       // Apply saved theme before first paint (no flash):
       try {
-        document.documentElement.dataset.theme = localStorage.getItem('hx:theme') || 'dark';
+        document.documentElement.dataset.theme = localStorage.getItem('hx:theme') || 'light';
       } catch (e) {}
     </script>
   </head>
   <body>
+    <div class="scroll-progress" aria-hidden="true"><i></i></div>
     <Nav />
     <main>
       <slot />
@@ -54,13 +61,17 @@ const jsonSafe = (v: unknown) => JSON.stringify(v).replace(/</g, '\\u003c');
 
     <script>
       // ===== HELPINhex base client layer (bundled once) =====
-      // 1. Theme toggle
+      import Lenis from 'lenis';
+      import gsap from 'gsap';
+      import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+      // 1. Theme toggle (icon visibility handled by CSS via data-theme)
       const themeBtn = document.querySelector('[data-theme-toggle]');
       const applyTheme = (t: string) => {
         document.documentElement.dataset.theme = t;
-        if (themeBtn) themeBtn.textContent = t === 'light' ? '\u{1F313}' : '\u2600\uFE0F';
+        if (themeBtn) themeBtn.setAttribute('aria-label', t === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
       };
-      applyTheme(document.documentElement.dataset.theme || 'dark');
+      applyTheme(document.documentElement.dataset.theme || 'light');
       themeBtn?.addEventListener('click', () => {
         const t = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
         try { localStorage.setItem('hx:theme', t); } catch (e) {}
@@ -156,6 +167,57 @@ const jsonSafe = (v: unknown) => JSON.stringify(v).replace(/</g, '\\u003c');
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
           navigator.serviceWorker.register('/sw.js').catch(() => {});
+        });
+      }
+
+      // 7. Motion engine — Lenis smooth scroll + GSAP ScrollTrigger.
+      //    Page scripts can grab the shared instances via window.__hx
+      //    (e.g. __hx.gsap.to('.card', { y: 0, opacity: 1, scrollTrigger: {...} })).
+      gsap.registerPlugin(ScrollTrigger);
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const lenis = reduceMotion ? null : new Lenis({ autoRaf: false });
+      if (lenis) {
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => lenis.raf(time * 1000));
+        gsap.ticker.lagSmoothing(0);
+      }
+      (window as unknown as { __hx: unknown }).__hx = { gsap, ScrollTrigger, lenis };
+
+      // 8. Scroll progress bar (top of viewport, works with or without Lenis)
+      const progress = document.querySelector<HTMLElement>('.scroll-progress i');
+      if (progress) {
+        const setProgress = () => {
+          const h = document.documentElement;
+          const max = h.scrollHeight - h.clientHeight;
+          progress.style.transform = `scaleX(${max > 0 ? h.scrollTop / max : 0})`;
+        };
+        setProgress();
+        window.addEventListener('scroll', setProgress, { passive: true });
+      }
+
+      // 9. Hero choreography — runs once, only where a .hero exists
+      if (!reduceMotion && document.querySelector('.hero')) {
+        gsap
+          .timeline({ defaults: { ease: 'power3.out' } })
+          .from('.hero h1', { y: 30, opacity: 0, filter: 'blur(10px)', duration: 0.9 }, 0.05)
+          .from('.hero-sub', { y: 18, opacity: 0, duration: 0.7 }, 0.2)
+          .from('.hero-cta', { y: 14, opacity: 0, duration: 0.55 }, 0.32)
+          .from('.hero .ask-wrap', { y: 16, opacity: 0, duration: 0.6 }, 0.4)
+          .from('.hero-stats .stat', { y: 12, opacity: 0, duration: 0.5, stagger: 0.08 }, 0.5)
+          .from('.hero-ticker', { opacity: 0, duration: 0.9 }, 0.6);
+      }
+
+      // 10. Scroll reveals — opt-in via [data-reveal] (no-JS safe: nothing is hidden in CSS)
+      if (!reduceMotion) {
+        gsap.utils.toArray<HTMLElement>('[data-reveal]').forEach((el) => {
+          gsap.from(el, {
+            y: 26,
+            opacity: 0,
+            duration: 0.75,
+            ease: 'power3.out',
+            delay: parseFloat(el.dataset.revealDelay || '0'),
+            scrollTrigger: { trigger: el, start: 'top 88%', once: true },
+          });
         });
       }
     </script>

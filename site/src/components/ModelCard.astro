@@ -1,5 +1,6 @@
 ---
 import Badge from './Badge.astro';
+import { ArrowUpRight } from '@lucide/astro';
 import type { Model } from '../lib/types';
 
 interface Props {
@@ -8,14 +9,16 @@ interface Props {
 const { model } = Astro.props;
 ---
 
-<a class="card hover" href={`/models/${model.slug}/`}>
+<a class="card hover model-card" href={`/models/${model.slug}/`} data-reveal>
+  <span class="model-aura" aria-hidden="true"></span>
   <div class="flex-between">
     <h3 style="margin:0">{model.name}</h3>
-    {model.freeTier && <Badge tone="ok">free tier</Badge>}
+    <ArrowUpRight class="model-arrow" size={18} strokeWidth={2} />
   </div>
   <p class="muted small" style="margin:0.35rem 0 0">by {model.by}</p>
   <div class="chips" style="margin-top:0.75rem">
     {model.modalities.slice(0, 3).map((m) => <Badge tone="violet">{m}</Badge>)}
+    {model.freeTier && <Badge tone="ok">free tier</Badge>}
     <Badge tone="accent">✓ {model.lastVerified}</Badge>
   </div>
 </a>

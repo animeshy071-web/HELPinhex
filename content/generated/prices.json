@@ -1,6 +1,6 @@
 {
   "source": "openrouter",
-  "fetchedAt": "2026-10-17T11:21:29.915Z",
+  "fetchedAt": "2026-10-18T13:50:36.950Z",
   "models": [
     {
       "id": "cohere/north-mini-code:free",
@@ -190,24 +190,24 @@
       "id": "~deepseek/deepseek-flash-latest",
       "name": "DeepSeek: DeepSeek Flash Latest",
       "contextLength": 1048576,
-      "promptPerM": 0.1,
-      "completionPerM": 0.5,
+      "promptPerM": 0.05,
+      "completionPerM": 0.6,
       "free": false
     },
     {
       "id": "~deepseek/deepseek-pro-latest",
       "name": "DeepSeek: DeepSeek Pro Latest",
       "contextLength": 1048576,
-      "promptPerM": 0.1233,
-      "completionPerM": 0.3831,
+      "promptPerM": 0.12,
+      "completionPerM": 8,
       "free": false
     },
     {
       "id": "~deepseek/deepseek-v4-flash-latest",
       "name": "DeepSeek: DeepSeek V4 Flash Latest",
       "contextLength": 1048576,
-      "promptPerM": 0.0071,
-      "completionPerM": 0.2829,
+      "promptPerM": 0.0121,
+      "completionPerM": 0.1436,
       "free": false
     },
     {
@@ -230,8 +230,8 @@
       "id": "~moonshotai/kimi-latest",
       "name": "MoonshotAI: Kimi Latest",
       "contextLength": 1048576,
-      "promptPerM": 0.27,
-      "completionPerM": 14,
+      "promptPerM": 0.25,
+      "completionPerM": 8,
       "free": false
     },
     {
@@ -277,9 +277,9 @@
     {
       "id": "~unbiased/pareto-latest",
       "name": "Pareto Latest",
-      "contextLength": 262144,
-      "promptPerM": 2.5,
-      "completionPerM": 7.5,
+      "contextLength": 1048576,
+      "promptPerM": 0.8,
+      "completionPerM": 3.2,
       "free": false
     },
     {
@@ -294,16 +294,16 @@
       "id": "~z-ai/glm-flash-latest",
       "name": "Z.ai: GLM Flash Latest",
       "contextLength": 1048576,
-      "promptPerM": 0.0215,
-      "completionPerM": 0.3966,
+      "promptPerM": 0.048,
+      "completionPerM": 0.2,
       "free": false
     },
     {
       "id": "~z-ai/glm-latest",
       "name": "Z.ai: GLM Latest",
       "contextLength": 1048576,
-      "promptPerM": 0.069,
-      "completionPerM": 19.8996,
+      "promptPerM": 0.075,
+      "completionPerM": 2.2,
       "free": false
     },
     {
@@ -830,8 +830,8 @@
       "id": "deepseek/deepseek-v4-flash-0731",
       "name": "DeepSeek: DeepSeek V4 Flash 0731",
       "contextLength": 1048576,
-      "promptPerM": 0.0071,
-      "completionPerM": 0.2829,
+      "promptPerM": 0.0151,
+      "completionPerM": 0.45,
       "free": false
     },
     {
@@ -862,8 +862,8 @@
       "id": "deepseek/deepseek-v4.1-flash",
       "name": "DeepSeek: DeepSeek V4.1 Flash",
       "contextLength": 1048576,
-      "promptPerM": 0.0138,
-      "completionPerM": 0.594,
+      "promptPerM": 0.04,
+      "completionPerM": 0.144,
       "free": false
     },
     {
@@ -1191,7 +1191,7 @@
       "name": "Google: Gemma 3 27B",
       "contextLength": 131072,
       "promptPerM": 0.08,
-      "completionPerM": 0.45,
+      "completionPerM": 0.35,
       "free": false
     },
     {
@@ -2958,7 +2958,7 @@
       "id": "qwen/qwen3-30b-a3b-instruct-2507",
       "name": "Qwen: Qwen3 30B A3B Instruct 2507",
       "contextLength": 262144,
-      "promptPerM": 0.1,
+      "promptPerM": 0.09,
       "completionPerM": 0.3,
       "free": false
     },
@@ -3467,6 +3467,14 @@
       "free": false
     },
     {
+      "id": "unbiased/pareto-26.10",
+      "name": "Pareto 26.10",
+      "contextLength": 1048576,
+      "promptPerM": 0.8,
+      "completionPerM": 3.2,
+      "free": false
+    },
+    {
       "id": "unbiased/pareto-26.9",
       "name": "Pareto 26.9",
       "contextLength": 262144,
@@ -3711,15 +3719,15 @@
       "name": "Z.ai: GLM 5.3",
       "contextLength": 1048576,
       "promptPerM": 0.079,
-      "completionPerM": 4.8,
+      "completionPerM": 1.8,
       "free": false
     },
     {
       "id": "z-ai/glm-5.3-flash",
       "name": "Z.ai: GLM 5.3 Flash",
       "contextLength": 1048576,
-      "promptPerM": 0.0215,
-      "completionPerM": 0.3966,
+      "promptPerM": 0.048,
+      "completionPerM": 0.2,
       "free": false
     },
     {

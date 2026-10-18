@@ -1,0 +1,45 @@
+# HELPINhex freshness engine — keeps the site continuously fed.
+# Runs every 6 hours + on demand: scrapes GitHub, HN, Product Hunt, DEV.to,
+# Hugging Face, OpenRouter prices → writes content/generated/*.json → commits.
+# (Static hosting picks the new data up on next deploy; data itself is committed here.)
+
+name: freshness
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'   # every 6 hours, UTC
+  workflow_dispatch:          # manual "Run workflow" button
+
+permissions:
+  contents: write
+
+concurrency:
+  group: freshness
+  cancel-in-progress: false
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run all scrapers
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   # raised API limits for the radar
+        run: node scrapers/run-all.mjs
+
+      - name: Commit fresh data (if anything changed)
+        run: |
+          git config user.name "helpinhex-fresh-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add content/generated/
+          if git diff --cached --quiet; then
+            echo "No fresh changes this run."
+          else
+            git commit -m "fresh: refresh scraped data ($(date -u +%Y-%m-%dT%H:%MZ))"
+            git push
+          fi

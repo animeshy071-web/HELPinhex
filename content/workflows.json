@@ -528,5 +528,39 @@
       "Uploading sensitive documents to unvetted 'free PDF chat' sites. Privacy policy first, upload second.",
       "Expecting magic on messy notes. AI answers from your docs inherit your chaos — clean input, clean answers."
     ]
+  },
+  {
+    "id": "video-editing",
+    "title": "Edit videos with the right tools (2026 picks)",
+    "level": "beginner",
+    "totalCost": "$0 possible",
+    "totalTime": "First edit in ~1 hour",
+    "questionPatterns": [
+      "video editing",
+      "edit videos",
+      "edit my video",
+      "best video editor",
+      "video editing tools",
+      "latest video editing tools",
+      "tools for video editing",
+      "video editor recommendation",
+      "edit youtube videos",
+      "cut a video",
+      "which video editor should i use",
+      "latest tools for video editing"
+    ],
+    "steps": [
+      { "title": "Pick the editor that matches your goal (all verified this month)", "tool": "CapCut · DaVinci Resolve · VEED", "how": "Phone clips / captions / TikTok → CapCut (free, easiest). YouTube talking-heads → CapCut or Descript (edit by transcript). Films, color, 'make it look expensive' → DaVinci Resolve (free). No install allowed → VEED in the browser. Forever-free and open source → Kdenlive.", "cost": "$0", "time": "5 min", "toolId": "capcut" },
+      { "title": "Do the rough cut first — story before sparkle", "tool": "Any of the above", "how": "Trim dead air and mistakes in timeline order. Don't touch effects yet; a tight cut beats a shiny mess every time.", "cost": "$0", "time": "30 min" },
+      { "title": "Auto-captions (the highest-ROI 60 seconds in editing)", "tool": "CapCut / Descript / VEED", "how": "All three generate captions from speech in one click. 80% of social video is watched muted — captions are not optional.", "cost": "$0", "time": "5 min" },
+      { "title": "Turn one video into five shorts", "tool": "Opus Clip", "how": "Paste the long video link; the AI finds the best moments, reframes vertical and adds captions. Post the top 2 by virality score.", "cost": "$0–15/mo", "time": "15 min", "toolId": "opus-clip" },
+      { "title": "Export with platform presets", "tool": "Your editor's export screen", "how": "YouTube: 1080p (or 4K if your machine is fine), H.264. Reels/TikTok/Shorts: 1080×1920 vertical. Don't touch bitrate settings at the start — presets exist for a reason.", "cost": "$0", "time": "10 min" }
+    ],
+    "mistakes": [
+      "Paying $23/mo for Premiere in week one. Every editor above has a free path — earn the subscription with published videos.",
+      "Color grading before the rough cut. Fix the story, then make it pretty.",
+      "Ignoring captions. Muted autoplay is how most people will see your video.",
+      "Editing on a machine that can't handle it. If playback stutters in Resolve, drop playback resolution to 1/2 in settings."
+    ]
   }
 ]

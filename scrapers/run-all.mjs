@@ -3,7 +3,7 @@
 // Run manually:  node scrapers/run-all.mjs
 // Runs daily via .github/workflows/freshness.yml (GitHub Actions cron — free).
 
-const scrapers = ['./hugging-face.mjs', './github.mjs', './hackernews.mjs', './openrouter.mjs', './events.mjs'];
+const scrapers = ['./hugging-face.mjs', './github.mjs', './hackernews.mjs', './producthunt.mjs', './devto.mjs', './openrouter.mjs', './events.mjs'];
 
 for (const s of scrapers) {
   try {
@@ -11,5 +11,12 @@ for (const s of scrapers) {
   } catch (e) {
     console.error(`[fresh] could not run ${s}: ${e.message}`);
   }
+}
+
+// Compile the RAG brain: catalog + fresh feeds -> knowledge.json (HEX chatbot)
+try {
+  await import('./knowledge-pack.mjs');
+} catch (e) {
+  console.error(`[knowledge] FAILED: ${e.message}`);
 }
 console.log('[fresh] run complete.');

@@ -1,15 +1,22 @@
 ---
 import Badge from './Badge.astro';
+import { Hexagon, ExternalLink } from '@lucide/astro';
 ---
 
 <footer class="footer">
   <div class="container">
     <div class="footer-inner">
-      <div>
-        <strong>⬡ HELPINhex</strong> — "help in hex." Everything tech, decoded for beginners.
+      <div style="display:flex; align-items:center; gap:0.5rem;">
+        <span class="brand-mark" style="width:24px; height:24px; border-radius:7px;">
+          <Hexagon size={13} strokeWidth={2.4} />
+        </span>
+        <span><strong>HELPINhex</strong> — "help in hex." Everything tech, decoded for beginners.</span>
       </div>
-      <div class="small">
-        MIT licensed · <a href="https://github.com/animeshy071-web/HELPinhex" target="_blank" rel="noopener">GitHub</a>
+      <div class="small" style="display:flex; align-items:center; gap:0.45rem;">
+        MIT licensed ·
+        <a href="https://github.com/animeshy071-web/HELPinhex" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:0.35rem;">
+          <ExternalLink size={15} /> GitHub
+        </a>
         · freshness engine: <Badge tone="accent">live</Badge>
       </div>
     </div>

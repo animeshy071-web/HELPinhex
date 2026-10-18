@@ -7,6 +7,8 @@ export interface Tool {
   name: string;
   category: string;
   tagline: string;
+  /** Optional search keywords — powers the ask engine's matching. */
+  keywords?: string[];
   freeTier: boolean;
   pricing: string;
   whatItIs: string;

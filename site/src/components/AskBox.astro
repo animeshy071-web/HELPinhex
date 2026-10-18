@@ -81,14 +81,45 @@ const chips = [
   }
 
   function renderFallback(found: any[], q: string): string {
-    const items = found
-      .map((d) => `<li><a href="${esc(d.url)}">${esc(d.title)}</a> <span class="badge">${esc(d.kind)}</span><br><span class="muted small">${esc(d.extra || '')}</span></li>`)
-      .join('');
-    return `
-      <p><strong>No exact playbook for that yet</strong> — but the site has related things:</p>
-      <ul>${items}</ul>
-      <button class="btn ghost small" data-backlog="${esc(q)}">😢 Not helpful — teach me this (files your question for us to answer next)</button>
-    `;
+    if (!found.length) {
+      return `
+        <div class="card">
+          <p style="margin-top:0"><strong>No verified playbook for that yet.</strong> Two honest options:</p>
+          <ul class="muted small">
+            <li>Try fewer words — e.g. <em>"video editing"</em> or <em>"edit youtube videos"</em></li>
+            <li>Ask HEX+ (AI mode) to compose a fresh answer for this exact question</li>
+          </ul>
+          <div style="display:flex; gap:0.6rem; flex-wrap:wrap; margin-top:0.75rem">
+            <a class="btn small" data-hexq="${esc(q)}" href="/chat/">⚡ Chat with HEX about this</a>
+            <a class="btn ghost small" href="/catalog/">Browse the catalog</a>
+          </div>
+          <button class="btn ghost small" data-backlog="${esc(q)}" style="margin-top:0.6rem">😢 Not helpful — teach me this (files your question for us to answer next)</button>
+        </div>`;
+    }
+    const group = (kinds: string[]) => found.filter((d) => kinds.includes(d.kind));
+    const tools = group(['tool']);
+    const learning = group(['workflow', 'guide', 'path']);
+    const fresh = group(['fresh']);
+    const models = group(['model']);
+
+    const item = (d: any, external = false) =>
+      `<li><a href="${esc(d.url)}"${external ? ' target="_blank" rel="noopener"' : ''}>${esc(d.title)}</a> <span class="badge">${esc(d.kind)}</span>${d.when ? ` <span class="muted small">· verified ${esc(String(d.when).slice(0, 10))}</span>` : ''}<br><span class="muted small">${esc(d.extra || '')}</span></li>`;
+
+    let html = '<div class="card"><p style="margin-top:0"><strong>No exact playbook — but here\'s what the site knows:</strong></p><ul>';
+    if (tools.length) html += tools.map((d) => item(d)).join('');
+    if (models.length) html += models.map((d) => item(d)).join('');
+    if (learning.length) html += learning.map((d) => item(d)).join('');
+    html += '</ul>';
+    if (fresh.length) {
+      html += `<p class="muted small" style="margin:0.75rem 0 0.35rem"><strong>Live from the web</strong> (scraped hourly by the freshness engine):</p><ul>${fresh.map((d) => item(d, true)).join('')}</ul>`;
+    }
+    html += `
+      <div style="display:flex; gap:0.6rem; flex-wrap:wrap; margin-top:0.85rem">
+        <a class="btn ghost small" data-hexq="${esc(q)}" href="/chat/">⚡ Chat with HEX instead</a>
+        <button class="btn ghost small" data-backlog="${esc(q)}">😢 Not helpful — teach me this</button>
+      </div>
+    </div>`;
+    return html;
   }
 
   function ask(q: string): void {
@@ -103,8 +134,8 @@ const chips = [
       }
       results.innerHTML = html;
     } else {
-      const found = searchDocs(q, docs, 6);
-      results.innerHTML = found.length ? renderFallback(found, q) : renderFallback([], q);
+      const found = searchDocs(q, docs, 9);
+      results.innerHTML = renderFallback(found, q);
     }
     results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
@@ -133,6 +164,13 @@ const chips = [
     } catch (err) {}
     btn.textContent = '✓ Filed — this becomes our next guide. Check the Me page.';
     btn.setAttribute('disabled', 'true');
+  });
+
+  // HEX+ handoff: carry the question to the AI mode on /ask
+  document.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement).closest('[data-hexq]');
+    if (!btn) return;
+    try { sessionStorage.setItem('hx:hexq', btn.getAttribute('data-hexq') || ''); } catch (err) {}
   });
 
   // Deep-link support: /ask/#workflowId highlights the workflow

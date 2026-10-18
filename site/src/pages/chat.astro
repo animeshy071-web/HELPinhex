@@ -1,0 +1,302 @@
+---
+import Base from '../layouts/Base.astro';
+import Badge from '../components/Badge.astro';
+import { getPrices } from '../lib/load';
+
+const feed = getPrices();
+const allFree = (feed?.models ?? []).filter((m) => m.free).map((m) => m.id);
+// User explicitly wants non-Gemini defaults — any model, grounded in OUR data.
+const freeModels = allFree.filter((id) => !id.toLowerCase().includes('gemini'));
+const geminiModels = allFree.filter((id) => id.toLowerCase().includes('gemini'));
+const cheapModels = (feed?.models ?? [])
+  .filter((m) => !m.free && m.promptPerM !== null)
+  .sort((a, b) => (a.promptPerM ?? 999) - (b.promptPerM ?? 999))
+  .slice(0, 20);
+const defaultModel = freeModels[0] ?? allFree[0] ?? 'meta-llama/llama-3.3-70b-instruct:free';
+const knowledgeDate = feed?.fetchedAt ? feed.fetchedAt.slice(0, 10) : null;
+
+const jsonSafe = (v: unknown) => JSON.stringify(v).replace(/</g, '\\u003c');
+---
+
+<Base title="Chat with HEX — the chatbot grounded in freshly scraped tech data" description="HEX answers from HELPINhex's verified catalog + a live feed scraped every 6 hours from GitHub, Hacker News, Product Hunt and DEV.to — with sources.">
+  <section class="section" style="padding-bottom:0.5rem">
+    <div class="container">
+      <div class="section-head" style="margin-bottom:0.5rem">
+        <h1 style="font-size:2.2rem; margin:0">Chat with <span class="grad" style="background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent">HEX</span></h1>
+        <span class="muted small" id="hex-brain-status">loading brain…</span>
+      </div>
+      <p class="muted small">
+        HEX answers <strong>from our data</strong> — {knowledgeDate ? `prices + feeds fetched ${knowledgeDate}` : 'the verified catalog'} — not from a model's stale memory.
+        Every reply lists its sources. It streams via OpenRouter with your free key, or keylessly through our Firebase function once deployed.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:1rem">
+    <div class="container">
+      <div class="card grain" id="chat-card" style="display:flex; flex-direction:column; min-height:60vh; padding:0; overflow:hidden">
+        <div id="chat-log" style="flex:1; overflow-y:auto; padding:1.25rem; display:flex; flex-direction:column; gap:1rem" data-lenis-prevent></div>
+        <form id="chat-form" style="border-top:1px solid var(--border-soft); padding:0.9rem 1.25rem; display:flex; gap:0.6rem; background:var(--surface)">
+          <input class="input" id="chat-input" placeholder="Ask HEX anything: latest video editing tools, trending AI repos, what model is free…" aria-label="Message HEX" autocomplete="off" />
+          <button class="btn" type="submit" id="chat-send">Send</button>
+          <button class="btn ghost" type="button" id="chat-stop" style="display:none">■</button>
+        </form>
+      </div>
+
+      <div class="flex-between mt-2">
+        <div class="chips">
+          <label class="badge violet">Model
+            <select id="hex-model" class="input" style="display:inline-block; width:auto; padding:0.15rem 0.5rem; font-size:0.78rem; margin-left:0.35rem; background:transparent; border:none; color:inherit">
+              <optgroup label="free">
+                {freeModels.map((m) => <option value={m}>{m}</option>)}
+                {geminiModels.map((m) => <option value={m}>{m}</option>)}
+              </optgroup>
+              {cheapModels.length ? (
+                <optgroup label="paid (cheap first)">
+                  {cheapModels.map((m) => <option value={m.id}>{m.id} — ${m.promptPerM}/M</option>)}
+                </optgroup>
+              ) : null}
+            </select>
+          </label>
+          <button type="button" class="badge" id="hex-clear">clear chat</button>
+        </div>
+        <span class="muted small">keys stay in your browser · <a href="/ask/">prefer the step-by-step Answer Engine?</a></span>
+      </div>
+
+      <!-- key setup -->
+      <details class="card mt-1" id="hex-key-card">
+        <summary class="muted" style="cursor:pointer"><strong>Connection</strong> — <span id="hex-conn-status">checking…</span></summary>
+        <div class="mt-1 small muted">
+          <p style="margin-top:0"><strong>Option A (works right now):</strong> paste a free OpenRouter key (<a href="https://openrouter.ai/keys" target="_blank" rel="noopener">openrouter.ai/keys</a>). Stored in this browser only, sent straight to openrouter.ai.</p>
+          <div class="ask-row">
+            <input class="input" id="hex-key" type="password" placeholder="sk-or-v1-…" autocomplete="off" />
+            <button class="btn small" id="hex-save-key" type="button">save key</button>
+          </div>
+          <p style="margin-bottom:0"><strong>Option B (keyless, after we deploy):</strong> the Firebase function <code class="inline">hexAsk</code> serves answers with our server key — no visitor setup. Status is detected automatically.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <script type="application/json" id="hex-chat-config" set:html={jsonSafe({ defaultModel })} />
+
+  <script>
+    import { getStoredKey, setStoredKey, clearStoredKey, streamChat } from '../lib/openrouter-client';
+    import { loadKnowledge, retrieve, buildContext, type KnowledgeDoc } from '../lib/retrieve';
+
+    interface Msg { role: 'user' | 'assistant'; content: string; sources?: KnowledgeDoc[]; }
+
+    const cfg = JSON.parse(document.getElementById('hex-chat-config')?.textContent || '{}');
+    const DEFAULT_MODEL: string = cfg.defaultModel || '';
+    const HISTORY_KEY = 'hx:chat';
+
+    const log = document.getElementById('chat-log') as HTMLDivElement;
+    const form = document.getElementById('chat-form') as HTMLFormElement;
+    const input = document.getElementById('chat-input') as HTMLInputElement;
+    const sendBtn = document.getElementById('chat-send') as HTMLButtonElement;
+    const stopBtn = document.getElementById('chat-stop') as HTMLButtonElement;
+    const modelSel = document.getElementById('hex-model') as HTMLSelectElement;
+    const brainStatus = document.getElementById('hex-brain-status') as HTMLSpanElement;
+    const connStatus = document.getElementById('hex-conn-status') as HTMLSpanElement;
+
+    const esc = (s: unknown) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&', '<': '<', '>': '>', '"': '"', "'": '&#39;' }[c] as string));
+    const today = new Date().toISOString().slice(0, 10);
+
+    let serverAskUrl = '';
+    let history: Msg[] = [];
+    let controller: AbortController | null = null;
+
+    // ===== boot =====
+    (async () => {
+      try {
+        const cfgRes = await fetch('/hex-config.json');
+        if (cfgRes.ok) serverAskUrl = ((await cfgRes.json()).askUrl as string) || '';
+      } catch (e) {}
+      updateConn();
+      try {
+        const pack = await loadKnowledge();
+        brainStatus.textContent = `brain: ${pack.count} docs · built ${pack.builtAt.slice(0, 10)}`;
+      } catch (e) {
+        brainStatus.textContent = 'brain failed to load';
+      }
+      try { history = JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]'); } catch (e) { history = []; }
+      if (!Array.isArray(history)) history = [];
+      if (history.length) { for (const m of history.slice(-12)) renderMsg(m, false); scrollDown(); }
+      else greet();
+      // handoff: ?q= or AskBox button
+      const qs = new URLSearchParams(location.search).get('q');
+      let handoff = qs || '';
+      if (!handoff) { try { handoff = sessionStorage.getItem('hx:hexq') || ''; sessionStorage.removeItem('hx:hexq'); } catch (e) {} }
+      if (handoff) { input.value = handoff; submit(); }
+    })();
+
+    function updateConn(): void {
+      connStatus.innerHTML = serverAskUrl
+        ? '<strong style="color:var(--ok)">Firebase mode ON</strong> — keyless answers for everyone'
+        : getStoredKey()
+          ? '<strong style="color:var(--ok)">your OpenRouter key is saved</strong> (browser only)'
+          : 'no key yet — paste one below (free) or deploy the Firebase function';
+    }
+
+    function greet(): void {
+      const m: Msg = {
+        role: 'assistant',
+        content:
+          "I'm HEX — I answer from the HELPINhex knowledge base: the verified tool/model catalog plus a live feed scraped every 6 hours from GitHub, Hacker News, Product Hunt and DEV.to.\n\nAsk me things like:\n• latest tools for video editing\n• trending open source RAG repos this week\n• which AI models are free right now\n\nEvery answer lists its sources — tap them to read the full pages.",
+      };
+      renderMsg(m, false);
+    }
+
+    function renderMsg(m: Msg, animate = true): void {
+      const wrap = document.createElement('div');
+      wrap.className = m.role === 'user' ? 'chat-msg chat-user' : 'chat-msg chat-assistant';
+      wrap.innerHTML = `
+        <div class="chat-who muted small">${m.role === 'user' ? 'you' : 'HEX'}</div>
+        <div class="chat-bubble ${m.role === 'user' ? 'card' : 'card'}" style="white-space:pre-wrap; ${m.role === 'user' ? 'background:color-mix(in oklab, var(--accent) 10%, var(--surface));' : ''}">${esc(m.content)}</div>
+        ${m.sources?.length ? `<div class="chips mt-1">${m.sources.map((s, i) => `<a class="badge accent" href="${esc(s.url)}" ${s.kind === 'fresh' ? 'target="_blank" rel="noopener"' : ''}>[${i + 1}] ${esc(s.title.slice(0, 42))}</a>`).join('')}</div>` : ''}
+      `;
+      log.appendChild(wrap);
+      if (animate) scrollDown();
+    }
+
+    function scrollDown(): void { log.scrollTop = log.scrollHeight; }
+
+    function systemPrompt(docs: KnowledgeDoc[]): string {
+      return [
+        `You are HEX, the chatbot of HELPINhex — a beginner-first map of tech and AI. Today is ${today}.`,
+        'RULES:',
+        '1. Answer using the CONTEXT below — it is freshly scraped and verified site data. This data is your knowledge; do not lean on your own training memory when the context covers the topic.',
+        '2. Cite sources inline like [1], [2] matching the context numbers.',
+        '3. When the question asks for "latest/new" items, prefer the most recent dates in the context and say each item\'s date.',
+        '4. If the context does not cover the question, say so in one line, then answer from general knowledge clearly labeled "general knowledge — not from our live data".',
+        '5. Beginner tone: plain English, short sentences, explain jargon in one clause. No invented prices or features.',
+        '6. Keep answers under ~300 words unless asked for depth.',
+        '',
+        buildContext(docs),
+      ].join('\n');
+    }
+
+    function setBusy(b: boolean): void {
+      sendBtn.disabled = b;
+      stopBtn.style.display = b ? 'inline-flex' : 'none';
+    }
+
+    async function submit(): Promise<void> {
+      const q = input.value.trim();
+      if (!q || sendBtn.disabled) return;
+      input.value = '';
+      const userMsg: Msg = { role: 'user', content: q };
+      history.push(userMsg);
+      renderMsg(userMsg);
+
+      setBusy(true);
+      const thinking: Msg = { role: 'assistant', content: 'checking the knowledge base…' };
+      renderMsg(thinking);
+      const bubble = log.lastElementChild!.querySelector('.chat-bubble') as HTMLDivElement;
+
+      try {
+        const docs = await retrieve(q, 10);
+        thinking.content = '';
+        const model = modelSel.value || DEFAULT_MODEL;
+
+        if (serverAskUrl) {
+          // Firebase function mode — keyless
+          const res = await fetch(serverAskUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ question: q, model }),
+          });
+          if (!res.ok) throw new Error(`server ${res.status}`);
+          const data = await res.json();
+          typeStreamed(bubble, String(data.answer || ''), docs);
+        } else {
+          const key = getStoredKey();
+          if (!key) throw new Error('NO_KEY');
+          let acc = '';
+          await streamChat(
+            {
+              key,
+              model,
+              messages: [
+                { role: 'system', content: systemPrompt(docs) },
+                ...history.slice(-7, -1).map((m) => ({ role: m.role, content: m.content })),
+                { role: 'user', content: q },
+              ],
+              signal: controller?.signal,
+            },
+            (delta) => { acc += delta; bubble.textContent = acc; scrollDown(); }
+          );
+          finishMsg(bubble, acc, docs, model);
+        }
+      } catch (e: any) {
+        if (e?.message === 'NO_KEY') {
+          bubble.innerHTML =
+            'I need a (free) OpenRouter key to speak — <a href="https://openrouter.ai/keys" target="_blank" rel="noopener">get one here</a>, then paste it under <em>Connection</em> below. It stays in your browser.\n\nOr ask the <a href="/ask/">Answer Engine</a> — instant mode works with zero keys.';
+        } else if (e?.name === 'AbortError') {
+          bubble.textContent += '\n(stopped)';
+        } else {
+          bubble.textContent = `Connection problem: ${e?.message || e}\n\nQuick fixes: 401 = wrong key · 402 = pick a :free model · 429 = rate limit, wait a minute.`;
+        }
+      } finally {
+        setBusy(false);
+        controller = null;
+        saveHistory();
+      }
+    }
+
+    function typeStreamed(bubble: HTMLDivElement, text: string, docs: KnowledgeDoc[]): void {
+      let i = 0;
+      const timer = setInterval(() => {
+        i = Math.min(text.length, i + 3);
+        bubble.textContent = text.slice(0, i);
+        scrollDown();
+        if (i >= text.length) { clearInterval(timer); finishMsg(bubble, text, docs, 'firebase'); }
+      }, 12);
+    }
+
+    function finishMsg(bubble: HTMLDivElement, text: string, docs: KnowledgeDoc[], model: string): void {
+      const last = history[history.length - 1];
+      const msg: Msg = { role: 'assistant', content: text, sources: docs.slice(0, 8) };
+      history.push(msg);
+      bubble.textContent = text;
+      const chips = document.createElement('div');
+      chips.className = 'chips mt-1';
+      chips.innerHTML = docs.slice(0, 8).map((s, i) => `<a class="badge accent" href="${esc(s.url)}" ${s.kind === 'fresh' ? 'target="_blank" rel="noopener"' : ''}>[${i + 1}] ${esc(s.title.slice(0, 42))}</a>`).join('');
+      bubble.parentElement?.appendChild(chips);
+      scrollDown();
+      saveHistory();
+    }
+
+    function saveHistory(): void {
+      try { localStorage.setItem(HISTORY_KEY, JSON.stringify(history.slice(-30))); } catch (e) {}
+    }
+
+    form.addEventListener('submit', (e) => { e.preventDefault(); submit(); });
+    stopBtn.addEventListener('click', () => controller?.abort());
+    document.getElementById('hex-clear')?.addEventListener('click', () => {
+      history = [];
+      try { localStorage.removeItem(HISTORY_KEY); } catch (e) {}
+      log.innerHTML = '';
+      greet();
+    });
+    document.getElementById('hex-save-key')?.addEventListener('click', () => {
+      const el = document.getElementById('hex-key') as HTMLInputElement;
+      setStoredKey(el.value.trim());
+      el.value = '';
+      updateConn();
+    });
+    controller = new AbortController();
+  </script>
+
+  <style>
+    .chat-msg { display: flex; flex-direction: column; gap: 0.3rem; }
+    .chat-user { align-items: flex-end; }
+    .chat-user .chat-bubble { max-width: 85%; }
+    .chat-assistant { align-items: flex-start; }
+    .chat-assistant .chat-bubble { max-width: 100%; }
+    .chat-who { text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.68rem; }
+    #chat-log { background: color-mix(in oklab, var(--bg-soft) 55%, var(--surface)); }
+    #chat-log::-webkit-scrollbar { width: 8px; }
+    #chat-log::-webkit-scrollbar-thumb { background: var(--border); border-radius: 8px; }
+  </style>
+</Base>

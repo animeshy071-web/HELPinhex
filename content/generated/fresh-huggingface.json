@@ -1,15 +1,5 @@
 {
   "source": "huggingface",
-  "fetchedAt": "2026-10-17T11:21:28.021Z",
-  "items": [
-    {
-      "kind": "model",
-      "source": "huggingface",
-      "title": "Baekpica/DeepSeek-V4.1-Flash-1017-VQ-GGUF",
-      "url": "https://huggingface.co/Baekpica/DeepSeek-V4.1-Flash-1017-VQ-GGUF",
-      "detail": "pipeline: image-text-to-text",
-      "stats": "⭐ 2 · ⬇ 0",
-      "when": "2026-10-17T10:10:55.000Z"
-    }
-  ]
+  "fetchedAt": "2026-10-18T13:50:23.750Z",
+  "items": []
 }

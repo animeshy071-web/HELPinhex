@@ -187,6 +187,15 @@ const hexModels = { freeModels, cheapModels, fetchedAt: feed?.fetchedAt ?? null 
     keyInput.value = getStoredKey();
     refreshKeyStatus();
 
+    // Handoff from AskBox: prefill the HEX+ question
+    try {
+      const handoff = sessionStorage.getItem('hx:hexq');
+      if (handoff && questionEl) {
+        questionEl.value = handoff;
+        sessionStorage.removeItem('hx:hexq');
+      }
+    } catch (e) {}
+
     function currentModel(): string {
       return modelCustom.value.trim() || modelSel.value;
     }

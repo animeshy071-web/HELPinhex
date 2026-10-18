@@ -60,12 +60,16 @@ function readGenerated<T>(name: string): T | null {
   return JSON.parse(fs.readFileSync(file, 'utf8')) as T;
 }
 
-/** Merges the fresh feeds (HF models, HN launches, Repo Radar latest), newest fetchedAt wins for the honesty stamp. */
+/** Merges the fresh feeds (HF models, HN launches, Repo Radar, Product Hunt, Dev.to), newest fetchedAt wins for the honesty stamp. */
 export function getFresh(): { items: FreshItem[]; fetchedAt: string | null } {
-  const hf = readGenerated<FreshFeed>('fresh-huggingface.json');
-  const hn = readGenerated<FreshFeed>('fresh-hackernews.json');
+  const sources = ['fresh-huggingface.json', 'fresh-hackernews.json', 'fresh-producthunt.json', 'fresh-devto.json'];
+  const feeds: FreshFeed[] = [];
+  for (const s of sources) {
+    const f = readGenerated<FreshFeed>(s);
+    if (f) feeds.push(f);
+  }
   const repos = readGenerated<RepoFeed>('repos.json');
-  const feeds = [hf, hn, repos].filter((f): f is FreshFeed => f !== null);
+  if (repos) feeds.push(repos);
   const items = feeds.flatMap((f) => (f as RepoFeed).latest ?? f.items);
   const fetchedAt = feeds.length ? feeds.map((f) => f.fetchedAt).sort().at(-1) ?? null : null;
   return { items, fetchedAt };
@@ -164,20 +168,59 @@ export function getGuideBySlug(slug: string): Guide | undefined {
 export interface SearchDoc {
   id: string;
   title: string;
-  kind: 'tool' | 'model' | 'guide' | 'path' | 'term' | 'workflow' | 'page';
+  kind: 'tool' | 'model' | 'guide' | 'path' | 'term' | 'workflow' | 'page' | 'fresh';
   url: string;
   extra: string;
+  keywords?: string[];
+  when?: string;
+  freeTier?: boolean;
 }
 
 export function getSearchDocs(): SearchDoc[] {
   const docs: SearchDoc[] = [];
-  for (const t of getTools()) docs.push({ id: t.id, title: t.name, kind: 'tool', url: `/tools/${t.slug}/`, extra: t.tagline });
-  for (const m of getModels()) docs.push({ id: m.id, title: m.name, kind: 'model', url: `/models/${m.slug}/`, extra: m.bestFor });
+  for (const t of getTools()) {
+    const keywords = [...(t.keywords ?? []), t.category];
+    docs.push({
+      id: t.id,
+      title: t.name,
+      kind: 'tool',
+      url: `/tools/${t.slug}/`,
+      extra: `${t.tagline} — ${t.whatItIs.slice(0, 160)}`,
+      keywords,
+      when: t.lastVerified,
+      freeTier: t.freeTier,
+    });
+  }
+  for (const m of getModels()) {
+    docs.push({
+      id: m.id,
+      title: m.name,
+      kind: 'model',
+      url: `/models/${m.slug}/`,
+      extra: `${m.bestFor} — by ${m.by}. Strengths: ${m.strengths.join(', ').slice(0, 140)}`,
+      keywords: [m.by, ...m.modalities],
+      when: m.lastVerified,
+      freeTier: m.freeTier,
+    });
+  }
   for (const g of getGuides()) docs.push({ id: g.id, title: g.title, kind: 'guide', url: `/guides/${g.slug}/`, extra: g.summary });
   for (const p of getPaths()) docs.push({ id: p.id, title: p.title, kind: 'path', url: `/paths/${p.slug}/`, extra: p.goal });
   for (const t of getTerms()) docs.push({ id: t.id, title: t.word, kind: 'term', url: `/glossary/#${t.id}`, extra: t.plain });
-  for (const w of getWorkflows()) docs.push({ id: w.id, title: w.title, kind: 'workflow', url: `/ask/#${w.id}`, extra: w.totalCost });
+  for (const w of getWorkflows()) docs.push({ id: w.id, title: w.title, kind: 'workflow', url: `/ask/#${w.id}`, extra: w.totalCost, keywords: w.questionPatterns });
+  // Fresh from the internet — scraped launches/repos are searchable too
+  const fresh = getFresh();
+  for (const [i, f] of fresh.items.slice(0, 60).entries()) {
+    docs.push({
+      id: `fresh-${i}`,
+      title: f.title,
+      kind: 'fresh',
+      url: f.url,
+      extra: `${f.detail} ${f.stats} (${f.source})`.slice(0, 220),
+      when: f.when,
+    });
+  }
   docs.push({ id: 'repos', title: 'Repo Radar', kind: 'page', url: '/repos/', extra: 'Latest AI repos + find repos by topic — where AI launches first' });
+  docs.push({ id: 'chat', title: 'Chat with HEX', kind: 'page', url: '/chat/', extra: 'The AI chatbot grounded in our verified catalog + live scraped feeds, with sources' });
   docs.push({ id: 'compare', title: 'Compare models', kind: 'page', url: '/compare/', extra: 'Every model family with live prices, free tiers, context sizes' });
   docs.push({ id: 'checker', title: 'Laptop checker', kind: 'page', url: '/checker/', extra: 'What AI can YOUR machine run? Answer two questions' });
   docs.push({ id: 'events', title: 'Events & hackathons', kind: 'page', url: '/events/', extra: 'Where beginners find hackathons — and how to actually finish one' });

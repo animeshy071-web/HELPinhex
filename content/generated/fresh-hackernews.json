@@ -1,42 +1,87 @@
 {
   "source": "hackernews",
-  "fetchedAt": "2026-10-17T11:21:29.784Z",
+  "fetchedAt": "2026-10-18T13:50:35.116Z",
   "items": [
     {
       "kind": "launch",
       "source": "hackernews",
-      "title": "Show HN: CiteLadder – open-source AI search visibility tracker",
-      "url": "https://news.ycombinator.com/item?id=50129168",
-      "detail": "https://github.com/abhij1306/CiteLadder",
+      "title": "Show HN: Independent LLM benchmark index tracking 22 frontier models",
+      "url": "https://news.ycombinator.com/item?id=50140560",
+      "detail": "https://vibecoderjournal.com/rankings/",
       "stats": "▲ 1 · 💬 0",
-      "when": "2026-10-17T08:49:44Z"
+      "when": "2026-10-18T12:36:53Z"
     },
     {
       "kind": "launch",
       "source": "hackernews",
-      "title": "Show HN: Sys2txt – transcribe system audio to text in the CLI with a local LLM",
-      "url": "https://news.ycombinator.com/item?id=50129017",
-      "detail": "https://Joe-Heffer.github.io/sys2txt/",
-      "stats": "▲ 3 · 💬 0",
-      "when": "2026-10-17T08:14:12Z"
+      "title": "Show HN: Shipback – SFTP deploys your AI agent can undo",
+      "url": "https://news.ycombinator.com/item?id=50140229",
+      "detail": "https://github.com/aldohushi1-stack/shipback-sftp",
+      "stats": "▲ 4 · 💬 0",
+      "when": "2026-10-18T11:48:48Z"
     },
     {
       "kind": "launch",
       "source": "hackernews",
-      "title": "Show HN: Agentfork – Replay an LLM agent from any step and test fixes",
-      "url": "https://news.ycombinator.com/item?id=50128913",
-      "detail": "https://github.com/bimal1023/agentfork",
+      "title": "Show HN: Flying Car AI – make your car or your product fly from one photo",
+      "url": "https://news.ycombinator.com/item?id=50140152",
+      "detail": "https://flyingcar-ai.org",
       "stats": "▲ 1 · 💬 0",
-      "when": "2026-10-17T07:53:40Z"
+      "when": "2026-10-18T11:38:42Z"
     },
     {
       "kind": "launch",
       "source": "hackernews",
-      "title": "Show HN: Llmspeed – feel how fast a local LLM runs before you buy the hardware",
-      "url": "https://news.ycombinator.com/item?id=50127979",
-      "detail": "https://llmspeed.dev/",
-      "stats": "▲ 94 · 💬 38",
-      "when": "2026-10-17T04:36:53Z"
+      "title": "Show HN: Chrome extension that types one prompt into many AI chat tabs",
+      "url": "https://news.ycombinator.com/item?id=50139795",
+      "detail": "https://chromewebstore.google.com/detail/use-multiple-chat-ai-at-o/pcpciffaliaooacnhiefjiegigjidehp",
+      "stats": "▲ 1 · 💬 0",
+      "when": "2026-10-18T10:36:16Z"
+    },
+    {
+      "kind": "launch",
+      "source": "hackernews",
+      "title": "Show HN: AIOps Cockpit – An open-source AI SRE with human-in-the-loop safety",
+      "url": "https://news.ycombinator.com/item?id=50139640",
+      "detail": "https://github.com/matricphase-dot/aiops",
+      "stats": "▲ 1 · 💬 0",
+      "when": "2026-10-18T10:11:16Z"
+    },
+    {
+      "kind": "launch",
+      "source": "hackernews",
+      "title": "Show HN: Benchmarking LLM ability to code in an adversarial language",
+      "url": "https://news.ycombinator.com/item?id=50139549",
+      "detail": "https://bench.killswitch-lang.org/",
+      "stats": "▲ 3 · 💬 1",
+      "when": "2026-10-18T09:53:06Z"
+    },
+    {
+      "kind": "launch",
+      "source": "hackernews",
+      "title": "Show HN: Open-Source BitTorrent Client for macOS That Looks Nice",
+      "url": "https://news.ycombinator.com/item?id=50139493",
+      "detail": "https://github.com/kronzhq/torrie",
+      "stats": "▲ 1 · 💬 0",
+      "when": "2026-10-18T09:41:31Z"
+    },
+    {
+      "kind": "launch",
+      "source": "hackernews",
+      "title": "Show HN: Risphai – picks the AI model, tools and prompt for each request",
+      "url": "https://news.ycombinator.com/item?id=50139344",
+      "detail": "https://risphai.com",
+      "stats": "▲ 1 · 💬 2",
+      "when": "2026-10-18T09:11:39Z"
+    },
+    {
+      "kind": "launch",
+      "source": "hackernews",
+      "title": "Show HN: Connecting Captions Local Private AI Interpreter",
+      "url": "https://news.ycombinator.com/item?id=50138839",
+      "detail": "https://local-host.ai/connectingCaptions/",
+      "stats": "▲ 2 · 💬 0",
+      "when": "2026-10-18T07:41:31Z"
     }
   ]
 }

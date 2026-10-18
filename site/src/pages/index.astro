@@ -3,6 +3,8 @@ import Base from '../layouts/Base.astro';
 import AskBox from '../components/AskBox.astro';
 import Badge from '../components/Badge.astro';
 import ToolCard from '../components/ToolCard.astro';
+import ModelCard from '../components/ModelCard.astro';
+import { ArrowRight, Compass, MessagesSquare, Radar, Sparkles } from '@lucide/astro';
 import { getTools, getModels, getPaths, getGuides, getTerms, getFresh } from '../lib/load';
 import { linkTerms } from '../lib/format';
 
@@ -15,44 +17,87 @@ const fresh = getFresh();
 const fetched = fresh.fetchedAt
   ? new Date(fresh.fetchedAt).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })
   : null;
+
+// Ticker runs on the real list twice for a seamless loop.
+const tickerModels = [...models, ...models];
 ---
 
 <Base>
-  <section class="hero">
+  <!-- ============ Hero ============ -->
+  <section class="hero grain">
     <div class="container">
       <h1>Everything tech, <span class="grad">decoded for beginners.</span></h1>
       <p class="hero-sub">
         Ask what you want to make — get the tools, the steps in order, and the costs.
         Every AI model, tool and platform explained in plain English, plus a learning path that starts wherever you are.
       </p>
+      <div class="hero-cta">
+        <a class="btn" href="/ask/"><MessagesSquare size={16} /> Ask what to build</a>
+        <a class="btn ghost" href="/catalog/">Browse the catalog <ArrowRight size={16} /></a>
+      </div>
       <div class="mt-2">
         <AskBox />
       </div>
       <p class="muted small mt-2">
         Press <kbd>/</kbd> or <kbd>Ctrl K</kbd> to search everything · hover any dotted-underlined word for a plain-English explanation
       </p>
+      <div class="hero-stats" data-reveal>
+        <div class="stat"><b>{tools.length}</b><span>tools decoded</span></div>
+        <div class="stat"><b>{models.length}</b><span>model families</span></div>
+        <div class="stat"><b>{guides.length}</b><span>plain-English guides</span></div>
+        <div class="stat"><b>{terms.length}</b><span>jargon terms</span></div>
+      </div>
+    </div>
+    <div class="hero-ticker">
+      <div class="ticker" aria-label="Model families covered">
+        <div class="ticker-track">
+          <div class="ticker-group">
+            {tickerModels.map((m) => (
+              <span class="ticker-chip"><i aria-hidden="true"></i>{m.family} <span class="muted">· {m.by}</span></span>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
+  <!-- ============ Features ============ -->
   <section class="section">
     <div class="container">
       <div class="grid wide">
-        <div class="card">
-          <h3>🎯 Ask → get a plan</h3>
+        <div class="card" data-reveal>
+          <span class="feature-icon"><MessagesSquare size={20} /></span>
+          <h3>Ask → get a plan</h3>
           <p class="muted small" set:html={linkTerms('No links to dig through. You describe the goal, we return a sequenced workflow: tools, steps, costs, time — plus the mistakes beginners make.', terms)} />
         </div>
-        <div class="card">
-          <h3>📡 Always fresh</h3>
+        <div class="card" data-reveal data-reveal-delay="0.08">
+          <span class="feature-icon violet"><Radar size={20} /></span>
+          <h3>Always fresh</h3>
           <p class="muted small" set:html={linkTerms('A daily freshness engine catches new models, tools and repos the moment they drop — then explains why they matter (and when they do not).', terms)} />
         </div>
-        <div class="card">
-          <h3>🧭 Paths, not piles</h3>
+        <div class="card" data-reveal data-reveal-delay="0.16">
+          <span class="feature-icon lime"><Compass size={20} /></span>
+          <h3>Paths, not piles</h3>
           <p class="muted small" set:html={linkTerms('Structured learning tracks take you from "what even is a token" to shipping your first API-powered project.', terms)} />
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ============ Model families ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2><Sparkles size={22} style="vertical-align:-3px; color:var(--accent-2); margin-right:0.35rem;" />Model families</h2>
+        <a class="small" href="/catalog/">compare them all in the catalog →</a>
+      </div>
+      <div class="grid wide">
+        {models.map((m) => <ModelCard model={m} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Paths ============ -->
   <section class="section">
     <div class="container">
       <div class="section-head">
@@ -61,8 +106,8 @@ const fetched = fresh.fetchedAt
       </div>
       <div class="grid">
         {
-          paths.map((p) => (
-            <a class="card hover" href={`/paths/${p.slug}/`}>
+          paths.map((p, i) => (
+            <a class="card hover" href={`/paths/${p.slug}/`} data-reveal data-reveal-delay={String(i * 0.06)}>
               <h3 style="margin-top:0">{p.title}</h3>
               <p class="muted small">{p.goal}</p>
               <div class="chips">
@@ -76,6 +121,7 @@ const fetched = fresh.fetchedAt
     </div>
   </section>
 
+  <!-- ============ Catalog ============ -->
   <section class="section">
     <div class="container">
       <div class="section-head">
@@ -83,14 +129,15 @@ const fetched = fresh.fetchedAt
         <a class="small" href="/catalog/">browse everything →</a>
       </div>
       <div class="grid">
-        {tools.slice(0, 6).map((t) => <ToolCard tool={t} />)}
+        {tools.slice(0, 6).map((t, i) => <span style="display:grid" data-reveal data-reveal-delay={String(i * 0.05)}><ToolCard tool={t} /></span>)}
       </div>
-      <p class="muted small mt-2">
+      <p class="muted small mt-2" data-reveal>
         {tools.length} tools · {models.length} model families · {guides.length} guides · {terms.length} decoded terms — every card carries its last-verified date.
       </p>
     </div>
   </section>
 
+  <!-- ============ Fresh today ============ -->
   <section class="section">
     <div class="container">
       <div class="section-head">
@@ -99,8 +146,8 @@ const fetched = fresh.fetchedAt
       </div>
       <div class="grid">
         {
-          fresh.items.slice(0, 3).map((i) => (
-            <a class="card hover" href={i.url} target="_blank" rel="noopener">
+          fresh.items.slice(0, 3).map((i, idx) => (
+            <a class="card hover" href={i.url} target="_blank" rel="noopener" data-reveal data-reveal-delay={String(idx * 0.06)}>
               <Badge>{i.source}</Badge>
               <h3 style="margin:0.6rem 0 0.25rem; font-size:1rem; word-break:break-word">{i.title}</h3>
               <p class="muted small" style="margin:0">{i.detail}</p>
@@ -109,7 +156,7 @@ const fetched = fresh.fetchedAt
           ))
         }
       </div>
-      <p class="muted small mt-2">
+      <p class="muted small mt-2" data-reveal>
         Caught {fetched ?? '—'} by the freshness engine —
         it runs daily on GitHub Actions, no human in the loop, no opinions. Want to build something? <a href="/ask/">Ask →</a>
       </p>

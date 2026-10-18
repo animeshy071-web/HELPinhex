@@ -1,0 +1,46 @@
+{
+  "hosting": {
+    "public": "site/dist",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "cleanUrls": true,
+    "rewrites": [
+      {
+        "source": "/api/ask",
+        "function": "hexAsk"
+      }
+    ],
+    "headers": [
+      {
+        "source": "/knowledge.json",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=3600"
+          }
+        ]
+      },
+      {
+        "source": "**/*.@(js|css|svg|woff2)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=31536000, immutable"
+          }
+        ]
+      }
+    ],
+    "predeploy": [
+      "npm --prefix site run build"
+    ]
+  },
+  "functions": {
+    "source": "functions",
+    "predeploy": [
+      "node scrapers/knowledge-pack.mjs"
+    ]
+  }
+}
