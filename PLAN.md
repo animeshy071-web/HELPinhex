@@ -273,16 +273,16 @@ Style options still open (owner is thinking):
 
 ## 13. Build phases & timeline
 
-| Phase | Deliverable | ETA (part-time) |
-|---|---|---|
-| **0 ✅** | This plan + repo | done |
-| **1** | Design system + core site: home + Ask (instant) + catalog cards + glossary/jargon decoder + paths 1–3 + ⌘K + PWA shell | week 1–2 |
-| **2** | Scrapers live (HF, GitHub, HN, MLH, RSS, OpenRouter prices) → auto "Today" + classification + badges + price tracker v0 | week 2–3 |
-| **3** | Answer Engine + ~30 workflows, comparisons, laptop checker, recipes, events/opportunities, remaining paths | week 3–4 |
-| **4** | Ask HEX+ (AI mode), depth toggle, collections, prompt library, graveyard radar, cost calculator, playground | week 4–6 |
-| **5** | Ongoing: content ops (verify queue), SEO, newsletter, i18n, community | continuous |
+| Phase | Deliverable | ETA (part-time) | Status |
+|---|---|---|---|
+| **0** | This plan + repo | done | ✅ |
+| **1** | Design system + core site: home + Ask (instant) + catalog cards + glossary/jargon decoder + paths 1–3 + ⌘K + PWA shell | week 1–2 | ✅ |
+| **2** | Scrapers live (HF, GitHub, HN, MLH, RSS, OpenRouter prices) → auto "Today" + classification + badges + price tracker v0 | week 2–3 | ✅ |
+| **3** | Answer Engine + 20 workflows, comparisons, laptop checker, recipes, events/opportunities, remaining paths | week 3–4 | ✅ (paths 4–12: backlog) |
+| **4** | Ask HEX+ (AI mode), depth toggle, collections, prompt library, graveyard radar, cost calculator, playground | week 4–6 | ✅ |
+| **5** | Ongoing: content ops (verify queue), SEO, newsletter, i18n, community | continuous | 🚧 backlog |
 
-**MVP (Phases 1–3): ~3–4 weeks part-time. Full vision: 2–3 months.**
+**MVP (Phases 1–3): ✅ done in 2 days with AI pair-building. Full vision core: shipped. Phase 5 is the forever-loop.**
 
 ---
 
